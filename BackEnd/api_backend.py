@@ -4,7 +4,7 @@ from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 import json
 import loging_backend as lBackend
-import spending_backend as sBackennd
+import spendings_backend as sBackennd
 
 #DATABASE INFO
 dbInf = open('jsonFiles/databaseInfo.json')
@@ -19,10 +19,10 @@ dbInf.close()
 #FLASK APP DEFINITION
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = f'postgresql://{username}:{pwd}@{hostname}:{port_id}/{database}'
+app.config['SECRET_KEY'] = 'secret'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-#db = SQLAlchemy(app)
-#users_table = db.Table('users', db.metadata, autoload=True, autoload_with=db.engine)
-
+db = SQLAlchemy(app)
+users_table = db.Table('users', db.metadata, autoload=True, autoload_with=db.engine)
 
 #ENDPOINT TO INSERT USER IN DATABASE
 @app.route("/createuser",methods=['POST'])
