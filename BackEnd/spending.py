@@ -1,0 +1,45 @@
+from __init__ import db
+from datetime import datetime
+from currency_converter import CurrencyConverter
+
+class Spending(db.Model):
+    __tablename__ = "spendings"
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String)
+    category = db.Column(db.String)
+    value_eur = db.Column(db.Float)
+    date = db.Column(db.Date)
+    user = db.Column(db.String)
+
+    def __init__(self, name:str, category:str, value_eur:float, date:datetime, user:str):
+        self.name = name
+        self.category = category
+        self.value_eur = value_eur
+        self.date = date
+        self.user = user
+
+    @staticmethod
+    def create(name,category,value_eur,date,user):
+            new_spending = Spending(name,category,value_eur,date,user)
+            db.session.add(new_spending)
+            db.session.commit()
+
+    @staticmethod
+    def update(id,name,category,value_eur,date):
+        spending_to_upd = Spending.query.get(id)
+        spending_to_upd.name = name
+        spending_to_upd.category = category
+        spending_to_upd.value_eur = value_eur
+        spending_to_upd.date = date
+        db.session.commit()
+
+
+    @staticmethod
+    def delete(id_to_del):
+        Spending.query.filter_by(id=id_to_del).delete()
+        db.session.commit()
+
+    @staticmethod
+    def convert_currency(value,currency):
+        converter = CurrencyConverter()
+        return round(converter.convert(value,currency),2)
