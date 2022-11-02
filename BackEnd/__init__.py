@@ -1,13 +1,17 @@
-from flask import Flask
+from flask import Flask, jsonify, make_response, request
 from flask_sqlalchemy import SQLAlchemy
-
+from werkzeug.security import generate_password_hash,check_password_hash
+from functools import wraps
+import uuid
+import jwt
+import datetime
 db = SQLAlchemy()
 
 def init_app():
     app = Flask(__name__, instance_relative_config=False)
 
     app.config.from_object('config.Config')  
-
+    app.config['SECRET_KEY']='004f2af45d3a4e161a7dd2d17fdae47f'
     db.init_app(app)
 
     with app.app_context():
@@ -18,3 +22,5 @@ def init_app():
         app.register_blueprint(spendings_bp)
 
         return app
+    
+ 
