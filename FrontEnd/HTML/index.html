@@ -6,13 +6,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://kit.fontawesome.com/54cbe89854.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="../CSS/style.css">
-  <!-- <link rel="stylesheet" href="../CSS/nav_bar.css"> -->
+
   <script src="../JavaScript/cards.js"></script>
   <script src="../JavaScript/dropDownFrameTime.js"></script>
-  
+  <script src="../JavaScript/weekNumber.js"></script>
+  <script src="../JavaScript/monthNumber.js"></script>
+  <script src="../JavaScript/yearNumber.js"></script>
+
   <title>Document</title>
+
 </head>
-<body onload="generateDayCards()">
+<body onload="generateDayCards(),setWeekNr()">
 
   <div id="main-nav">
     <div class="container-nav">
@@ -31,18 +35,24 @@
   </div>
   <div class="timeframe-container">
     <div class="dropdown">
-      <button type="button" class="btn"><i class="fa-sharp fa-solid fa-arrow-left fa-3x"></i></button>
-      <button onclick="myFunction()" id="timeframe" class="dropbtn">WEEK</button>
-      <button type="button" class="btn"><i class="fa-sharp fa-solid fa-arrow-right fa-3x" ></i></button>
+      <div id="timeframe-container">
+        <button onclick="decreaseWeekNr()" type="button" class="btn"><i class="fa-sharp fa-solid fa-arrow-left fa-3x"></i></button>
+        <button onclick="myFunction()"  id="timeframe" class="dropbtn">WEEK</button>
+        <button onclick="increaseWeekNr()" type="button" class="btn"><i class="fa-sharp fa-solid fa-arrow-right fa-3x" ></i></button>
+      </div>
       <div id="myDropdown" class="dropdown-content">
-        <a href="#month">MONTH</a>
-        <a href="#year">YEAR</a>
+        <div onclick='changeTimeframe("WEEK"),setWeekNr()' id="week-dropdown">WEEK</div>
+        <div onclick='changeTimeframe("MONTH"),setMonth()' id="week-dropdown">MONTH</div>
+        <div onclick='changeTimeframe("YEAR"),setYearNr()' id="week-dropdown">YEAR</div>
       </div>
     </div>
   </div>
   <div class="card-container">
     <div class="grid-container" id="cards"></div>
   </div>
-  
+
+
 </body>
 </html>
+
+

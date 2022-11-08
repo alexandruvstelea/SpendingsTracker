@@ -29,7 +29,7 @@ class Spending(db.Model):
         spendings = Spending.query.filter(Spending.date.between(start,end)).filter(Spending.user == user_to_srch)
         spendings_list = []
         for sp in spendings:
-            spendings_list.append({"name": sp.name,"category":sp.category,"value":Spending.convert_currency(sp.value_eur,"EUR",currency,sp.date),"date":sp.date})
+            spendings_list.append({"id":sp.id,"name": sp.name,"category":sp.category,"value":Spending.convert_currency(sp.value_eur,"EUR",currency,sp.date),"date":sp.date})
         return spendings_list
 
 
