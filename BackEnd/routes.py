@@ -1,8 +1,48 @@
-from flask import Blueprint, request
+from flask import Blueprint, request, make_response, jsonify
+from flask_sqlalchemy import SQLAlchemy
 from spending import Spending
-from datetime import datetime
+from datetime import datetime, timedelta
+from user import User
+from config import Config
+import jwt
+from auth_middleware import token_required
 
 bp = Blueprint('spendings', __name__)
+user_bp = Blueprint('user', __name__)
+
+@user_bp.route('/user', methods=["POST"]) 
+def create_user():
+    data = request.get_json()
+    username = data['username']
+    password = data['password']
+    nickname = data['nickname']   
+    User.create(username, password, nickname, False)
+    return {'response': 'User created!'},200
+
+@user_bp.route('/allusers', methods=["GET"])
+def retrieve_all_users():
+    users = User.query.all()
+    
+
+@user_bp.route('/login')
+def login():
+    auth = request.authorization
+    
+    if not auth or not auth.username or not auth.password:
+        return make_response('Could not verify', 401, {'WWW-Authenticate':'Login Required'})
+    
+    user = User.query.filter_by(username=auth.username).first()
+    
+    if not user:
+        return make_response('Could not verify', 401, {'WWW-Authenticate':'Login required'})
+    
+    if user.password == auth.password:
+        token = jwt.encode({'username':user.username, 'exp':datetime.utcnow()+timedelta(minutes=30)},Config.SECRET_KEY, algorithm="HS256")
+        return jsonify({'token':token})
+        
+    return make_response('Could not verify', 401, {'WWW-Authenticate':'Login required'})
+    
+ 
 
 @bp.route("/insertspending",methods=["POST"])
 def insert_spending():
@@ -17,6 +57,7 @@ def insert_spending():
     return {'response':'Spending inserted'},200
 
 @bp.route("/retrievespendings",methods=["GET"])
+@token_required
 def retrieve_spendings():
     user = request.args.get('user')
     start = datetime.strptime(request.args.get('start'),'%d/%m/%Y')
