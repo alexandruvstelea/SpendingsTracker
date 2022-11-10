@@ -1,0 +1,45 @@
+.word{
+  color: var(--primary-color);
+}
+
+#main-nav {
+  background: #fff;
+  display: flex;
+  padding: 8px 16px;
+  justify-content:space-between ;
+  text-align: center;
+  align-items: center;
+}
+
+#main-nav ul{
+  display: flex;
+  justify-content:center ;
+  text-align: center;
+  align-items: center;
+}
+
+#main-nav ul li i{
+  font-size: 32px;
+  padding: 0 5px;
+  margin: 0 2px;
+  color: var(--primary-color);
+}
+
+#main-nav ul li h1{
+  font-size: 32px;
+}
+
+#main-nav ul li a{
+  font-size: 1.5rem;
+  padding: 8px;
+  font-weight: bold;
+}
+
+#main-nav ul li a.current{
+  background: var(--primary-color);
+  color: #fff;
+}
+#main-nav ul li a:hover{
+  background: #E8E8E8;
+  color:#333;
+}

@@ -7,8 +7,8 @@ function generateMonths(){
     contor++
       data += `
   <div class="card-month">
-  <input type="radio" name="month" id="${contor}" value="${value}" onchange="generateDays(),totalSpending()">
-  <label for="${contor}">${key}</label>
+    <input type="radio" name="month" id="${contor}" value="${value}" onchange="generateDays(),totalSpending()">
+    <label for="${contor}">${key}</label>
   </div>
   `
   }
