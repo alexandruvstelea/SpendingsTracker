@@ -9,11 +9,12 @@
 
   <script src="../JavaScript/generateMonth.js"></script>
   <script src="../JavaScript/generateDays.js"></script>
-
+  <script src="../JavaScript/yearNumber.js"></script>
+  <script src="../JavaScript/fetchSpendings.js"></script>
   <title>Document</title>
 
 </head>
-<body onload="generateMonths() ,generateDays()">
+<body onload="generateMonths() ,setYearNr()">
 
   <div id="main-nav">
     <div class="container-nav">
@@ -26,25 +27,21 @@
       </ul>
     </div>
   </div>
-
   <div class="flex-parent-element">
     <div class="flex-child-element left">
           <div id="timeframe-container">
-            <button onclick="decreaseWeekNr()" type="button" class="btn"><i class="fa-sharp fa-solid fa-arrow-left fa-3x"></i></button>
-            <button onclick="myFunction()"  id="timeframe" class="dropbtn">2000</button>
-            <button onclick="increaseWeekNr()" type="button" class="btn"><i class="fa-sharp fa-solid fa-arrow-right fa-3x" ></i></button>
+            <button onclick="decreaseYearNr()" type="button" class="btn"><i class="fa-sharp fa-solid fa-arrow-left fa-3x"></i></button>
+            <h2 id="timeframe">2000</h2>
+            <button onclick="increaseYearNr()" type="button" class="btn"><i class="fa-sharp fa-solid fa-arrow-right fa-3x" ></i></button>
           </div>
 
             <div class="cards-month-container" id="cards-month"></div>
 
-            <h1 class="total">TOTAL</h1>
+            <h1 id="totalMonth" class="total">TOTAL</h1>
 
             <div class="cards-days-container" id="days-month"></div>
-
     </div>
     <div class="flex-child-element right">Flex Column 2</div>
   </div>
-
-
 </body>
 </html>

@@ -57,7 +57,6 @@ def insert_spending():
     return {'response':'Spending inserted'},200
 
 @bp.route("/retrievespendings",methods=["GET"])
-@token_required
 def retrieve_spendings():
     user = request.args.get('user')
     start = datetime.strptime(request.args.get('start'),'%d/%m/%Y')
@@ -92,3 +91,12 @@ def calculate_average():
     currency = request.args.get("currency")
     average = Spending.average(user,start,end,currency)
     return {'average': average}
+
+@bp.route("/total",methods=["GET"])
+def calculate_total():
+    user = request.args.get('user')
+    start = datetime.strptime(request.args.get('start'),'%d/%m/%Y')
+    end = datetime.strptime(request.args.get('end'),'%d/%m/%Y')
+    currency = request.args.get("currency")
+    total = Spending.total(user,start,end,currency)
+    return {'total': total} 

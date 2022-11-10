@@ -65,3 +65,12 @@ class Spending(db.Model):
             spendings_list.append(Spending.convert_currency(sp.value_eur,"EUR",currency,sp.date))
         average = round(sum(spendings_list)/len(spendings_list),2)
         return average
+
+    @staticmethod
+    def total(user_to_srch,start,end,currency):
+        spendings = Spending.query.filter(Spending.date.between(start,end)).filter(Spending.user == user_to_srch)
+        spendings_list = []
+        for sp in spendings:
+            spendings_list.append(Spending.convert_currency(sp.value_eur,"EUR",currency,sp.date))
+        total = sum(spendings_list)
+        return total
