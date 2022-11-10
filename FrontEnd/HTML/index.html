@@ -7,52 +7,44 @@
   <script src="https://kit.fontawesome.com/54cbe89854.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="../CSS/style.css">
 
-  <script src="../JavaScript/cards.js"></script>
-  <script src="../JavaScript/dropDownFrameTime.js"></script>
-  <script src="../JavaScript/weekNumber.js"></script>
-  <script src="../JavaScript/monthNumber.js"></script>
-  <script src="../JavaScript/yearNumber.js"></script>
+  <script src="../JavaScript/generateMonth.js"></script>
+  <script src="../JavaScript/generateDays.js"></script>
 
   <title>Document</title>
 
 </head>
-<body onload="generateDayCards(),setWeekNr()">
+<body onload="generateMonths() ,generateDays()">
 
   <div id="main-nav">
     <div class="container-nav">
       <img src="../Image/logo.png" alt="Spending Tracker" class="logo">
-      <div class="social">
-        <a href="http://facebook.com" target="_blank"><i class="fab fa-facebook fa-2x"></i></a>
-        <a href="http://twitter.com" target="_blank"><i class="fab fa-twitter fa-2x"></i></a>
-        <a href="http://instagram.com" target="_blank"><i class="fab fa-instagram fa-2x"></i></a>
-        <a href="http://youtube.com" target="_blank"><i class="fab fa-youtube fa-2x"></i></a>
-      </div>
       <ul>
         <li><a class="current" href="index.html">Spendings</a></li>
         <li><a href="account.html">Account</a></li>
+        <li><a href="login_register.html">Log in</a></li>
+        <li><a href="login_register.html" class="hide">Log out</a></li>
       </ul>
     </div>
   </div>
-  <div class="timeframe-container">
-    <div class="dropdown">
-      <div id="timeframe-container">
-        <button onclick="decreaseWeekNr()" type="button" class="btn"><i class="fa-sharp fa-solid fa-arrow-left fa-3x"></i></button>
-        <button onclick="myFunction()"  id="timeframe" class="dropbtn">WEEK</button>
-        <button onclick="increaseWeekNr()" type="button" class="btn"><i class="fa-sharp fa-solid fa-arrow-right fa-3x" ></i></button>
-      </div>
-      <div id="myDropdown" class="dropdown-content">
-        <div onclick='changeTimeframe("WEEK"),setWeekNr()' id="week-dropdown">WEEK</div>
-        <div onclick='changeTimeframe("MONTH"),setMonth()' id="week-dropdown">MONTH</div>
-        <div onclick='changeTimeframe("YEAR"),setYearNr()' id="week-dropdown">YEAR</div>
-      </div>
+
+  <div class="flex-parent-element">
+    <div class="flex-child-element left">
+          <div id="timeframe-container">
+            <button onclick="decreaseWeekNr()" type="button" class="btn"><i class="fa-sharp fa-solid fa-arrow-left fa-3x"></i></button>
+            <button onclick="myFunction()"  id="timeframe" class="dropbtn">2000</button>
+            <button onclick="increaseWeekNr()" type="button" class="btn"><i class="fa-sharp fa-solid fa-arrow-right fa-3x" ></i></button>
+          </div>
+
+            <div class="cards-month-container" id="cards-month"></div>
+
+            <h1 class="total">TOTAL</h1>
+
+            <div class="cards-days-container" id="days-month"></div>
+
     </div>
-  </div>
-  <div class="card-container">
-    <div class="grid-container" id="cards"></div>
+    <div class="flex-child-element right">Flex Column 2</div>
   </div>
 
 
 </body>
 </html>
-
-
