@@ -87,7 +87,9 @@ img{
   text-align: center;
   align-items: center;
 }
-
+.cards-month-container .card-month:nth-child(odd){
+background: var(--secondary-color);
+}
 .cards-month-container .card-month:hover{
   /* background: var(--secondary-color); */
   background: #f4f4f4;
@@ -107,7 +109,6 @@ img{
 
 /* input:checked + label {
   background: red;
-  
 } */
 .cards-days-container {
   display: grid;
@@ -120,7 +121,6 @@ img{
 }
 
 .btn-day{
-  background: var(--primary-color);
   color: black;
   border: none;
   font-size: 32px;
@@ -130,13 +130,13 @@ img{
   width: 5rem;
   text-align: center;
   align-items: center;
-  
 }
+
 
 .btn-day:hover{
   background:#f4f4f4;
   border: var(--primary-color) 1px solid;
-}
+} 
 
 .total{
   text-align: center;
