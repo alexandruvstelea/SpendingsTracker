@@ -5,27 +5,34 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://kit.fontawesome.com/54cbe89854.js" crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="../CSS/style.css">
+  <link rel="stylesheet" href="../CSS/root.css">
   <link rel="stylesheet" href="../CSS/account.css">
-  <!-- <link rel="stylesheet" href="../CSS/nav_bar.css"> -->
-  <script src="../JavaScript/cards.js"></script>
-  <script src="../JavaScript/dropDownFrameTime.js"></script>
-  
+  <link rel="stylesheet" href="../CSS/style.css">
+  <link rel="stylesheet" href="../CSS/main_nav.css">
+
+
+  <script src="../JavaScript/generateMonth.js"></script>
+  <script src="../JavaScript/generateDays.js"></script>
+  <script src="../JavaScript/yearNumber.js"></script>
+  <script src="../JavaScript/fetchSpendings.js"></script>
   <title>Document</title>
+
 </head>
-<body onload="generateDayCards()">
+<body onload="generateMonths() ,setYearNr()">
 
   <div id="main-nav">
-    <div class="container-nav">
-      <img src="../Image/logo.png" alt="Spending Tracker" class="logo">
-      <ul>
-        <li><a  href="index.html">Spendings</a></li>
-        <li><a class="current" href="account.html">Account</a></li>
-        <li><a href="login_register.html">Log in</a></li>
-        <li><a href="login_register.html" class="hide">Log out</a></li>
-      </ul>
-    </div>
+    <ul>
+      <li><i class="fa-solid fa-dollar-sign fa-2x"></i></li>
+      <li><h1>Spendings <span class="word">Tracker</span></h1></li>
+    </ul>
+    <ul>
+      <li><a  href="index.html">Spendings</a></li>
+      <li><a class="current" href="account.html">Account</a></li>
+      <li><a href="login_register.html">Log in</a></li>
+      <li><a href="login_register.html" class="hide">Log out</a></li>
+    </ul>
   </div>
+
   <div class="wrapper">
     <div class="left">
         <img src="../Image/alex.png" 

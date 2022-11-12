@@ -5,9 +5,14 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://kit.fontawesome.com/54cbe89854.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="../CSS/root.css">
   <link rel="stylesheet" href="../CSS/style.css">
   <link rel="stylesheet" href="../CSS/main_nav.css">
   <link rel="stylesheet" href="../CSS/mainContainers.css">
+  <link rel="stylesheet" href="../CSS/cardMonths.css">
+  <link rel="stylesheet" href="../CSS/cardDays.css">
+  <link rel="stylesheet" href="../CSS/timeframe.css">
+  <link rel="stylesheet" href="../CSS/btnTimeframe.css">
 
   <script src="../JavaScript/generateMonth.js"></script>
   <script src="../JavaScript/generateDays.js"></script>
@@ -34,9 +39,9 @@
   <div class="flex-parent-element">
     <div class="flex-child-element left">
       <div id="timeframe-container">
-        <button onclick="decreaseYearNr()" type="button" class="btn"><i class="fa-sharp fa-solid fa-arrow-left fa-3x"></i></button>
+        <button onclick="decreaseYearNr()" type="button" class="btn-timeframe"><i class="fa-sharp fa-solid fa-arrow-left fa-3x"></i></button>
         <h2 id="timeframe">2000</h2>
-        <button onclick="increaseYearNr()" type="button" class="btn"><i class="fa-sharp fa-solid fa-arrow-right fa-3x" ></i></button>
+        <button onclick="increaseYearNr()" type="button" class="btn-timeframe"><i class="fa-sharp fa-solid fa-arrow-right fa-3x" ></i></button>
       </div>
       <div class="cards-month-container" id="cards-month"></div>
       <h1 id="totalMonth" class="total">TOTAL</h1>
@@ -44,7 +49,6 @@
     </div>
     <div class="flex-child-element right">Flex Column 2</div>
   </div>
-
 
 
    

@@ -7,7 +7,12 @@ function generateDays(){
     for(i=1;i<=days;i++){
       data += `
       <div class="card-day">
-        <button style="background:${checkOddOrEven()}; onclick="fetchSpendings(${parseInt(i)})" class="btn-day">${i}</button>
+        <button 
+        style="background:${checkOddOrEven()}" 
+        onpointerenter="this.setAttribute('style', 'color: black; border:${checkOddOrEven()} 2px solid; background:var(--background-color)')" 
+        onpointerleave="this.setAttribute('style', 'color: black; border:none; background: ${checkOddOrEven()}')"
+        onclick="fetchSpendings(${parseInt(i)})"
+        class="btn-day">${i}</button>
       </div>
         `
     }

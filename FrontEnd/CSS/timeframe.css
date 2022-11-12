@@ -1,0 +1,12 @@
+#timeframe-container{
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  font-size: 48rem;
+  padding: 10px 10px;
+}
+#timeframe-container h2{
+  font-size: 64px;
+  text-align: center;
+}
