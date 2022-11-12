@@ -9,37 +9,51 @@
 .cards-month-container .card-month{
   background: var(--primary-color);
   color: black;
-  font-size: 17px;
+  font-size: 19px;
   font-weight: bold;
-  padding: 12px 0px;
+  padding: 0px 0px;
   height: 52px;
   width: 120px;
   text-align: center;
   align-items: center;
+  border: 2px solid transparent;
 }
+
 .cards-month-container .card-month:nth-child(odd){
 background: var(--secondary-color);
 }
+
 .cards-month-container .card-month:hover{
   background: var(--background-color);
   border: var(--primary-color) 2px solid;
 } 
+
 .cards-month-container .card-month:nth-child(odd):hover{
   border: var(--secondary-color) 2px solid;
 } 
 
-
 .cards-month-container .card-month input{
-  visibility: hidden;
   position: absolute;
-
-}
-.cards-month-container .card-month label{
+  opacity: 0;
   cursor: pointer;
-  padding: 10px;
-  
 }
 
-input:checked + label {
-  background: red;
+.labelMonthContainer {
+  display: block;
+  position: relative;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  height: 52px;
+  width: 120px;
+  top: -2px;
+  left: -2px;
 }
+
+.monthKey{
+  position: relative;
+  top: 10px;
+}
+

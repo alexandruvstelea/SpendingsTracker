@@ -5,17 +5,12 @@ function generateMonths(){
   for (const [key, value] of Object.entries(months)) {
     contor++
       data += `
-  <div class="card-month">
-    <input type="radio" name="month" id="${contor}" value="${value}" onchange="generateDays(),totalSpending()">
-    <label for="${contor}">${key}</label>
-  </div>
+      <div class="card-month">
+        <label class="labelMonthContainer for="${contor}"><span class="monthKey">${key}</span>
+          <input  type="radio" name="month" id="${contor}" value="${value}" onchange="generateDays(),totalSpending()">
+        </label>
+      </div> 
   `
   }
   document.getElementById('cards-month').innerHTML = data
 }
-
-
-
-
-
-// <button class="btn-month">${month}</button>
