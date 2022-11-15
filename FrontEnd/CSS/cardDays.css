@@ -6,6 +6,7 @@
   grid-row-gap: 20px;
   justify-items: center;
   align-items: center;
+  
 }
 
 .btn-day{
@@ -18,4 +19,5 @@
   width: 72px;
   text-align: center;
   align-items: center;
+  border:black 2px solid;
 }
