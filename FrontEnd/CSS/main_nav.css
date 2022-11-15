@@ -9,6 +9,8 @@
   justify-content:space-between ;
   text-align: center;
   align-items: center;
+  border-bottom: 3px #ccc solid;
+
 }
 
 #main-nav ul{
@@ -16,6 +18,7 @@
   justify-content:center ;
   text-align: center;
   align-items: center;
+  z-index: 4;
 }
 #main-nav ul li{
   margin: 0px 5px;
@@ -71,6 +74,7 @@
   text-shadow: 1px 1px var(--primary-color);
   margin-right: 5px;
   min-width:80px;
+  background: white;
 }
 
 /* Dropdown button on hover & focus */
@@ -88,8 +92,8 @@
 .dropdown-content {
   display: none;
   position: absolute;
-  background-color: #f1f1f1;
-  min-width:70px;
+  background-color: white;
+  min-width:80px;
   box-shadow: 8px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
 }
