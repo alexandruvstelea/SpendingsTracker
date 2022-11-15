@@ -9,4 +9,6 @@
 #timeframe-container h2{
   font-size: 64px;
   text-align: center;
+  /* text-shadow: 2px 2px 8px var(--primary-color); */
+  text-shadow: 2px 2px 4px var(--primary-color), 2px 2px 8px var(--secondary-color);
 }

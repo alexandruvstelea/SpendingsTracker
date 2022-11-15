@@ -31,7 +31,7 @@ fetch(url)
         return response.json()
     })
     .then(function (complete_response) {
-        document.getElementById("totalMonth").innerText=complete_response.total+" RON "
+        document.getElementById("totalMonth").innerText= Object.keys(months)[document.querySelector('input[name="month"]:checked').id-1]+" "+complete_response.total+" RON "
     })
     .catch((err) => {
       console.log(err)

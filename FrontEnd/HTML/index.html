@@ -18,18 +18,30 @@
   <script src="../JavaScript/generateDays.js"></script>
   <script src="../JavaScript/yearNumber.js"></script>
   <script src="../JavaScript/fetchSpendings.js"></script>
+  <script src="../JavaScript/dropdown.js"></script>
   <title>Document</title>
-
 </head>
-<body onload="generateMonths() ,setYearNr()">
+<body onload='generateMonths() ,setYearNr(), changeCurrency("EUR")'>
 
   <div id="main-nav">
     <ul>
       <li><i class="fa-solid fa-dollar-sign fa-2x"></i></li>
       <li><h1>Spendings <span class="word">Tracker</span></h1></li>
     </ul>
+
     <ul>
+      <div class="dropdown">
+        <button onclick="myFunction()" class="dropbtn" id="dropbtn">Currency</button>
+        <div id="myDropdown" class="dropdown-content">
+          <a href="#" onclick='changeCurrency("RON")'>RON</a>
+          <a href="#" onclick='changeCurrency("EUR")'>EUR</a>
+          <a href="#" onclick='changeCurrency("USD")'>USD</a>
+          <a href="#" onclick='changeCurrency("GBP")'>GBP</a>
+        </div>
+      </div>
+
       <li><a class="current" href="index.html">Spendings</a></li>
+      <li><a href="statistics.html">Statistics</a></li>
       <li><a href="account.html">Account</a></li>
       <li><a href="login_register.html">Log in</a></li>
       <li><a href="login_register.html" class="hide">Log out</a></li>
@@ -44,13 +56,12 @@
         <button onclick="increaseYearNr()" type="button" class="btn-timeframe"><i class="fa-sharp fa-solid fa-arrow-right fa-3x" ></i></button>
       </div>
       <div class="cards-month-container" id="cards-month"></div>
-      <h1 id="totalMonth" class="total">TOTAL</h1>
+      <h1 id="totalMonth" class="total"></h1>
       <div class="cards-days-container" id="days-month"></div>
     </div>
     <div class="flex-child-element right">Flex Column 2</div>
   </div>
 
 
-   
 </body>
 </html>
