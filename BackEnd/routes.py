@@ -57,6 +57,7 @@ def insert_spending():
     return {'response':'Spending inserted'},200
 
 @bp.route("/retrievespendings",methods=["GET"])
+@token_required
 def retrieve_spendings():
     user = request.args.get('user')
     start = datetime.strptime(request.args.get('start'),'%d/%m/%Y')
