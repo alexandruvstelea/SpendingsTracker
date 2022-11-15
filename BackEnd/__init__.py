@@ -1,26 +1,22 @@
-from flask import Flask, jsonify, make_response, request
+from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
-from werkzeug.security import generate_password_hash,check_password_hash
-from functools import wraps
-import uuid
-import jwt
-import datetime
+
 db = SQLAlchemy()
 
 def init_app():
     app = Flask(__name__, instance_relative_config=False)
 
     app.config.from_object('config.Config')  
-    app.config['SECRET_KEY']='004f2af45d3a4e161a7dd2d17fdae47f'
+
     db.init_app(app)
 
     with app.app_context():
         from spending import Spending
+        from user import User
         db.create_all()
 
         from routes import bp as spendings_bp
+        from routes import user_bp as users_bp
         app.register_blueprint(spendings_bp)
-
+        app.register_blueprint(users_bp)
         return app
-    
- 

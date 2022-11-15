@@ -1,0 +1,7 @@
+{
+    "hostname": "localhost",
+    "databaseName": "SpendingsTracker",
+    "username": "postgres",
+    "password": "admin",
+    "portID": "5432"
+}
