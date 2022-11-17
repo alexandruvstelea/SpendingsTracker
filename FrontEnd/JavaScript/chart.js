@@ -1,3 +1,20 @@
+var rValues1 = [100,200,300,400,500,600,700,800,900,1000];
+
+new Chart("myChart0", {
+  type: "line",
+  data: {
+    labels: rValues1,
+    datasets: [{
+      data: [1600,1700,1700,1900,2000,200,4000,5000,6000,7000],
+      borderColor: "black",
+      fill: false
+    },]
+  },
+  options: {
+    legend: {display: false}
+  }
+});
+
 var rValues = [100,200,300,400,500,600,700,800,900,1000];
 
 new Chart("myChart1", {
@@ -5,7 +22,7 @@ new Chart("myChart1", {
   data: {
     labels: rValues,
     datasets: [{
-      data: [860,1140,1060,1060,1070,1110,1330,2210,7830,2478],
+      data: [1600,1700,1700,1900,2000,200,4000,5000,6000,7000],
       borderColor: "red",
       fill: false
     },{

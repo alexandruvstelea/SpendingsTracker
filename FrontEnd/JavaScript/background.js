@@ -8,7 +8,7 @@ for (let i = 0; i < numBalls; i++) {
   let ball = document.createElement("div");
   ball.classList.add("ball");
   ball.style.background = colors[Math.floor(Math.random() * colors.length)];
-  ball.style.left = `${Math.floor(Math.random() * 100)}vw`;
+  ball.style.left = `${Math.floor(Math.random() * 90)}vw`;
   ball.style.top = `${Math.floor(Math.random() * 5)}vh`;
   ball.style.transform = `scale(${Math.random()})`;
   ball.style.width = `${Math.random()}em`;
@@ -22,7 +22,7 @@ for (let i = 0; i < numBalls; i++) {
 balls.forEach((el, i, ra) => {
   let to = {
     x: Math.random() * (i % 2 === 0 ? -11 : 11),
-    y: Math.random() * 1
+    y: Math.random() * 1.1
   };
 
   let anim = el.animate(

@@ -9,7 +9,13 @@
   <link rel="stylesheet" href="../CSS/style.css">
   <link rel="stylesheet" href="../CSS/main_nav.css">
   <link rel="stylesheet" href="../CSS/statisticsContainer.css">
-
+  <link rel="stylesheet" href="../CSS/statisticsCalendar.css">
+  
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+  
   <script src="../JavaScript/dropdown.js"></script>
 
   <script
@@ -47,23 +53,74 @@ src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
 
 
   <div class="flex-parent-element">
+
     <div class="flex-child-element left left">
-      <h1>Tamplate</h1>
+
       <ul class="chartType">
-        <li><button>Chart Type 1</button></li>
-        <li><button>Chart Type 2</button></li>
+        <h1>Choose Chart Type</h1>
+        <li><button>Line Chart</button></li>
+        <li><button>Pie Chart</button></li>
         <li><button>Chart Type 3</button></li>
       </ul>
+      
+      <div class="intervalSelector">
+        <form>
+          <h2>Select Date Range</h2>
+          <h2>For Data</h2>
+          <input type="text" name="calendar" size="22" id="date_range"  readonly>
+          <input type="text" name="calendar" size="22" id="date_range"  readonly>
+          <script>
+              $(function() {
+                  $('input[name="calendar"]').daterangepicker({
+                      opens: 'center',
+                      showDropdowns:true,
+                      minYear:2000,
+                      maxYear:2040,
+                      singleDatePicker:true,
+                      autoApply:true,
+                  });
+              });
+          </script>
+      </form>
+
+      </div>
     </div>
+    
     <div class="flex-child-element right">
-              <!-- <canvas id="myChart1" class="hide" style="width:100%;max-width:700px"></canvas>
-  <canvas id="myChart2" class="hide" style="width:100%;max-width:700px"></canvas>
-  <canvas id="myChart3" class="hide" style="width:100%;max-width:700px"></canvas> -->
+      <h1>Chart Name</h1>
+  <!-- <canvas class="charts" id="myChart0" class="hide" ></canvas>  -->
+   <!-- <canvas class="charts" id="myChart1" class="hide" ></canvas> -->
+  <!-- <canvas class="charts" id="myChart2" class="hide" ></canvas> -->
+  <canvas class="charts" id="myChart3" class="hide" ></canvas>
     </div>
   </div>
 
-
   <script src="../JavaScript/chart.js"></script>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
 </body>
 </html>
