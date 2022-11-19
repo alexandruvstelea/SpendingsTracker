@@ -21,7 +21,7 @@
 
   <title>Document</title>
 </head>
-<body onload='generateMonths() ,setYearNr(), changeCurrency("EUR")'>
+<body onload='generateMonths() ,setYearNr(), getCurrentCurrency()'>
   <script src="../JavaScript/background.js"></script>
   <div id="main-nav">
     <ul>
@@ -33,18 +33,18 @@
       <div class="dropdown">
         <button onclick="myFunction()" class="dropbtn" id="dropbtn">Currency</button>
         <div id="myDropdown" class="dropdown-content">
-          <a href="#" onclick='changeCurrency("RON")'>RON</a>
-          <a href="#" onclick='changeCurrency("EUR")'>EUR</a>
-          <a href="#" onclick='changeCurrency("USD")'>USD</a>
-          <a href="#" onclick='changeCurrency("GBP")'>GBP</a>
+          <a href="#" onclick='changeCurrency("RON"), totalSpending()'>RON</a>
+          <a href="#" onclick='changeCurrency("EUR"), totalSpending()'>EUR</a>
+          <a href="#" onclick='changeCurrency("USD"), totalSpending()'>USD</a>
+          <a href="#" onclick='changeCurrency("GBP"), totalSpending()'>GBP</a>
         </div>
       </div>
 
       <li><a class="current" href="index.html">Spendings</a></li>
-      <li><a href="statistics.html">Statistics</a></li>
-      <li><a href="account.html">Account</a></li>
-      <li><a href="login_register.html">Log in</a></li>
-      <li><a href="login_register.html" class="hide">Log out</a></li>
+      <li><a href="statistics.html"           >Statistics</a></li>
+      <li><a href="account.html"              >Account</a></li>
+      <li><a href="login_register.html"       >Log in</a></li>
+      <li><a href="login_register.html"       >Log out</a></li>
     </ul>
   </div>
 

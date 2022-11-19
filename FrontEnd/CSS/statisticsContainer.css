@@ -64,7 +64,14 @@ body{
 
 .charts{
   width:100%;
-  max-width:1250px;
-  margin:10px auto 0 auto;
+  width:1250px;
+  margin:70px auto 0 auto;
   }
 
+  #myChart0,
+  #myChart1,
+  #myChart2{
+    display: none;
+  }
+
+  

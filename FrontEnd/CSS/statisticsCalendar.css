@@ -13,7 +13,8 @@
  }
 
 
- #date_range{
+ #date_start,
+ #date_end{
    margin: 20px 0 0 0 ;
    padding: 10px;
    background: var(--secondary-color);
@@ -25,7 +26,8 @@
    border-radius: 6px;
  
  }
- #date_range:hover{
+ #date_start:hover,
+ #date_end:hover{
   background: var(--background-color) !important;
   border: 2px solid var(--secondary-color) !important;
 }

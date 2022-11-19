@@ -4,7 +4,7 @@ function fetchSpendings(day) {
     user: "andrei",
     start: date,
     end: date,
-    currency: "RON",
+    currency: selectedCurrency,
 })
 fetch(url)
     .then(function (response) {
@@ -24,20 +24,26 @@ function totalSpending() {
     user: "andrei",
     start: date[0],
     end: date[1],
-    currency: "RON",
+    currency: selectedCurrency,
 })
 fetch(url)
     .then(function (response) {
         return response.json()
     })
     .then(function (complete_response) {
-        document.getElementById("totalMonth").innerText= Object.keys(months)[document.querySelector('input[name="month"]:checked').id-1]+" "+complete_response.total+" RON "
+        document.getElementById("totalMonth").innerText= Object.keys(months)[document.querySelector('input[name="month"]:checked').id-1]+" "+complete_response.total+" "+selectedCurrency
     })
     .catch((err) => {
       console.log(err)
   })
   }
 
+
+
+
+
+
+  
 function collectDate(day){
   year=document.getElementById("timeframe").innerText
   month=document.querySelector('input[name="month"]:checked').id
@@ -51,4 +57,46 @@ function startEndMonth(){
   startDate="01/"+month+"/"+year
   endDate=lastDay+"/"+month+"/"+year
   return [startDate,endDate]
+}
+
+async function updateLineChart(new_data) {
+  let dates = []
+  let values = []
+  for (i = 0; i < new_data.length; i++) {
+      dates.push(new_data[i][0])
+      values.push(new_data[i][1])
+  }
+  line_chart.data.datasets[0].data = values
+  line_chart.data.labels = dates
+  line_chart.update()
+}
+
+
+function getLineChartData(){
+  let start_date = document.getElementById('date_start').value
+  let end_date = document.getElementById('date_end').value
+  data_line_chart = []
+  const url = 'http://127.0.0.1:5000/linechart?' + new URLSearchParams({
+    user: "andrei",
+    start: start_date,
+    end: end_date,
+    currency: selectedCurrency,
+})
+fetch(url)
+    .then(function (response) {
+        return response.json()
+    })
+    .then(function (complete_response) {
+      let data_line_chart = []
+      for (i in complete_response.data) {
+        let value_date = []
+        value_date.push(complete_response.data[i].date.substring(5, 16))
+        value_date.push(complete_response.data[i].value)
+        data_line_chart.push(value_date)
+    }
+    updateLineChart(data_line_chart)
+    })
+    .catch((err) => {
+      console.log(err)
+  })
 }

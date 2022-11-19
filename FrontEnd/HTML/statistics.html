@@ -17,13 +17,15 @@
   <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
   
   <script src="../JavaScript/dropdown.js"></script>
+  <script src="../JavaScript/fetchSpendings.js"></script>
+  <script src="../JavaScript/calendar.js"></script>
 
   <script
 src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
 </script>
   <title>Document</title>
 </head>
-<body onload='changeCurrency("EUR")'>
+<body onload='getCurrentCurrency(),calendarDateStart(),calendarDateEnd()'>
   <script src="../JavaScript/background.js"></script>
   
   <div id="main-nav">
@@ -36,10 +38,10 @@ src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
       <div class="dropdown">
         <button onclick="myFunction()" class="dropbtn" id="dropbtn">Currency</button>
         <div id="myDropdown" class="dropdown-content">
-          <a href="#" onclick='changeCurrency("RON")'>RON</a>
-          <a href="#" onclick='changeCurrency("EUR")'>EUR</a>
-          <a href="#" onclick='changeCurrency("USD")'>USD</a>
-          <a href="#" onclick='changeCurrency("GBP")'>GBP</a>
+          <a href="#" onclick='changeCurrency("RON"),getLineChartData()'>RON</a>
+          <a href="#" onclick='changeCurrency("EUR"),getLineChartData()'>EUR</a>
+          <a href="#" onclick='changeCurrency("USD"),getLineChartData()'>USD</a>
+          <a href="#" onclick='changeCurrency("GBP"),getLineChartData()'>GBP</a>
         </div>
       </div>
 
@@ -47,7 +49,7 @@ src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
       <li><a class="current" href="statistics.html">Statistics</a></li>
       <li><a href="account.html">Account</a></li>
       <li><a href="login_register.html">Log in</a></li>
-      <li><a href="login_register.html" class="hide">Log out</a></li>
+      <li><a href="login_register.html">Log out</a></li>
     </ul>
   </div>
 
@@ -58,69 +60,36 @@ src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
 
       <ul class="chartType">
         <h1>Choose Chart Type</h1>
-        <li><button>Line Chart</button></li>
-        <li><button>Pie Chart</button></li>
-        <li><button>Chart Type 3</button></li>
+        <li><button onclick="functionPieChart()">Pie Chart</button></li>
+        <li><button onclick="functionBarChart()">Bar Chart</button></li>
+        <li><button onclick="functionLineChart(), getLineChartData()">Line Chart</button></li>
       </ul>
       
       <div class="intervalSelector">
         <form>
           <h2>Select Date Range</h2>
           <h2>For Data</h2>
-          <input type="text" name="calendar" size="22" id="date_range"  readonly>
-          <input type="text" name="calendar" size="22" id="date_range"  readonly>
-          <script>
-              $(function() {
-                  $('input[name="calendar"]').daterangepicker({
-                      opens: 'center',
-                      showDropdowns:true,
-                      minYear:2000,
-                      maxYear:2040,
-                      singleDatePicker:true,
-                      autoApply:true,
-                  });
-              });
-          </script>
+          <input type="text" name="calendar" size="22" id="date_start" onchange="functionMinDate()" readonly>
+          <input type="text" name="calendar" size="22" id="date_end"  readonly>
+
       </form>
 
       </div>
     </div>
     
     <div class="flex-child-element right">
-      <h1>Chart Name</h1>
-  <!-- <canvas class="charts" id="myChart0" class="hide" ></canvas>  -->
-   <!-- <canvas class="charts" id="myChart1" class="hide" ></canvas> -->
-  <!-- <canvas class="charts" id="myChart2" class="hide" ></canvas> -->
-  <canvas class="charts" id="myChart3" class="hide" ></canvas>
+  <canvas class="charts" id="pieChart" style="display:block"  ></canvas> 
+  <canvas class="charts" id="barChart" style="display:none" ></canvas>
+  <canvas class="charts" id="lineChart" style="display:none" ></canvas>
     </div>
   </div>
 
-  <script src="../JavaScript/chart.js"></script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   
+
+
+  <script src="../JavaScript/chart.js"></script>
+  <script src="../JavaScript/chartsButton.js"></script>
+
+
 </body>
 </html>

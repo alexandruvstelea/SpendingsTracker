@@ -57,7 +57,6 @@ def insert_spending():
     return {'response':'Spending inserted'},200
 
 @bp.route("/retrievespendings",methods=["GET"])
-@token_required
 def retrieve_spendings():
     user = request.args.get('user')
     start = datetime.strptime(request.args.get('start'),'%d/%m/%Y')
@@ -101,3 +100,17 @@ def calculate_total():
     currency = request.args.get("currency")
     total = Spending.total(user,start,end,currency)
     return {'total': total} 
+
+
+@bp.route("/linechart",methods=["GET"])
+def line_chart_data():
+    delta = timedelta(days=1)
+    chart_data = []
+    user = request.args.get('user')
+    start = datetime.strptime(request.args.get('start'),'%d/%m/%Y')
+    end = datetime.strptime(request.args.get('end'),'%d/%m/%Y')
+    currency = request.args.get("currency")
+    while start <= end:
+        chart_data.append({"value":Spending.total(user,start,start,currency),"date":start})
+        start += delta
+    return {"data": chart_data}

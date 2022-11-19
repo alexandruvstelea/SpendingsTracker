@@ -4,7 +4,6 @@ function myFunction() {
     document.getElementById("myDropdown").classList.toggle("show");
   }
   
-  // Close the dropdown menu if the user clicks outside of it
   window.onclick = function(event) {
     if (!event.target.matches('.dropbtn')) {
       var dropdowns = document.getElementsByClassName("dropdown-content");
@@ -21,4 +20,10 @@ function myFunction() {
 function changeCurrency(newCurrency){
     selectedCurrency = newCurrency
     document.getElementById("dropbtn").innerText = selectedCurrency
+    localStorage.setItem("currency", selectedCurrency)
+}
+
+function getCurrentCurrency(){
+  selectedCurrency = localStorage.getItem("currency");
+  document.getElementById("dropbtn").innerText = selectedCurrency
 }
