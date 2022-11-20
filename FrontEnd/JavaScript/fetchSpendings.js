@@ -1,3 +1,15 @@
+selectedChart = 'pie'
+
+function updateSelectedChart(newChart){
+  selectedChart = newChart
+  if (newChart == 'pie')
+    getPieChartData()
+  else if (newChart == 'bar')
+    getBarChartData()
+  else if (newChart == 'line')
+    getLineChartData()
+}
+
 function fetchSpendings(day) {
   date=collectDate(day)
   const url = 'http://127.0.0.1:5000/retrievespendings?' + new URLSearchParams({
@@ -17,6 +29,7 @@ fetch(url)
       console.log(err)
   })
   }
+
 
 function totalSpending() {
   date=startEndMonth()
@@ -70,6 +83,7 @@ async function updateLineChart(new_data) {
   line_chart.data.labels = dates
   line_chart.update()
 }
+
 
 
 function getLineChartData(){

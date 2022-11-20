@@ -37,7 +37,7 @@ let line_chart = new Chart("lineChart", {
   type: "line",
   labels: 'Data',
   data: {
-    labels: "Values",
+    labels: "",
     datasets: [{
       label:"Total Spendings",
       data: "Values",
