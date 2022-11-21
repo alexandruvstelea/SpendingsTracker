@@ -1,30 +1,23 @@
-var xPie = [ "Eating Out", "Entertainment", "Fuel", "Gifts","Shopping","Sports","Travel","Invoices"];
-var yPie = [55, 49, 44, 24, 15,40,100,25];
-var barColorsPie = ["red", "green","blue","orange","brown","magenta","lightgreen","lightgrey"];
+var chartColors = ["red", "green","blue","orange","brown","magenta","lightgreen","lightgrey","red"];
 
-new Chart("pieChart", {
+let pie_chart = new Chart("pieChart", {
   type: "pie",
   data: {
-    labels: xPie,
+    labels: "categories",
     datasets: [{
-      backgroundColor: barColorsPie,
-      data: yPie
+      backgroundColor: chartColors,
+      data: "Values"
     }]
   },
-
 });
 
-var xBar =[ "Eating Out", "Entertainment", "Fuel", "Gifts","Shopping","Sports","Travel","Invoices"];
-var yBar = [55, 49, 44, 24, 15,40,100,25];
-var barColorsBar = ["red", "green","blue","orange","brown","magenta","lightgreen","lightgrey"];
-
-new Chart("barChart", {
+let bar_chart = new Chart("barChart", {
   type: "bar",
   data: {
-    labels: xBar,
+    labels: "categories",
     datasets: [{
-      backgroundColor: barColorsBar,
-      data: yBar
+      backgroundColor: chartColors,
+      data: "Values"
     }]
   },
   options: {

@@ -1,5 +1,5 @@
 from __init__ import db
-from datetime import date, datetime
+from datetime import datetime
 from currency_converter import CurrencyConverter
 
 class Spending(db.Model):
@@ -31,7 +31,6 @@ class Spending(db.Model):
         for sp in spendings:
             spendings_list.append({"id":sp.id,"name": sp.name,"category":sp.category,"value":Spending.convert_currency(sp.value_eur,"EUR",currency,sp.date),"date":sp.date})
         return spendings_list
-
 
     @staticmethod
     def update(id,name,category,value_eur,date):
@@ -72,5 +71,12 @@ class Spending(db.Model):
         spendings_list = []
         for sp in spendings:
             spendings_list.append(Spending.convert_currency(sp.value_eur,"EUR",currency,sp.date))
-        total = sum(spendings_list)
-        return total
+        return sum(spendings_list)
+
+    @staticmethod
+    def totalFilter(user_to_srch,start,end,currency,category):
+        spendings = Spending.query.filter(Spending.date.between(start,end)).filter(Spending.user == user_to_srch).filter(Spending.category == category)
+        spendings_list = []
+        for sp in spendings:
+            spendings_list.append(Spending.convert_currency(sp.value_eur,"EUR",currency,sp.date))
+        return sum(spendings_list)

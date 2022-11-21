@@ -1,6 +1,7 @@
 from flask import Blueprint, request, make_response, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from spending import Spending
+from category import Category
 from datetime import datetime, timedelta
 from user import User
 from config import Config
@@ -9,6 +10,7 @@ from auth_middleware import token_required
 
 bp = Blueprint('spendings', __name__)
 user_bp = Blueprint('user', __name__)
+category_bp = Blueprint('categories',__name__)
 
 @user_bp.route('/user', methods=["POST"]) 
 def create_user():
@@ -114,3 +116,21 @@ def line_chart_data():
         chart_data.append({"value":Spending.total(user,start,start,currency),"date":start})
         start += delta
     return {"data": chart_data}
+
+@bp.route("/piebarchart",methods=["GET"])
+def pie_bar_chart():
+    chart_data = []
+    user = request.args.get('user')
+    start = datetime.strptime(request.args.get('start'),'%d/%m/%Y')
+    end = datetime.strptime(request.args.get('end'),'%d/%m/%Y')
+    currency = request.args.get("currency")
+    categories = Category.read()
+    for ct in categories:
+        chart_data.append({"total":Spending.totalFilter(user,start,end,currency,ct),"category":ct})
+    return {"data": chart_data}
+
+@category_bp.route("/insertcategory",methods=["POST"])
+def insert_category():
+    category = request.args.get("name")
+    Category.create(category)
+    return {'response':'Category inserted'},200
