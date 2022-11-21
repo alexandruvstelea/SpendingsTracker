@@ -25,5 +25,8 @@ function changeCurrency(newCurrency){
 
 function getCurrentCurrency(){
   selectedCurrency = localStorage.getItem("currency");
+  if(selectedCurrency==null)
+  document.getElementById("dropbtn").innerText = 'EUR'
+  else
   document.getElementById("dropbtn").innerText = selectedCurrency
 }

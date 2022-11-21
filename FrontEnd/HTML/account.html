@@ -10,11 +10,14 @@
   <link rel="stylesheet" href="../CSS/main_nav.css">
   <link rel="stylesheet" href="../CSS/account.css">
 
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script src="../JavaScript/dropdown.js"></script>
+  <script src="../JavaScript/dropdownPicture.js"></script>
+  
   <title>Document</title>
 
 </head>
-<body onload='getCurrentCurrency()'>
+<body onload='getCurrentCurrency(),getCurrentPicture()'>
   <script src="../JavaScript/background.js"></script>
   <div id="main-nav">
     <ul>
@@ -44,11 +47,27 @@
 
   <div class="wrapper">
     <div class="left">
-        <img src="../Image/alex.png" 
-        alt="user" width="250">
-        <h4>Vagon Alexandru</h4>
-         <p>Account</p>
-    </div>
+      <ul>
+        <li>
+          <div class="dropdownPicture">
+            <button onclick="myFunctionDropdown()" class="dropbtnPicture" id="dropbtnPicture">Edit</button>
+            <div id="myDropdownPicture" class="dropdownPicture-content">
+              <img src="../Image/icon1.png">
+              <img src="../Image/icon2.png">
+              <img src="../Image/icon3.png">
+              <img src="../Image/icon4.png">
+              <img src="../Image/icon5.png">
+              <img src="../Image/icon6.png">
+              <img src="../Image/icon7.png">
+              <img src="../Image/icon8.png">
+              <img src="../Image/icon9.png">
+            </div>
+          </div>
+        </li>
+        <li><img id="changePicture" src="../Image/icon1.png" alt="user" width="250"></li>
+        <li><h4>Vagon Alexandru</h4></li>
+        <li><p>Account</p></li>
+  </div>
     <div class="right">
         <div class="info">
             <h3>Information</h3>
@@ -63,7 +82,6 @@
               </div>
             </div>
         </div>
-      
       <div class="details">
             <h3>Details</h3>
             <div class="details_data">

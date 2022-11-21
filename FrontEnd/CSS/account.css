@@ -28,16 +28,20 @@ body{
 .wrapper .left{
   width: 35%;
   background: linear-gradient(to right,rgb(114, 168, 250),#01dbdf);
-  padding: 30px 25px;
+  padding: 15px 25px;
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
   text-align: center;
   color: #fff;
 }
+.wrapper .left ul li:first-child{
+  text-align: right;
+}
 
-.wrapper .left img{
-  border-radius: 5px;
-  margin-bottom: 10px;
+.wrapper .left ul li button:hover{
+background: #ccc;
+/* color: white; */
+cursor: pointer;
 }
 
 .wrapper .left h4{
@@ -48,6 +52,65 @@ body{
 .wrapper .left p{
   font-size: 20px;
 }
+
+/* DropDown */
+.dropbtnPicture {
+  font-family: 'Poppins';
+  color: black;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 15px;
+  padding: 1px 8px;
+  background: none;
+  border: none;
+}
+
+.dropbtnPicture:hover, .dropbtnPicture:focus {
+  background-color: var(--background-color);
+}
+
+.dropdownPicture {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdownPicture-content {
+  
+  display: none;
+  position: absolute;
+  grid-template-columns: repeat(3,auto);
+  background-color: white;
+  box-shadow: 8px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdownPicture-content img {
+  width: 100px;
+  height: 100px;
+}
+
+.dropdownPicture-content img:hover {
+  background-color: #ddd;
+  cursor: pointer;
+}
+
+.showPicture {display:grid;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 .wrapper .right{
   width: 65%;
@@ -118,3 +181,4 @@ body{
   display: block;
   font-size: 18px;
 }
+
