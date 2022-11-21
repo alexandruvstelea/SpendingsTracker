@@ -58,10 +58,12 @@ td, th {
     margin-top: 30px;
     width: 150px;
     align-self: center;
+    border-radius:25px;
 }
 
 td button:nth-child(even) {
     background-color: rgb(202, 140, 140);
+
 }
 
 tr:nth-child(even) {
@@ -85,6 +87,7 @@ tr:nth-child(even) {
 /* Style the subnav links */
 .subnav-content a {
     margin-right: 200px;
+    padding: 10px;
     float: left;
     color: black;
     text-decoration: none;
@@ -92,6 +95,7 @@ tr:nth-child(even) {
     font-family: 'Poppins';
     background-color: #00a2e8;
     border: 2px rgb(85, 76, 76) solid;
+    border-radius: 25px;
 }
     /* Add a grey background color on hover */
     .subnav-content a:hover {
