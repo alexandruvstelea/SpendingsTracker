@@ -5,31 +5,39 @@
     flex-direction: column;
 }
 
+
 /* The subnavigation menu */
+
 .subnav {
     float: left;
     overflow: hidden;
 }
 
-    /* Subnav button */
-    .subnav .subnavbtn {
-        font-size: 25px;
-        border: none;
-        outline: none;
-        color: black;
-        padding: 14px 16px;
-        background-color: #00a2e8;
-        font-family: inherit;
-        margin: 0;
-        font-weight: bold;
-    }
+
+/* Subnav button */
+
+.subnav .subnavbtn {
+    font-size: 25px;
+    border: none;
+    outline: none;
+    color: black;
+    padding: 14px 16px;
+    background-color: #00a2e8;
+    font-family: inherit;
+    margin: 0;
+    font-weight: bold;
+}
 
 .titlu {
     text-align: center;
     margin-top: 10px;
 }
+
+
 /* Add a red background color to navigation links on hover */
-.navbar a:hover, .subnav:hover .subnavbtn {
+
+.navbar a:hover,
+.subnav:hover .subnavbtn {
     background-color: inherit;
 }
 
@@ -39,18 +47,19 @@ table {
     width: 100%;
 }
 
-td, th {
+td,
+th {
     border: 1px solid #dddddd;
     text-align: center;
     padding: 8px;
     font-size: 20px;
 }
 
-    td button {
-        font-size: 20px;
-        padding: 10px;
-        background-color: rgb(174, 236, 174);
-    }
+td button {
+    font-size: 20px;
+    padding: 10px;
+    background-color: rgb(174, 236, 174);
+}
 
 .plus {
     background-color: #00a2e8;
@@ -58,19 +67,20 @@ td, th {
     margin-top: 30px;
     width: 150px;
     align-self: center;
-    border-radius:25px;
+    border-radius: 25px;
 }
 
 td button:nth-child(even) {
     background-color: rgb(202, 140, 140);
-
 }
 
 tr:nth-child(even) {
     background-color: #dddddd;
 }
 
+
 /* Style the subnav content - positioned absolute */
+
 .subnav-content {
     display: none;
     left: 0;
@@ -84,7 +94,10 @@ tr:nth-child(even) {
     height: 5px;
     background-color: rgb(64, 64, 71);
 }
+
+
 /* Style the subnav links */
+
 .subnav-content a {
     margin-right: 200px;
     padding: 10px;
@@ -97,13 +110,18 @@ tr:nth-child(even) {
     border: 2px rgb(85, 76, 76) solid;
     border-radius: 25px;
 }
-    /* Add a grey background color on hover */
-    .subnav-content a:hover {
-        background-color: rgb(31, 117, 230);
-        color: rgb(255, 255, 255);
-    }
+
+
+/* Add a grey background color on hover */
+
+.subnav-content a:hover {
+    background-color: rgb(31, 117, 230);
+    color: rgb(255, 255, 255);
+}
+
 
 /* When you move the mouse over the subnav container, open the subnav content */
+
 .subnav:hover .subnav-content {
     display: block;
 }

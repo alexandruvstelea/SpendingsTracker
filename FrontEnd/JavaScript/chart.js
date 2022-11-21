@@ -1,46 +1,51 @@
-var chartColors = ["red", "green","blue","orange","brown","magenta","lightgreen","lightgrey","red"];
+var chartColors = ["red", "green", "blue", "orange", "brown", "magenta", "lightgreen", "lightgrey"];
 
 let pie_chart = new Chart("pieChart", {
-  type: "pie",
-  data: {
-    labels: "categories",
-    datasets: [{
-      backgroundColor: chartColors,
-      data: "Values"
-    }]
-  },
+    type: "pie",
+    labels: 'Data',
+    data: {
+        labels: "",
+        datasets: [{
+            backgroundColor: chartColors,
+            data: "yPie",
+            label: ""
+        }]
+    },
+
 });
 
 let bar_chart = new Chart("barChart", {
-  type: "bar",
-  data: {
-    labels: "categories",
-    datasets: [{
-      backgroundColor: chartColors,
-      data: "Values"
-    }]
-  },
-  options: {
-    legend: {display: false},
-  }
+    type: "bar",
+    labels: 'Data',
+    data: {
+        labels: "",
+        datasets: [{
+            backgroundColor: chartColors,
+            data: "yBar",
+            label: ""
+        }]
+    },
+    options: {
+        legend: { display: false },
+    }
 });
 
 
 let line_chart = new Chart("lineChart", {
-  type: "line",
-  labels: 'Data',
-  data: {
-    labels: "",
-    datasets: [{
-      label:"Total Spendings",
-      data: "Values",
-      borderColor: "black",
-      pointBackgroundColor: "red",
-      pointBorderColor: "red",
-      fill: false
-    },]
-  },
-  spanGaps: true,
+    type: "line",
+    labels: 'Data',
+    data: {
+        labels: "",
+        datasets: [{
+            label: "Total Spendings",
+            data: "Values",
+            borderColor: "black",
+            pointBackgroundColor: "red",
+            pointBorderColor: "red",
+            fill: false
+        }, ]
+    },
+    spanGaps: true,
     options: {
         scales: {
             xAxes: {
@@ -52,14 +57,13 @@ let line_chart = new Chart("lineChart", {
                 }]
             },
             yAxes: [{
-              ticks:{
-                beginAtZero: true
-              }
+                ticks: {
+                    beginAtZero: true
+                }
             }]
         },
         responsive: true,
         spanGaps: true,
-      
+
     }
 })
-

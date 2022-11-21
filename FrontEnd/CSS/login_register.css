@@ -1,35 +1,40 @@
 .wrapper {
-  height: 100vh;
+    height: 100vh;
 }
+
 .myColor {
-  background-image: linear-gradient(to right, var(--primary-color) 50%, var(--secondary-color) 150%);
+    background-image: linear-gradient(to right, var(--primary-color) 50%, var(--secondary-color) 150%);
 }
+
 .myShadow {
-  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.5);
 }
+
 .myBtn {
-  border-radius: 50px;
-  font-weight: bold;
-  font-size: 20px;
-  background-image: linear-gradient(to right, var(--primary-color) 0%, var(--secondary-color) 100%);
-  border: none;
+    border-radius: 50px;
+    font-weight: bold;
+    font-size: 20px;
+    background-image: linear-gradient(to right, var(--primary-color) 0%, var(--secondary-color) 100%);
+    border: none;
 }
+
 .myBtn:hover {
-  background-image: linear-gradient(to right, var(--secondary-color) 0%, var(--primary-color) 100%);
+    background-image: linear-gradient(to right, var(--secondary-color) 0%, var(--primary-color) 100%);
 }
+
 .myHr {
-  height: 2px;
-  border-radius: 100px;
+    height: 2px;
+    border-radius: 100px;
 }
+
 .myLinkBtn {
-  border-radius: 100px;
-  width: 50%;
-  border: 2px solid #fff;
+    border-radius: 100px;
+    width: 50%;
+    border: 2px solid #fff;
 }
+
 @media (max-width: 720px) {
-  .wrapper {
-    margin: 2px;
-  }
+    .wrapper {
+        margin: 2px;
+    }
 }
-
-
