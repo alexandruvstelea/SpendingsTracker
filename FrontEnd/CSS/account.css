@@ -53,6 +53,10 @@ body {
     font-size: 20px;
 }
 
+.wrapper .left ul li #changePicture {
+    width:250px;
+}
+
 
 /* DropDown */
 

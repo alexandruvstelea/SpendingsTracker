@@ -1,4 +1,4 @@
-selectedChart = '-'
+selectedChart = 'pie'
 
 function updateSelectedChart(newChart) {
     selectedChart = newChart
