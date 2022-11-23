@@ -14,12 +14,13 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="../JavaScript/dropdown.js"></script>
     <script src="../JavaScript/dropdownPicture.js"></script>
+    <script src="../JavaScript/fetchSpendings.js"></script>
 
     <title>Document</title>
 
 </head>
 
-<body onload='getCurrentCurrency(),getCurrentPicture()'>
+<body onload='getCurrentCurrency(),getCurrentPicture(),totalSpendingAccount()'>
     <script src="../JavaScript/background.js"></script>
     <div id="main-nav">
         <ul>
@@ -33,10 +34,10 @@
             <div class="dropdown">
                 <button onclick="myFunction()" class="dropbtn" id="dropbtn">Currency</button>
                 <div id="myDropdown" class="dropdown-content">
-                    <a href="#" onclick='changeCurrency("RON")'>RON</a>
-                    <a href="#" onclick='changeCurrency("EUR")'>EUR</a>
-                    <a href="#" onclick='changeCurrency("USD")'>USD</a>
-                    <a href="#" onclick='changeCurrency("GBP")'>GBP</a>
+                    <a href="#" onclick='changeCurrency("RON"),totalSpendingAccount()'>RON</a>
+                    <a href="#" onclick='changeCurrency("EUR"),totalSpendingAccount()'>EUR</a>
+                    <a href="#" onclick='changeCurrency("USD"),totalSpendingAccount()'>USD</a>
+                    <a href="#" onclick='changeCurrency("GBP"),totalSpendingAccount()'>GBP</a>
                 </div>
             </div>
 
@@ -69,7 +70,7 @@
                     </div>
                 </li>
                 
-                <li><img id="changePicture" src="../Image/icon1.png"  alt="user" ></li>
+                <li><img id="changePicture"  alt="user" ></li>
                 <li>
                     <h4>Vagon Alexandru</h4>
                 </li>
@@ -96,7 +97,7 @@
                 <div class="details_data">
                     <div class="data">
                         <h4>All Spendings</h4>
-                        <p>25000 lei</p>
+                        <p id="all_spendings"> </p>
                     </div>
                     <div class="data">
                         <h4>Bigest Spending</h4>

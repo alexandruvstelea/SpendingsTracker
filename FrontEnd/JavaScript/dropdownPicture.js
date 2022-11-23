@@ -26,8 +26,10 @@ $(document).ready(function() {
 
 function getCurrentPicture() {
     selectedPicture = localStorage.getItem("picture");
-    if (selectedPicture == null)
-      c = '../Image/icon1.png'
+    if (selectedPicture == null){
+        document.getElementById("changePicture").src = '../Image/icon1.png'
+        selectedPicture = '../Image/icon1.png'
+    }
     else
         document.getElementById("changePicture").src = selectedPicture
 }

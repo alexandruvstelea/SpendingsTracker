@@ -129,6 +129,7 @@ def pie_bar_chart():
         chart_data.append({"total":Spending.totalFilter(user,start,end,currency,ct),"category":ct})
     return {"data": chart_data}
 
+
 @category_bp.route("/insertcategory",methods=["POST"])
 def insert_category():
     category = request.args.get("name")
