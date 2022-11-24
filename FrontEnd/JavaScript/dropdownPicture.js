@@ -2,18 +2,19 @@ function myFunctionDropdown() {
     document.getElementById("myDropdownPicture").classList.toggle("showPicture");
 }
 
-window.onclick = function(event) {
+window.addEventListener("click", function(event) {
     if (!event.target.matches('.dropbtnPicture')) {
-        var dropdowns = document.getElementsByClassName("dropdownPicture-content");
+        var dropdownsPicture = document.getElementsByClassName("dropdownPicture-content");
         var i;
-        for (i = 0; i < dropdowns.length; i++) {
-            var openDropdown = dropdowns[i];
-            if (openDropdown.classList.contains('showPicture')) {
-                openDropdown.classList.remove('showPicture');
+        for (i = 0; i < dropdownsPicture.length; i++) {
+            var openDropdownPicture = dropdownsPicture[i];
+            if (openDropdownPicture.classList.contains('showPicture')) {
+                openDropdownPicture.classList.remove('showPicture');
             }
         }
     }
-}
+    
+})
 
 $(document).ready(function() {
     $("#myDropdownPicture  img").click(function() {

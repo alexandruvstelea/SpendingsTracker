@@ -15,12 +15,13 @@
     <link rel="stylesheet" href="../CSS/timeframe.css">
     <link rel="stylesheet" href="../CSS/rightcard.css">
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="../JavaScript/generateMonth.js"></script>
     <script src="../JavaScript/generateDays.js"></script>
     <script src="../JavaScript/yearNumber.js"></script>
     <script src="../JavaScript/fetchSpendings.js"></script>
     <script src="../JavaScript/dropdown.js"></script>
-    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+    <script src="../JavaScript/dropdownFilter.js"></script>
 
     <title>Document</title>
 </head>
@@ -66,40 +67,74 @@
             <div class="cards-days-container" id="days-month"></div>
         </div>
         <div class="flex-child-element right">
-            <div class="subnav">
-                <button class="subnavbtn">About <i class="fa fa-caret-down"></i></button>
-                <div class="subnav-content">
-                    <a href="#filter">filter</a>
-                    <a href="#filter">filter</a>
-                    <a href="#filter">filter</a>
+            <div id="filter">    
+                <p class="filterText">Sort after category:</p>
+                <div class="dropdownCategoryFilter">
+                    <button button onclick="myFunctionCategoryFilter()" class="dropbtnCategoryFilter" id="dropbtnCategoryFilter">All</button>
+                    <div id="myDropdownCategoryFilter" class="dropdownCategoryFilter-content">
+                        <a href="#">All</a>
+                        <a href="#">Food</a>
+                        <a href="#">Entertainment</a>
+                        <a href="#">Car</a>
+                        <a href="#">Gifts</a>
+                        <a href="#">Shopping</a>
+                        <a href="#">Sports</a>
+                        <a href="#">Travel</a>
+                        <a href="#">Invoices</a>
+                        <a href="#">Other</a>
+                    </div>
+                </div>
+                <p class="filterText">Sort by:</p>
+                <div class="dropdownOrderFilter">
+                    <button button onclick="myFunctionOrderFilter()" class="dropbtnOrderFilter" id="dropbtnOrderFilter">Chronological</button>
+                    <div id="myDropdownOrderFilter" class="dropdownOrderFilter-content">
+                        <a href="#">Chronological</a>
+                        <a href="#">Low to High</a>
+                        <a href="#">High to Low</a>
+                    </div>
+                </div>
+            </div>
+
+            <div id="dayTotal">
+                <h1>100 RON Today</h1>
+            </div>
+
+            <div id="cards">
+
+                <div class="dayCards">
+                    <ul>
+                        <li>Name Spendingoverflow-y: </li>
+                        <li>Date</li>
+                        <li>Category</li>
+                    </ul>
+                    <div id="spendText"><h1>-10000 RON</h1></div>
+                    <div class="deleteEditButton">                    
+                        <button><i class="fas fa-edit fa-3x edit" ></i></button>
+                        <button><i class="fa-solid fa-trash fa-3x delete"></i></button>
+                    </div>
+                </div>
+               
+                <div class="dayCards">
+                    <ul>
+                        <li>Name  </li>
+                        <li>Date</li>
+                        <li>Category</li>
+                    </ul>
+                    <div id="spendText"><h1>-1020 RON</h1></div>
+                    <div class="deleteEditButton">                    
+                        <button><i class="fas fa-edit fa-3x edit" ></i></button>
+                        <button><i class="fa-solid fa-trash fa-3x delete"></i></button>
+                    </div>
                 </div>
 
             </div>
-            <div class="line"></div>
-            <h1 class="titlu">Total</h1>
-            <div>
-                <script>
-                    document.write(" <table border=2px solid black>")
-                    for (rows = 1; rows <= 5; rows++) {
-                        document.write(" <tr> ")
-
-                        document.write(" <td style= padding:10px > Row number is " + rows + " <br> Column number is " + " </td> ")
-                        document.write(" <td style= padding:10px > Row number is " + rows + " <br> Column number is " + " </td> ")
-                        document.write(" <td style= text-align: left > <button > <i class='fas fa-edit'></i></button> <button > <i class='fas fa-trash' style='font-size:24px'></i></button> </td> ")
-
-                        document.write(" </tr> ")
-                    }
-                    document.write(" </table> ")
-                </script>
+            <div id="addButton">
+                <button class="plus"><i class='fas fa-plus fa-2x' ></i></button>
             </div>
-
-            <button class="plus"><i class='fas fa-plus' style='font-size:36px'></i></button>
+           
         </div>
 
     </div>
-    <script>
-    </script>
 
 </body>
-
 </html>

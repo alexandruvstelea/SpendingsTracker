@@ -4,7 +4,7 @@ function myFunction() {
     document.getElementById("myDropdown").classList.toggle("show");
 }
 
-window.onclick = function(event) {
+window.addEventListener("click", function(event) {
     if (!event.target.matches('.dropbtn')) {
         var dropdowns = document.getElementsByClassName("dropdown-content");
         var i;
@@ -15,7 +15,7 @@ window.onclick = function(event) {
             }
         }
     }
-}
+})
 
 function changeCurrency(newCurrency) {
     selectedCurrency = newCurrency
