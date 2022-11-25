@@ -15,12 +15,12 @@ window.addEventListener("click", function(event) {
     }
 })
 
-$(document).ready(function() {
-  $("#myDropdownCategoryFilter a").click(function() {
-    filterSelected = $(this).text()
-      document.getElementById("dropbtnCategoryFilter").innerText = filterSelected
-  })
-})
+function getTextFilter(selectedText){
+      document.getElementById("dropbtnCategoryFilter").innerText = selectedText
+}
+
+
+
 
 function myFunctionOrderFilter() {
     document.getElementById("myDropdownOrderFilter").classList.toggle("showOrderFilter");

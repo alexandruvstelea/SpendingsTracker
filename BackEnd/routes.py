@@ -135,3 +135,9 @@ def insert_category():
     category = request.args.get("name")
     Category.create(category)
     return {'response':'Category inserted'},200
+
+@category_bp.route("/readcategories",methods=["GET"])
+def get_categories():
+    categories = Category.read()
+    return {'categories':categories},200
+

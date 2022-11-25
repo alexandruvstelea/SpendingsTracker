@@ -22,11 +22,13 @@
     <script src="../JavaScript/fetchSpendings.js"></script>
     <script src="../JavaScript/dropdown.js"></script>
     <script src="../JavaScript/dropdownFilter.js"></script>
+    <script src="../JavaScript/insertCategories.js"></script>
+
 
     <title>Document</title>
 </head>
 
-<body onload='generateMonths() ,setYearNr(), getCurrentCurrency()'>
+<body onload='generateMonths() ,setYearNr(), getCurrentCurrency(), getCategories()'>
     <script src="../JavaScript/background.js"></script>
     <div id="main-nav">
         <ul>
@@ -70,18 +72,9 @@
             <div id="filter">    
                 <p class="filterText">Sort after category:</p>
                 <div class="dropdownCategoryFilter">
-                    <button button onclick="myFunctionCategoryFilter()" class="dropbtnCategoryFilter" id="dropbtnCategoryFilter">All</button>
+                    <button onclick="myFunctionCategoryFilter()" class="dropbtnCategoryFilter" id="dropbtnCategoryFilter">All</button>
                     <div id="myDropdownCategoryFilter" class="dropdownCategoryFilter-content">
-                        <a href="#">All</a>
-                        <a href="#">Food</a>
-                        <a href="#">Entertainment</a>
-                        <a href="#">Car</a>
-                        <a href="#">Gifts</a>
-                        <a href="#">Shopping</a>
-                        <a href="#">Sports</a>
-                        <a href="#">Travel</a>
-                        <a href="#">Invoices</a>
-                        <a href="#">Other</a>
+
                     </div>
                 </div>
                 <p class="filterText">Sort by:</p>
@@ -129,12 +122,42 @@
 
             </div>
             <div id="addButton">
-                <button class="plus"><i class='fas fa-plus fa-2x' ></i></button>
+
+                <button class="addButon" data-modal="modalOne" id="btnOpenForm"><i class='fas fa-plus fa-2x' ></i></button>
+
+                <div id="modalOne" class="modal">
+                    <div class="modalContent">
+                      <div class="contactForm">
+                        <a class="close">&times;</a>
+                        <form class="popupForm" action="/">
+                          <h2>Add Spending</h2>
+                          <div>
+                            <label for="name" class="spanText">Name:
+                            <input type="text" minlength="1" maxlength="25" name="name" placeholder="Product/Service Name." />
+                            </label>
+                            <label for="value" class="spanText">Value:
+                            <input type="number" min="0" max="99999999" name="value" placeholder="How much it cost?" />
+                            </label>
+                            
+                            <label class="spanText" for="category">Category:
+                                <select name="category" id="category">
+                                </select>
+                            </label>
+                                
+                            <label for="date" class="spanText">Date: 
+                            <input type="date" name="date" min="01/01/2000" max="01/01/2040" />
+                            </label>
+                        </div>
+                          <button type="submit" href="/">Add</button>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
             </div>
            
         </div>
 
     </div>
-
+    <script src="../JavaScript/popup.js"></script>
 </body>
 </html>
