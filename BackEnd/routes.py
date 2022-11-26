@@ -52,8 +52,8 @@ def insert_spending():
     category = request.args.get('category')
     value = float(request.args.get('value'))
     currency = request.args.get("currency")
-    value_eur = Spending.convert_currency(value,currency,"EUR",datetime.today())
     date = datetime.strptime(request.args.get('date'),'%d/%m/%Y')
+    value_eur = Spending.convert_currency(value,currency,"EUR",date)
     user = request.args.get('user')
     Spending.create(name,category,value_eur,date,user)
     return {'response':'Spending inserted'},200
@@ -103,6 +103,14 @@ def calculate_total():
     total = Spending.total(user,start,end,currency)
     return {'total': total} 
 
+@bp.route("/accountdata",methods=["GET"])
+def get_biggest_spending():
+    user = request.args.get('user')
+    start = datetime.strptime(request.args.get('start'),'%d/%m/%Y')
+    end = datetime.strptime(request.args.get('end'),'%d/%m/%Y')
+    currency = request.args.get("currency")
+    response = Spending.accountData(user,start,end,currency)
+    return {"total":response[0],"biggest":response[1]}
 
 @bp.route("/linechart",methods=["GET"])
 def line_chart_data():

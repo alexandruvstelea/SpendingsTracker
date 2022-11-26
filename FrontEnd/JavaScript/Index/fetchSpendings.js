@@ -17,7 +17,6 @@ function fetchSpendings(day) {
             return response.json()
         })
         .then(function(complete_response) {
-            console.log(complete_response.spendings)
             generateSpendingCards(complete_response.spendings)
         })
         .catch((err) => {
@@ -43,6 +42,7 @@ function totalSpendingMonth() {
             end: date[1],
             currency: selectedCurrency,
         })
+        showLoadingTotalMonth()
         fetch(url)
             .then(function(response) {
                 return response.json()

@@ -13,7 +13,7 @@ function getCategories() {
 }
 
 function insertCategories(categories) {
-    select = document.getElementById('category');
+    select = document.getElementById('categoryAddSpending');
     data = ``
     categories.forEach(element => {
         data += `<a onclick="getTextFilter('${element}')" href="#">${element}</a>`

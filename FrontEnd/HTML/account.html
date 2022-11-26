@@ -5,22 +5,24 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://kit.fontawesome.com/54cbe89854.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="../CSS/root.css">
-    <link rel="stylesheet" href="../CSS/style.css">
-    <link rel="stylesheet" href="../CSS/main_nav.css">
-    <link rel="stylesheet" href="../CSS/account.css">
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="../CSS/Shared/root.css">
+    <link rel="stylesheet" href="../CSS/Shared/style.css">
+    <link rel="stylesheet" href="../CSS/Shared/mainNav.css">
+    <link rel="stylesheet" href="../CSS/Account/account.css">
+    <!-- Jquery Script -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+    <!-- JavaScript Scripts -->
     <script src="../JavaScript/Shared/dropdownCurrency.js"></script>
     <script src="../JavaScript/Account/dropdownPicture.js"></script>
+    <script src="../JavaScript/Shared/loadingAnimation.js"></script>
     <script src="../JavaScript/Account/fetchSpendingsData.js"></script>
     <script src="../JavaScript/Shared/ballsAnimation.js"></script>
     <title>Document</title>
 
 </head>
 
-<body onload='getCurrentCurrency(),getCurrentPicture(),totalSpendingAccount(),ballsAnimation()'>
+<body onload='getCurrentCurrency(),getCurrentPicture(),totalSpendingAccount(),ballsAnimation(),biggestSpendingAccount()'>
 
     <div id="main-nav">
         <ul>
@@ -72,10 +74,7 @@
 
                 <li><img id="changePicture" alt="user"></li>
                 <li>
-                    <h4>Vagon Alexandru</h4>
-                </li>
-                <li>
-                    <p>Account</p>
+                    <h4>user@mail.com</h4>
                 </li>
         </div>
         <div class="right">
@@ -84,16 +83,12 @@
                 <div class="info_data">
                     <div class="data">
                         <h4>Email</h4>
-                        <p>alex@gmail.com</p>
-                    </div>
-                    <div class="data">
-                        <h4>Phone</h4>
-                        <p>0001-213-998761</p>
+                        <p>user@mail.com</p>
                     </div>
                 </div>
             </div>
             <div class="details">
-                <h3>Details</h3>
+                <h3>Overview</h3>
                 <div class="details_data">
                     <div class="data">
                         <h4>All Spendings</h4>
@@ -101,72 +96,11 @@
                     </div>
                     <div class="data">
                         <h4>Bigest Spending</h4>
-                        <p>2000 lei</p>
+                        <p id="biggest_spendings"> </p>
                     </div>
                 </div>
             </div>
-
-            <div class="social_media">
-                <ul>
-                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                    <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                </ul>
-            </div>
         </div>
     </div>
-
-
 </body>
-
 </html>
-
-
-</body>
-
-</html>
-
-<div class="wrapper">
-    <div class="left">
-        <img src="../Image/alex.png" alt="user" width="250">
-        <h4>Vagon Alexandru</h4>
-        <p>Account</p>
-    </div>
-    <div class="right">
-        <div class="info">
-            <h3>Information</h3>
-            <div class="info_data">
-                <div class="data">
-                    <h4>Email</h4>
-                    <p>alex@gmail.com</p>
-                </div>
-                <div class="data">
-                    <h4>Phone</h4>
-                    <p>0001-213-998761</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="details">
-            <h3>Details</h3>
-            <div class="details_data">
-                <div class="data">
-                    <h4>All Spendings</h4>
-                    <p>25000 lei</p>
-                </div>
-                <div class="data">
-                    <h4>Bigest Spending</h4>
-                    <p>2000 lei</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="social_media">
-            <ul>
-                <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-            </ul>
-        </div>
-    </div>
-</div>

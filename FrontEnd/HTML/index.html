@@ -5,32 +5,42 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="../CSS/Shared/root.css">
+    <link rel="stylesheet" href="../CSS/Shared/style.css">
+    <link rel="stylesheet" href="../CSS/Shared/mainNav.css">
+    <link rel="stylesheet" href="../CSS/Index/mainContainers.css">
+    <link rel="stylesheet" href="../CSS/Index/cardMonths.css">
+    <link rel="stylesheet" href="../CSS/Index/cardDays.css">
+    <link rel="stylesheet" href="../CSS/Index/timeframe.css">
+    <link rel="stylesheet" href="../CSS/Index/rightcard.css">
+    <link rel="stylesheet" href="../CSS/Index/popup.css">
+    <!-- Icon Script  -->
     <script src="https://kit.fontawesome.com/54cbe89854.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="../CSS/root.css">
-    <link rel="stylesheet" href="../CSS/style.css">
-    <link rel="stylesheet" href="../CSS/main_nav.css">
-    <link rel="stylesheet" href="../CSS/mainContainers.css">
-    <link rel="stylesheet" href="../CSS/cardMonths.css">
-    <link rel="stylesheet" href="../CSS/cardDays.css">
-    <link rel="stylesheet" href="../CSS/timeframe.css">
-    <link rel="stylesheet" href="../CSS/rightcard.css">
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-
+    <!-- Jquery Script -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+    <!-- Calendar Scripts -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+    <!-- JavaScript Scripts -->
+    <script src="../JavaScript/Shared/ballsAnimation.js"></script>
+    <script src="../JavaScript/Shared/dropdownCurrency.js"></script>
+    <script src="../JavaScript/Shared/loadingAnimation.js"></script>
     <script src="../JavaScript/Index/generateMonth.js"></script>
     <script src="../JavaScript/Index/generateMonthDays.js"></script>
     <script src="../JavaScript/Index/changeSelectedYear.js"></script>
     <script src="../JavaScript/Index/fetchSpendings.js"></script>
     <script src="../JavaScript/Index/dropdownSpendingsFilters.js"></script>
     <script src="../JavaScript/Index/insertCategories.js"></script>
-    <script src="../JavaScript/Shared/dropdownCurrency.js"></script>
-    <script src="../JavaScript/Shared/ballsAnimation.js"></script>
     <script src="../JavaScript/Index/generateSpendingCards.js"></script>
-
+    <script src="../JavaScript/Index/calendarPopup.js"></script>
+    <script src="../JavaScript/Index/addSpending.js"></script>
+    
     <title>Spendings Tracker</title>
 </head>
 
-<body onload='generateMonths() ,setCurrentYear(), getCurrentCurrency(), getCategories(), ballsAnimation()'>
+<body onload='generateMonths() ,setCurrentYear(), getCurrentCurrency(), getCategories(), ballsAnimation(),calendarPopup()'>
 
     <div id="main-nav">
         <ul>
@@ -76,7 +86,7 @@
                 <div class="dropdownCategoryFilter">
                     <button onclick="showCategoriesDropdown()" class="dropbtnCategoryFilter" id="dropbtnCategoryFilter">All</button>
                     <div id="myDropdownCategoryFilter" class="dropdownCategoryFilter-content">
-
+                        <!-- Insert With Js -->
                     </div>
                 </div>
                 <p class="filterText">Sort by:</p>
@@ -89,16 +99,15 @@
                     </div>
                 </div>
             </div>
-
             <div id="dayTotal">
-
+                <!-- Insert With Js -->
             </div>
-
-            <div id="cards"></div>
+            <div id="cards">
+                <!-- Insert With Js -->
+            </div>
+            
             <div id="addButton">
-
                 <button class="addButon" data-modal="modalOne" id="btnOpenForm"><i class='fas fa-plus fa-2x' ></i></button>
-
                 <div id="modalOne" class="modal">
                     <div class="modalContent">
                         <div class="contactForm">
@@ -107,30 +116,27 @@
                                 <h2>Add Spending</h2>
                                 <div>
                                     <label for="name" class="spanText">Name:
-                            <input type="text" minlength="1" maxlength="25" name="name" placeholder="Product/Service Name." />
-                            </label>
+                                        <input id="nameAddSpending" type="text" minlength="1" maxlength="25" name="name" placeholder="Product/Service Name." />
+                                    </label>
                                     <label for="value" class="spanText">Value:
-                            <input type="number" min="0" max="99999999" name="value" placeholder="How much it cost?" />
-                            </label>
-
+                                        <input id="valueAddSpending" type="number" min="0" max="99999999" name="value" placeholder="How much it cost?"/>
+                                    </label>
                                     <label class="spanText" for="category">Category:
-                                <select name="category" id="category">
-                                </select>
-                            </label>
-
+                                        <select name="category" id="categoryAddSpending">
+                                            <!-- Insert With Js -->
+                                        </select>
+                                    </label>
                                     <label for="date" class="spanText">Date: 
-                            <input type="date" name="date" min="01/01/2000" max="01/01/2040" />
-                            </label>
+                                        <input type="text" name="date" size="22" id="datePopup" readonly>
+                                    </label>
                                 </div>
-                                <button type="submit" href="/">Add</button>
+                                <button onclick="addSpending(), fetchSpendings(curr)" type="button" href="#">Add</button>
                             </form>
                         </div>
                     </div>
                 </div>
             </div>
-
         </div>
-
     </div>
     <script src="../JavaScript/Index/popupAddSpending.js"></script>
 </body>
