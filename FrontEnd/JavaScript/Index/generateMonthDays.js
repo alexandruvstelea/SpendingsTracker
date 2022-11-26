@@ -11,14 +11,13 @@ function generateDays() {
         style="background:${checkOddOrEven()}" 
         onpointerenter="this.setAttribute('style', 'color: black; border:${checkOddOrEven()} 2px solid; background:var(--background-color)')" 
         onpointerleave="this.setAttribute('style', 'color: black; border:black 2px solid; background: ${checkOddOrEven()}')"
-        onclick="fetchSpendings(${parseInt(i)})"
+        onclick="fetchSpendings(${parseInt(i)}),setSelectedDay(${parseInt(i)})"
         class="btn-day">${i}</button>
       </div>  
         `
     }
     document.getElementById('days-month').innerHTML = data
 }
-
 
 function checkOddOrEven() {
     backgroundOdd = "var(--secondary-color)"

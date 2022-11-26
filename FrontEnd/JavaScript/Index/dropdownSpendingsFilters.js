@@ -1,5 +1,13 @@
-function myFunctionCategoryFilter() {
+function showCategoriesDropdown() {
     document.getElementById("myDropdownCategoryFilter").classList.toggle("showCategoryFilter");
+}
+
+function showOrderDropdown() {
+    document.getElementById("myDropdownOrderFilter").classList.toggle("showOrderFilter");
+}
+
+function getTextFilter(selectedText) {
+    document.getElementById("dropbtnCategoryFilter").innerText = selectedText
 }
 
 window.addEventListener("click", function(event) {
@@ -15,17 +23,6 @@ window.addEventListener("click", function(event) {
     }
 })
 
-function getTextFilter(selectedText){
-      document.getElementById("dropbtnCategoryFilter").innerText = selectedText
-}
-
-
-
-
-function myFunctionOrderFilter() {
-    document.getElementById("myDropdownOrderFilter").classList.toggle("showOrderFilter");
-}
-
 window.addEventListener("click", function(event) {
     if (!event.target.matches('.dropbtnOrderFilter')) {
         var dropdowns = document.getElementsByClassName("dropdownOrderFilter-content");
@@ -40,8 +37,8 @@ window.addEventListener("click", function(event) {
 })
 
 $(document).ready(function() {
-  $("#myDropdownOrderFilter a").click(function() {
-    filterSelected = $(this).text()
-      document.getElementById("dropbtnOrderFilter").innerText = filterSelected
-  })
+    $("#myDropdownOrderFilter a").click(function() {
+        filterSelected = $(this).text()
+        document.getElementById("dropbtnOrderFilter").innerText = filterSelected
+    })
 })

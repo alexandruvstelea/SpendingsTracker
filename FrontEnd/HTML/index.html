@@ -16,20 +16,22 @@
     <link rel="stylesheet" href="../CSS/rightcard.css">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="../JavaScript/generateMonth.js"></script>
-    <script src="../JavaScript/generateDays.js"></script>
-    <script src="../JavaScript/yearNumber.js"></script>
-    <script src="../JavaScript/fetchSpendings.js"></script>
-    <script src="../JavaScript/dropdown.js"></script>
-    <script src="../JavaScript/dropdownFilter.js"></script>
-    <script src="../JavaScript/insertCategories.js"></script>
 
+    <script src="../JavaScript/Index/generateMonth.js"></script>
+    <script src="../JavaScript/Index/generateMonthDays.js"></script>
+    <script src="../JavaScript/Index/changeSelectedYear.js"></script>
+    <script src="../JavaScript/Index/fetchSpendings.js"></script>
+    <script src="../JavaScript/Index/dropdownSpendingsFilters.js"></script>
+    <script src="../JavaScript/Index/insertCategories.js"></script>
+    <script src="../JavaScript/Shared/dropdownCurrency.js"></script>
+    <script src="../JavaScript/Shared/ballsAnimation.js"></script>
+    <script src="../JavaScript/Index/generateSpendingCards.js"></script>
 
-    <title>Document</title>
+    <title>Spendings Tracker</title>
 </head>
 
-<body onload='generateMonths() ,setYearNr(), getCurrentCurrency(), getCategories()'>
-    <script src="../JavaScript/background.js"></script>
+<body onload='generateMonths() ,setCurrentYear(), getCurrentCurrency(), getCategories(), ballsAnimation()'>
+
     <div id="main-nav">
         <ul>
             <li><i class="fa-solid fa-dollar-sign fa-2x"></i></li>
@@ -40,12 +42,12 @@
 
         <ul>
             <div class="dropdown">
-                <button onclick="myFunction()" class="dropbtn" id="dropbtn">Currency</button>
+                <button onclick="showCurrencyDropdown()" class="dropbtn" id="dropbtn">.</button>
                 <div id="myDropdown" class="dropdown-content">
-                    <a href="#" onclick='changeCurrency("RON"), totalSpending()'>RON</a>
-                    <a href="#" onclick='changeCurrency("EUR"), totalSpending()'>EUR</a>
-                    <a href="#" onclick='changeCurrency("USD"), totalSpending()'>USD</a>
-                    <a href="#" onclick='changeCurrency("GBP"), totalSpending()'>GBP</a>
+                    <a href="#" onclick='changeCurrency("RON"), totalSpendingMonth(),fetchSpendings(currentSelectedDay)'>RON</a>
+                    <a href="#" onclick='changeCurrency("EUR"), totalSpendingMonth(),fetchSpendings(currentSelectedDay)'>EUR</a>
+                    <a href="#" onclick='changeCurrency("USD"), totalSpendingMonth(),fetchSpendings(currentSelectedDay)'>USD</a>
+                    <a href="#" onclick='changeCurrency("GBP"), totalSpendingMonth(),fetchSpendings(currentSelectedDay)'>GBP</a>
                 </div>
             </div>
 
@@ -69,17 +71,17 @@
             <div class="cards-days-container" id="days-month"></div>
         </div>
         <div class="flex-child-element right">
-            <div id="filter">    
+            <div id="filter">
                 <p class="filterText">Sort after category:</p>
                 <div class="dropdownCategoryFilter">
-                    <button onclick="myFunctionCategoryFilter()" class="dropbtnCategoryFilter" id="dropbtnCategoryFilter">All</button>
+                    <button onclick="showCategoriesDropdown()" class="dropbtnCategoryFilter" id="dropbtnCategoryFilter">All</button>
                     <div id="myDropdownCategoryFilter" class="dropdownCategoryFilter-content">
 
                     </div>
                 </div>
                 <p class="filterText">Sort by:</p>
                 <div class="dropdownOrderFilter">
-                    <button button onclick="myFunctionOrderFilter()" class="dropbtnOrderFilter" id="dropbtnOrderFilter">Chronological</button>
+                    <button onclick="showOrderDropdown()" class="dropbtnOrderFilter" id="dropbtnOrderFilter">Chronological</button>
                     <div id="myDropdownOrderFilter" class="dropdownOrderFilter-content">
                         <a href="#">Chronological</a>
                         <a href="#">Low to High</a>
@@ -89,75 +91,48 @@
             </div>
 
             <div id="dayTotal">
-                <h1>100 RON Today</h1>
-            </div>
-
-            <div id="cards">
-
-                <div class="dayCards">
-                    <ul>
-                        <li>Name Spendingoverflow-y: </li>
-                        <li>Date</li>
-                        <li>Category</li>
-                    </ul>
-                    <div id="spendText"><h1>-10000 RON</h1></div>
-                    <div class="deleteEditButton">                    
-                        <button><i class="fas fa-edit fa-3x edit" ></i></button>
-                        <button><i class="fa-solid fa-trash fa-3x delete"></i></button>
-                    </div>
-                </div>
-               
-                <div class="dayCards">
-                    <ul>
-                        <li>Name  </li>
-                        <li>Date</li>
-                        <li>Category</li>
-                    </ul>
-                    <div id="spendText"><h1>-1020 RON</h1></div>
-                    <div class="deleteEditButton">                    
-                        <button><i class="fas fa-edit fa-3x edit" ></i></button>
-                        <button><i class="fa-solid fa-trash fa-3x delete"></i></button>
-                    </div>
-                </div>
 
             </div>
+
+            <div id="cards"></div>
             <div id="addButton">
 
                 <button class="addButon" data-modal="modalOne" id="btnOpenForm"><i class='fas fa-plus fa-2x' ></i></button>
 
                 <div id="modalOne" class="modal">
                     <div class="modalContent">
-                      <div class="contactForm">
-                        <a class="close">&times;</a>
-                        <form class="popupForm" action="/">
-                          <h2>Add Spending</h2>
-                          <div>
-                            <label for="name" class="spanText">Name:
+                        <div class="contactForm">
+                            <a class="close">&times;</a>
+                            <form class="popupForm" action="/">
+                                <h2>Add Spending</h2>
+                                <div>
+                                    <label for="name" class="spanText">Name:
                             <input type="text" minlength="1" maxlength="25" name="name" placeholder="Product/Service Name." />
                             </label>
-                            <label for="value" class="spanText">Value:
+                                    <label for="value" class="spanText">Value:
                             <input type="number" min="0" max="99999999" name="value" placeholder="How much it cost?" />
                             </label>
-                            
-                            <label class="spanText" for="category">Category:
+
+                                    <label class="spanText" for="category">Category:
                                 <select name="category" id="category">
                                 </select>
                             </label>
-                                
-                            <label for="date" class="spanText">Date: 
+
+                                    <label for="date" class="spanText">Date: 
                             <input type="date" name="date" min="01/01/2000" max="01/01/2040" />
                             </label>
+                                </div>
+                                <button type="submit" href="/">Add</button>
+                            </form>
                         </div>
-                          <button type="submit" href="/">Add</button>
-                        </form>
-                      </div>
                     </div>
-                  </div>
+                </div>
             </div>
-           
+
         </div>
 
     </div>
-    <script src="../JavaScript/popup.js"></script>
+    <script src="../JavaScript/Index/popupAddSpending.js"></script>
 </body>
+
 </html>

@@ -12,16 +12,16 @@
     <link rel="stylesheet" href="../CSS/account.css">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="../JavaScript/dropdown.js"></script>
-    <script src="../JavaScript/dropdownPicture.js"></script>
-    <script src="../JavaScript/fetchSpendings.js"></script>
-
+    <script src="../JavaScript/Shared/dropdownCurrency.js"></script>
+    <script src="../JavaScript/Account/dropdownPicture.js"></script>
+    <script src="../JavaScript/Account/fetchSpendingsData.js"></script>
+    <script src="../JavaScript/Shared/ballsAnimation.js"></script>
     <title>Document</title>
 
 </head>
 
-<body onload='getCurrentCurrency(),getCurrentPicture(),totalSpendingAccount()'>
-    <script src="../JavaScript/background.js"></script>
+<body onload='getCurrentCurrency(),getCurrentPicture(),totalSpendingAccount(),ballsAnimation()'>
+
     <div id="main-nav">
         <ul>
             <li><i class="fa-solid fa-dollar-sign fa-2x"></i></li>
@@ -32,7 +32,7 @@
 
         <ul>
             <div class="dropdown">
-                <button onclick="myFunction()" class="dropbtn" id="dropbtn">Currency</button>
+                <button onclick="showCurrencyDropdown()" class="dropbtn" id="dropbtn">Currency</button>
                 <div id="myDropdown" class="dropdown-content">
                     <a href="#" onclick='changeCurrency("RON"),totalSpendingAccount()'>RON</a>
                     <a href="#" onclick='changeCurrency("EUR"),totalSpendingAccount()'>EUR</a>
@@ -55,7 +55,7 @@
             <ul>
                 <li>
                     <div class="dropdownPicture">
-                        <button onclick="myFunctionDropdown()" class="dropbtnPicture" id="dropbtnPicture">Edit</button>
+                        <button onclick="showPictureDropdown()" class="dropbtnPicture" id="dropbtnPicture">Edit</button>
                         <div id="myDropdownPicture" class="dropdownPicture-content">
                             <img src="../Image/icon1.png">
                             <img src="../Image/icon2.png">
@@ -69,8 +69,8 @@
                         </div>
                     </div>
                 </li>
-                
-                <li><img id="changePicture"  alt="user" ></li>
+
+                <li><img id="changePicture" alt="user"></li>
                 <li>
                     <h4>Vagon Alexandru</h4>
                 </li>

@@ -9,8 +9,6 @@ function functionMinDate() {
     start_date = new Date(reversed_string)
     end_date = new Date(start_date)
     end_date.setDate(end_date.getDate() + 30)
-
-
     calendarDateEnd()
 }
 

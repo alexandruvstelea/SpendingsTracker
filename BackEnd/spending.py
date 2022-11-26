@@ -71,7 +71,7 @@ class Spending(db.Model):
         spendings_list = []
         for sp in spendings:
             spendings_list.append(Spending.convert_currency(sp.value_eur,"EUR",currency,sp.date))
-        return sum(spendings_list)
+        return round(sum(spendings_list),2)
 
     @staticmethod
     def totalFilter(user_to_srch,start,end,currency,category):
