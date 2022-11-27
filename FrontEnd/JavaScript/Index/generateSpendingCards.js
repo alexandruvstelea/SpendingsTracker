@@ -1,9 +1,3 @@
-var currentSelectedDay = 0
-
-function setSelectedDay(day) {
-    currentSelectedDay = day
-}
-
 function generateSpendingCards(spendings) {
     let total = 0
     data = ``
@@ -26,5 +20,5 @@ function generateSpendingCards(spendings) {
     </div>`
     });
     document.getElementById("cards").innerHTML = data
-    document.getElementById("dayTotal").innerHTML = "<h1>Total " + parseFloat(total).toFixed(2) + " " + selectedCurrency + "</h1>"
+    document.getElementById("dayTotal").innerHTML = "<h1>Total " + parseFloat(total).toFixed(2) + " " + selectedCurrency
 }

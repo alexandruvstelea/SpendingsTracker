@@ -1,3 +1,14 @@
+var currentSelectedDay = 1
+
+function getToday(){
+    d = new Date()
+    return d.getDate()
+}
+
+function setCurrentdDay(day) {
+    currentSelectedDay = day
+}
+
 function generateDays() {
     year = parseInt(document.getElementById("timeframe").innerText)
     days = parseInt(document.querySelector('input[name="month"]:checked').value)
@@ -8,7 +19,7 @@ function generateDays() {
         data += `
       <div class="card-day">
         <button 
-        onclick="fetchSpendings(${parseInt(i)}), setSelectedDay(${parseInt(i)}), generateDays()"
+        onclick="fetchSpendings(${parseInt(i)}), setCurrentdDay(${parseInt(i)}), generateDays()"
         style="background:${getBackgroundDays()}" 
         onpointerenter="this.setAttribute('style', 'color: black; border:${getBackgroundDays()} 2px solid; background:var(--background-color)')" 
         onpointerleave="this.setAttribute('style', 'color: black; border:black 2px solid; background: ${getBackgroundDays()}')"
@@ -20,7 +31,6 @@ function generateDays() {
 }
 
 function getBackgroundDays() {
-    console.log(currentSelectedDay)
     if (i == currentSelectedDay)
         return "purple"
     if (i % 2 == 0)

@@ -26,7 +26,8 @@
     <!-- JavaScript Scripts -->
     <script src="../JavaScript/Shared/ballsAnimation.js"></script>
     <script src="../JavaScript/Shared/dropdownCurrency.js"></script>
-    <script src="../JavaScript/Shared/loadingAnimation.js"></script>
+    
+    <script src="../JavaScript/Index/initIndex.js"></script>
     <script src="../JavaScript/Index/generateMonth.js"></script>
     <script src="../JavaScript/Index/generateMonthDays.js"></script>
     <script src="../JavaScript/Index/changeSelectedYear.js"></script>
@@ -36,11 +37,13 @@
     <script src="../JavaScript/Index/generateSpendingCards.js"></script>
     <script src="../JavaScript/Index/calendarPopup.js"></script>
     <script src="../JavaScript/Index/addSpending.js"></script>
+    <script src="../JavaScript/Shared/loadingAnimation.js"></script>
+    <!-- <script src="../JavaScript/Shared/designLoadingAnimation.js"></script> -->
 
     <title>Spendings Tracker</title>
 </head>
 
-<body onload='generateMonths() ,setCurrentYear(), getCurrentCurrency(), getCategories(), ballsAnimation(),calendarPopup()'>
+<body onload='initializeIndexJS()'>
 
     <div id="main-nav">
         <ul>
@@ -80,9 +83,11 @@
                 <!-- Insert With Js -->
             </div>
             <h1 id="totalMonth" class="total">
-                <!-- Insert With Js -->
+                <!-- Insert With Js --> <progress id="loadingBar" class="hideloading"></progress>
             </h1>
+            
             <div class="cards-days-container" id="days-month">
+                
                 <!-- Insert With Js -->
             </div>
         </div>
@@ -111,7 +116,6 @@
             <div id="cards">
                 <!-- Insert With Js -->
             </div>
-            
             <div id="addButton">
                 <button class="addButon" data-modal="modalOne" id="btnOpenForm"><i class='fas fa-plus fa-2x' ></i></button>
                 <div id="modalOne" class="modal">
@@ -145,6 +149,7 @@
         </div>
     </div>
     <script src="../JavaScript/Index/popupAddSpending.js"></script>
+
 </body>
 
 </html>
