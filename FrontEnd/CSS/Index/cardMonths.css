@@ -25,7 +25,7 @@
 }
 
 .cards-month-container .card-month:hover {
-    background: var(--background-color);
+    background: var(--background-color) !important;
     border: var(--primary-color) 2px solid;
 }
 

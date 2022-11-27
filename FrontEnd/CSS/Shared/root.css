@@ -2,5 +2,7 @@
 :root {
     --primary-color: #00A2E8;
     --secondary-color: aquamarine;
+    /* --primary-color: #006c9b;
+    --secondary-color: rgb(7, 206, 139); */
     --background-color: #f4f4f4;
 }
