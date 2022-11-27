@@ -8,45 +8,29 @@ function generateMonths() {
         data += `
       <div id="${key}" class="card-month">
         <label class="labelMonthContainer" for="${contor}"><span class="monthKey">${key}</span>
-          <input type="radio" name="month" id="${contor}" value="${value}" onchange="generateDays(),totalSpendingMonth(),highlight()">
+          <input type="radio" name="month" id="${contor}" value="${value}" onchange="setSelectedDay(${1}),generateDays(),totalSpendingMonth(),highlight(),fetchSpendings(${1})">
         </label>
       </div> 
-  `}
+  `
+    }
     document.getElementById('cards-month').innerHTML = data
 }
 
-
-function highlight(){
-  var radios = document.getElementsByName('month');
-  for (b in radios){
-    console.log(b)
-    if(b.checked)
-      
-      document.getElementById(b.label).setAttribute("style", " background:rgb(7, 206, 139);");
-      }
-
+function highlight() {
+    var radios = document.getElementsByName('month');
+    for (var b = 0; b < radios.length; b++) {
+        if (radios[b].checked) {
+            document.getElementById(Object.keys(months)[b]).setAttribute("style", getBackground(1, b))
+        } else document.getElementById(Object.keys(months)[b]).setAttribute("style", getBackground(0, b))
     }
+}
 
-
-
-
-
-// var radios = document.getElementsByName('month');
-
-//   for (var i = 0; i < radios.length; i++) {
-//      radios[i].onchange = function () {
-//       if(nr>=1){
-//         if(nr%2==1 )
-//           document.getElementById(t).setAttribute("style", " background: var(--secondary-color);");
-//         else
-//           document.getElementById(t).setAttribute("style", " background:var(--primary-color);");
-//       } 
-//       t="cardMonthId"+this.id
-//       nr=this.id
-
-//       if(this.id%2==1)
-//         document.getElementById(t).setAttribute("style", " background:rgb(7, 206, 139);");
-//       else
-//         document.getElementById(t).setAttribute("style", " background: #006c9b;");
-//      }
-//  }
+function getBackground(status, number) {
+    if (status == 0) {
+        if (number % 2 == 1)
+            return "background: var(--secondary-color);"
+        else
+            return "background:var(--primary-color);"
+    } else if (status == 1)
+        return "background:purple;"
+}

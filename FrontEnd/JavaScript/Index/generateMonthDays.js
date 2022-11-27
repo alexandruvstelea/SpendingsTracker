@@ -8,10 +8,10 @@ function generateDays() {
         data += `
       <div class="card-day">
         <button 
-        style="background:${checkOddOrEven()}" 
-        onpointerenter="this.setAttribute('style', 'color: black; border:${checkOddOrEven()} 2px solid; background:var(--background-color)')" 
-        onpointerleave="this.setAttribute('style', 'color: black; border:black 2px solid; background: ${checkOddOrEven()}')"
-        onclick="fetchSpendings(${parseInt(i)}),setSelectedDay(${parseInt(i)})"
+        onclick="fetchSpendings(${parseInt(i)}), setSelectedDay(${parseInt(i)}), generateDays()"
+        style="background:${getBackgroundDays()}" 
+        onpointerenter="this.setAttribute('style', 'color: black; border:${getBackgroundDays()} 2px solid; background:var(--background-color)')" 
+        onpointerleave="this.setAttribute('style', 'color: black; border:black 2px solid; background: ${getBackgroundDays()}')"
         class="btn-day">${i}</button>
       </div>  
         `
@@ -19,13 +19,12 @@ function generateDays() {
     document.getElementById('days-month').innerHTML = data
 }
 
-function checkOddOrEven() {
-    backgroundOdd = "var(--secondary-color)"
-    backgroundEven = "var(--primary-color)"
+function getBackgroundDays() {
+    console.log(currentSelectedDay)
+    if (i == currentSelectedDay)
+        return "purple"
     if (i % 2 == 0)
-        background = backgroundEven
+        return "var(--primary-color)"
     else
-        background = backgroundOdd
-
-    return background
+        return "var(--secondary-color)"
 }
