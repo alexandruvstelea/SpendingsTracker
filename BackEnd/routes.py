@@ -1,4 +1,4 @@
-from flask import Blueprint, request, make_response, jsonify
+from flask import Blueprint, request, make_response, jsonify, flash,redirect, url_for,render_template
 from flask_sqlalchemy import SQLAlchemy
 from spending import Spending
 from category import Category
@@ -12,34 +12,40 @@ bp = Blueprint('spendings', __name__)
 user_bp = Blueprint('user', __name__)
 category_bp = Blueprint('categories',__name__)
 
-@user_bp.route('/user', methods=["POST"]) 
-def create_user():
-    data = request.get_json()
-    username = data['username']
-    password = data['password']
-    nickname = data['nickname']   
-    User.create(username, password, nickname, False)
-    return {'response': 'User created!'},200
 
+@user_bp.route('/register', methods=["POST","GET"]) 
+def create_user():
+    name = request.args.get('full_name')
+    email = request.args.get('email')
+    password = request.args.get('password')
+    confirm_password = request.args.get('confirm_password')
+    if User.query.filter_by(email=email).first():
+        return {'response':'Email adress already in use!'},404
+    if password == confirm_password:
+        User.create(name, email, password)
+        return {'response':'user created!'},200
+    else:
+        return {'response':'Password and Confirm Password are different!'},404
+    
 @user_bp.route('/allusers', methods=["GET"])
 def retrieve_all_users():
     users = User.query.all()
     
 
 @user_bp.route('/login')
-def login():
+def login_post():
     auth = request.authorization
     
-    if not auth or not auth.username or not auth.password:
+    if not auth or not auth.get('email') or not auth.get('password'):
         return make_response('Could not verify', 401, {'WWW-Authenticate':'Login Required'})
     
-    user = User.query.filter_by(username=auth.username).first()
+    user = User.query.filter_by(email=auth.get('email')).first()
     
     if not user:
         return make_response('Could not verify', 401, {'WWW-Authenticate':'Login required'})
     
-    if user.password == auth.password:
-        token = jwt.encode({'username':user.username, 'exp':datetime.utcnow()+timedelta(minutes=30)},Config.SECRET_KEY, algorithm="HS256")
+    if user.password == auth.get('password'):
+        token = jwt.encode({'email':user.email, 'exp':datetime.utcnow()+timedelta(minutes=30)},Config.SECRET_KEY, algorithm="HS256")
         return jsonify({'token':token})
         
     return make_response('Could not verify', 401, {'WWW-Authenticate':'Login required'})
