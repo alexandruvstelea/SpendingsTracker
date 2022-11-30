@@ -26,31 +26,6 @@ def create_user():
         return {'response':'user created!'},200
     else:
         return {'response':'Password and Confirm Password are different!'},404
-    
-@user_bp.route('/allusers', methods=["GET"])
-def retrieve_all_users():
-    users = User.query.all()
-    
-
-@user_bp.route('/login')
-def login_post():
-    auth = request.authorization
-    
-    if not auth or not auth.get('email') or not auth.get('password'):
-        return make_response('Could not verify', 401, {'WWW-Authenticate':'Login Required'})
-    
-    user = User.query.filter_by(email=auth.get('email')).first()
-    
-    if not user:
-        return make_response('Could not verify', 401, {'WWW-Authenticate':'Login required'})
-    
-    if user.password == auth.get('password'):
-        token = jwt.encode({'email':user.email, 'exp':datetime.utcnow()+timedelta(minutes=30)},Config.SECRET_KEY, algorithm="HS256")
-        return jsonify({'token':token})
-        
-    return make_response('Could not verify', 401, {'WWW-Authenticate':'Login required'})
-    
- 
 
 @bp.route("/insertspending",methods=["POST"])
 def insert_spending():
