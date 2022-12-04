@@ -1,3 +1,5 @@
+var spendings_list = []
+
 function collectDate(day) {
     year = document.getElementById("timeframe").innerText
     month = document.querySelector('input[name="month"]:checked').id
@@ -17,7 +19,12 @@ function fetchSpendings(day) {
             return response.json()
         })
         .then(function(complete_response) {
-            generateSpendingCards(complete_response.spendings)
+            spendings_list = []
+            complete_response.spendings.forEach(spending => {
+                spendings_list.push(spending)
+            });
+            console.log(spendings_list)
+            generateSpendingCards(spendings_list)
         })
         .catch((err) => {
             console.log(err)

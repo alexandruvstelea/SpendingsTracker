@@ -1,9 +1,20 @@
+function filterSpendings(spendings) {
+    let filtered_spendings = []
+    if (current_category_filter == "All")
+        return spendings
+    spendings.forEach(spending => {
+        if (spending.category == current_category_filter)
+            filtered_spendings.push(spending)
+    })
+    return filtered_spendings
+}
+
 function generateSpendingCards(spendings) {
     let total = 0
     data = ``
-    spendings.forEach(spending => {
+    let filtered_spendings = filterSpendings(spendings)
+    filtered_spendings.forEach(spending => {
         total += spending.value
-        console.log(spending)
         data += `<div class="dayCards">
         <ul>
             <li>${spending.name}</li>
@@ -15,7 +26,7 @@ function generateSpendingCards(spendings) {
         </div>
         <div class="deleteEditButton">
             <button><i class="fas fa-edit fa-3x edit" ></i></button>
-            <button><i class="fa-solid fa-trash fa-3x delete"></i></button>
+            <button onclick="deleteSpending(${spending.id})"><i class="fa-solid fa-trash fa-3x delete"></i></button>
         </div>
     </div>`
     });

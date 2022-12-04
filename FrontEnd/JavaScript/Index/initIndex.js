@@ -1,11 +1,11 @@
-function initializeIndexJS(){
+function initializeIndexJS() {
+    getCurrentCurrency()
     setCurrentMonth(getMonth())
     generateMonths()
     setCurrentdDay(getToday())
     selectCurrentMonth(getMonth())
     generateDays()
-    setCurrentYear() 
-    getCurrentCurrency()
+    setCurrentYear()
     getCategories()
     ballsAnimation()
     calendarPopup()

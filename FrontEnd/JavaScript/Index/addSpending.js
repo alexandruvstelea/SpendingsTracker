@@ -7,12 +7,14 @@ function addSpending() {
         date: document.getElementById("datePopup").value,
         currency: selectedCurrency,
     })
-    fetch(url, {method: 'POST'})
+    fetch(url, { method: 'POST' })
         .then(function(response) {
             return response.json()
         })
         .then(function(complete_response) {
             console.log(complete_response)
+            fetchSpendings(currentSelectedDay)
+            totalSpendingMonth()
         })
         .catch((err) => {
             console.log(err)

@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
     <link rel="stylesheet" href="../CSS/Shared/root.css">
     <link rel="stylesheet" href="../CSS/Shared/style.css">
     <link rel="stylesheet" href="../CSS/Shared/mainNav.css">
@@ -26,7 +26,7 @@
     <!-- JavaScript Scripts -->
     <script src="../JavaScript/Shared/ballsAnimation.js"></script>
     <script src="../JavaScript/Shared/dropdownCurrency.js"></script>
-    
+
     <script src="../JavaScript/Index/initIndex.js"></script>
     <script src="../JavaScript/Index/generateMonth.js"></script>
     <script src="../JavaScript/Index/generateMonthDays.js"></script>
@@ -38,6 +38,7 @@
     <script src="../JavaScript/Index/calendarPopup.js"></script>
     <script src="../JavaScript/Index/addSpending.js"></script>
     <script src="../JavaScript/Shared/loadingAnimation.js"></script>
+    <script src="../JavaScript/Index/deleteSpendings.js"></script>
     <!-- <script src="../JavaScript/Shared/designLoadingAnimation.js"></script> -->
 
     <title>Spendings Tracker</title>
@@ -83,11 +84,11 @@
                 <!-- Insert With Js -->
             </div>
             <h1 id="totalMonth" class="total">
-                <!-- Insert With Js --> <progress id="loadingBar" class="hideloading"></progress>
+                <!-- Insert With Js --><progress id="loadingBar" class="hideloading"></progress>
             </h1>
-            
+
             <div class="cards-days-container" id="days-month">
-                
+
                 <!-- Insert With Js -->
             </div>
         </div>
@@ -140,7 +141,7 @@
                                         <input type="text" name="date" size="22" id="datePopup" readonly>
                                     </label>
                                 </div>
-                                <button onclick="addSpending(), fetchSpendings(curr)" type="button" href="#">Add</button>
+                                <button onclick="addSpending()" type="button" href="#">Add</button>
                             </form>
                         </div>
                     </div>

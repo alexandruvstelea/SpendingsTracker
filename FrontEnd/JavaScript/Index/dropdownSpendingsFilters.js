@@ -1,3 +1,5 @@
+var current_category_filter = "All"
+
 function showCategoriesDropdown() {
     document.getElementById("myDropdownCategoryFilter").classList.toggle("showCategoryFilter");
 }
@@ -8,6 +10,9 @@ function showOrderDropdown() {
 
 function getTextFilter(selectedText) {
     document.getElementById("dropbtnCategoryFilter").innerText = selectedText
+    current_category_filter = selectedText
+    console.log(selectedText)
+    generateSpendingCards(spendings_list)
 }
 
 window.addEventListener("click", function(event) {

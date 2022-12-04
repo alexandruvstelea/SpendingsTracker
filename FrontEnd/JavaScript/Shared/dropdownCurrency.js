@@ -1,4 +1,4 @@
-let selectedCurrency = "EUR"
+let selectedCurrency = localStorage.getItem("currency")
 
 function showCurrencyDropdown() {
     document.getElementById("myDropdown").classList.toggle("show");

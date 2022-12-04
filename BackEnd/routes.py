@@ -83,7 +83,7 @@ def update_spending():
 def delete_spending():
     id = int(request.args.get('id'))
     Spending.delete(id)
-    return {'response':'Spending deleted'},200
+    return {'response':f'Spending with ID {id} deleted'},200
 
 @bp.route("/average",methods=["GET"])
 def calculate_average():

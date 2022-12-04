@@ -12,6 +12,7 @@ function increaseYearNr() {
         if (document.querySelector('input[name="month"]:checked') != null) {
             generateDays()
             totalSpendingMonth()
+            fetchSpendings(currentSelectedDay)
         }
     }
 }
@@ -24,6 +25,7 @@ function decreaseYearNr() {
         if (document.querySelector('input[name="month"]:checked') != null) {
             generateDays()
             totalSpendingMonth()
+            fetchSpendings(currentSelectedDay)
         }
     }
 }
