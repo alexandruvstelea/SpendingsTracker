@@ -46,7 +46,7 @@ textarea,
 }
 
 
-.contactForm button {
+.contactForm .btnPopup {
   width: 100%;
   padding: 10px;
   margin-top: 10px;
@@ -56,7 +56,7 @@ textarea,
   font-weight: bold;
   color: #fff;
 }
-.contactForm button:hover {
+.contactForm .btnPopup:hover {
   background: hsl(198, 99%, 42%);
   cursor:pointer ;
 }
@@ -76,4 +76,12 @@ textarea,
 
 #datePopup:hover {
   cursor:pointer;
+}
+
+
+.valid {
+  border: 1px solid green;
+}
+.valid::after {
+  content: '✅'
 }
