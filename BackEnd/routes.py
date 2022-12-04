@@ -1,5 +1,5 @@
-from flask import Blueprint, request, make_response, jsonify, flash,redirect, url_for,render_template
-from flask_login import login_user
+from flask import Blueprint, request, make_response, jsonify, flash,redirect, url_for,render_template, session
+from flask_login import login_user, logout_user
 from flask_sqlalchemy import SQLAlchemy
 from spending import Spending
 from category import Category
@@ -19,10 +19,16 @@ def login():
     user = User.query.filter_by(email=email).first()
     if user.password == password:
         login_user(user)
+        session['id'] = user.id
         return {'response':'user successfully logged in!'},200
     else:
         return {'response':'Wrong Credentials!'},404
-    
+
+@user_bp.route('/logout')
+def logout():
+    session.pop('id', None)
+    logout_user()
+    return {'response':'User logged out!'},200
 
 
 @user_bp.route('/register', methods=["POST","GET"]) 
