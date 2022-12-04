@@ -11,7 +11,9 @@ def init_app():
     db.init_app(app)
     
     login_manager = LoginManager()
+    login_manager.session_protection = "strong"
     login_manager.init_app(app)
+    
     
     from user import User
     @login_manager.user_loader
