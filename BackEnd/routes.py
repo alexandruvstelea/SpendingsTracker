@@ -1,16 +1,28 @@
 from flask import Blueprint, request, make_response, jsonify, flash,redirect, url_for,render_template
+from flask_login import login_user
 from flask_sqlalchemy import SQLAlchemy
 from spending import Spending
 from category import Category
 from datetime import datetime, timedelta
 from user import User
 from config import Config
-import jwt
-from auth_middleware import token_required
+
 
 bp = Blueprint('spendings', __name__)
 user_bp = Blueprint('user', __name__)
 category_bp = Blueprint('categories',__name__)
+
+@user_bp.route('/login', methods=["POST","GET"])
+def login():
+    email = request.args.get('email')
+    password = request.args.get('password')
+    user = User.query.filter_by(email=email).first()
+    if user.password == password:
+        login_user(user)
+        return {'response':'user successfully logged in!'},200
+    else:
+        return {'response':'Wrong Credentials!'},404
+    
 
 
 @user_bp.route('/register', methods=["POST","GET"]) 
