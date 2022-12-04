@@ -48,8 +48,7 @@ function totalSpendingMonth() {
                 return response.json()
             })
             .then(function(complete_response) {
-                hideLoadingTotalMonth()
-                document.getElementById("totalMonth").innerHTML = Object.keys(months)[document.querySelector('input[name="month"]:checked').id - 1] + " " + complete_response.total + " " + selectedCurrency + '</h1><progress id="loadingBar" class="hideloading"></progress>'
+                document.getElementById("totalMonth").innerHTML = Object.keys(months)[document.querySelector('input[name="month"]:checked').id - 1] + " " + complete_response.total + " " + selectedCurrency
             })
             .catch((err) => {
                 console.log(err)
