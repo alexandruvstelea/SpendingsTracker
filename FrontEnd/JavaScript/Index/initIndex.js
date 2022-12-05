@@ -9,4 +9,5 @@ function initializeIndexJS() {
     getCategories()
     ballsAnimation()
     calendarPopup()
+    loadEventListeners()
 }

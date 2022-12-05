@@ -36,10 +36,10 @@
     <script src="../JavaScript/Index/insertCategories.js"></script>
     <script src="../JavaScript/Index/generateSpendingCards.js"></script>
     <script src="../JavaScript/Index/calendarPopup.js"></script>
-    <script src="../JavaScript/Index/addSpending.js"></script>
     <script src="../JavaScript/Shared/loadingAnimation.js"></script>
     <script src="../JavaScript/Index/deleteSpendings.js"></script>
-    <!-- <script src="../JavaScript/Shared/designLoadingAnimation.js"></script> -->
+    <script src="../JavaScript/Index/addSpending.js"></script>
+    <script src="../JavaScript/Index/popupAddSpending.js"></script>
 
     <title>Spendings Tracker</title>
 </head>
@@ -118,19 +118,19 @@
                 <!-- Insert With Js -->
             </div>
             <div id="addButton">
-                <button class="addButon" data-modal="modalOne" id="btnOpenForm"><i class='fas fa-plus fa-2x' ></i></button>
+                <button onclick="openPopupAddSpending('add')" class="addButon" data-modal="modalOne" id="btnOpenForm"><i class='fas fa-plus fa-2x' ></i></button>
                 <div id="modalOne" class="modal">
                     <div class="modalContent">
                         <div class="contactForm">
-                            <a class="close">&times;</a>
-                            <form class="popupForm" action="/">
-                                <h2>Add Spending</h2>
+                            <a onclick="closePopupAddSpending()" class="close">&times;</a>
+                            <form class="popupForm" >
+                                <h2 id="popupTitle"></h2>
                                 <div>
                                     <label for="name" class="spanText">Name:
-                                        <input id="nameAddSpending" type="text" minlength="1" maxlength="25" name="name" placeholder="Product/Service Name." required>
+                                        <input id="nameAddSpending" type="text" name="name" placeholder="Product/Service Name.">
                                     </label>
-                                    <label for="value" class="spanText">Value:
-                                        <input id="valueAddSpending" type="number" min="0" max="99999999" name="value" placeholder="How much it cost?" required>
+                                    <label for="value" class="spanText">Value(<span id="popupCurency"></span>):
+                                            <input id="valueAddSpending" type="number" name="value" placeholder="How much it cost?">
                                     </label>
                                     <label class="spanText" for="category">Category:
                                         <select name="category" id="categoryAddSpending">
@@ -141,7 +141,8 @@
                                         <input type="text" name="date" size="22" id="datePopup" readonly>
                                     </label>
                                 </div>
-                                <button onclick="addSpending()" type="button" href="#">Add</button>
+                                <input type="submit" id="btnPopup" value=""></input>
+                                <div id="errorMessage"><i class='fa-solid fa-triangle-exclamation'></i> <span id="insertError"></span> <i class='fa-solid fa-triangle-exclamation'></i></div>
                             </form>
                         </div>
                     </div>
@@ -149,7 +150,6 @@
             </div>
         </div>
     </div>
-    <script src="../JavaScript/Index/popupAddSpending.js"></script>
 
 </body>
 

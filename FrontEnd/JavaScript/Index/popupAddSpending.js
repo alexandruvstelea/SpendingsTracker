@@ -1,21 +1,37 @@
-let modalBtns = [...document.querySelectorAll(".addButon")];
-modalBtns.forEach(function(btn) {
-    btn.onclick = function() {
-        let modal = btn.getAttribute("data-modal");
-        document.getElementById(modal).style.display = "block";
-    };
-});
+function openPopupAddSpending(keyWord){
+    document.getElementById("modalOne").style.display="block" 
+    setPopupCurency()
+    if(keyWord == "add"){
+        document.getElementById("popupTitle").innerText = "Add Spending" 
+        document.getElementById("btnPopup").value = "Add" 
+    }
+    else{
+        document.getElementById("popupTitle").innerText = "Edit Spending" 
+        document.getElementById("btnPopup").value = "Edit" 
+        document.getElementById("nameAddSpending").value = "dsadasd"
+        document.getElementById("valueAddSpending").value = "2312312"
+    }
+}
 
-let closeBtns = [...document.querySelectorAll(".close")];
-closeBtns.forEach(function(btn) {
-    btn.onclick = function() {
-        let modal = btn.closest(".modal");
-        modal.style.display = "none";
-    };
-});
+function closePopupAddSpending(){
+    document.getElementById("modalOne").style.display="none"
+    clearInput()
+    document.getElementById("errorMessage").setAttribute("style","display:none")
+ }
 
 window.onclick = function(event) {
     if (event.target.className === "modal") {
-        event.target.style.display = "none";
+        event.target.style.display = "none"
+        clearInput()
+        document.getElementById("errorMessage").setAttribute("style","display:none")
     }
-};
+}
+
+function clearInput(){
+    document.getElementById("nameAddSpending").value = ''
+    document.getElementById("valueAddSpending").value = ''
+}
+
+function setPopupCurency(){
+    document.getElementById("popupCurency").innerText = selectedCurrency
+}

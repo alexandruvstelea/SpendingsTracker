@@ -23,7 +23,7 @@ function fetchSpendings(day) {
             complete_response.spendings.forEach(spending => {
                 spendings_list.push(spending)
             });
-            console.log(spendings_list)
+            // console.log(spendings_list)
             generateSpendingCards(spendings_list)
         })
         .catch((err) => {

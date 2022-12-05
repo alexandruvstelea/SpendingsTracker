@@ -24,6 +24,7 @@
   text-align: left;
   margin-left: 23px;
 }
+
 .popupForm {
   padding: 15px 25px;
   margin: 25px;
@@ -46,7 +47,8 @@ textarea,
 }
 
 
-.contactForm .btnPopup {
+.contactForm #btnPopup {
+  position: relative;
   width: 100%;
   padding: 10px;
   margin-top: 10px;
@@ -56,7 +58,19 @@ textarea,
   font-weight: bold;
   color: #fff;
 }
-.contactForm .btnPopup:hover {
+
+#errorMessage {
+  display: none;
+  font-size: 18px;
+  font-weight: bold;
+  border: 2px solid ;
+  color: #D8000C;
+  background-color: #FFBABA;
+  padding: 10px 0;
+  border-radius: 10px;
+}
+
+.contactForm #btnPopup:hover {
   background: hsl(198, 99%, 42%);
   cursor:pointer ;
 }
@@ -78,10 +92,3 @@ textarea,
   cursor:pointer;
 }
 
-
-.valid {
-  border: 1px solid green;
-}
-.valid::after {
-  content: '✅'
-}

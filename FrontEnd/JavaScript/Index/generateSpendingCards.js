@@ -25,7 +25,7 @@ function generateSpendingCards(spendings) {
             <h1>-${spending.value} ${selectedCurrency}</h1>
         </div>
         <div class="deleteEditButton">
-            <button><i class="fas fa-edit fa-3x edit" ></i></button>
+            <button onclick="openPopupAddSpending('edit')"><i class="fas fa-edit fa-3x edit" ></i></button>
             <button onclick="deleteSpending(${spending.id})"><i class="fa-solid fa-trash fa-3x delete"></i></button>
         </div>
     </div>`
