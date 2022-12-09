@@ -1,7 +1,9 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
+from flask_marshmallow import Marshmallow
 db = SQLAlchemy()
+ma = Marshmallow()
 
 def init_app():
     app = Flask(__name__, instance_relative_config=False)
@@ -9,7 +11,8 @@ def init_app():
     app.config.from_object('config.Config')  
 
     db.init_app(app)
-    
+    ma.init_app(app)
+
     login_manager = LoginManager()
     login_manager.session_protection = "strong"
     login_manager.init_app(app)
@@ -26,7 +29,7 @@ def init_app():
         from category import Category
         db.create_all()
 
-        from routes import bp as spendings_bp
+        from routes import spending_bp as spendings_bp
         from routes import user_bp as users_bp
         from routes import category_bp as category_bp
         app.register_blueprint(spendings_bp)
