@@ -140,7 +140,7 @@
     display: none;
     }
 
-    #cards{
+  #cards{
     -ms-overflow-style: none;
     scrollbar-width: none;
     }
@@ -152,14 +152,16 @@
     flex-direction: row;
     padding: 10px;
     background:#E8E8E8;
-    margin:10px 0;
+    margin:10px 0;  
+    font-size: 18px;
   }
 
   #cards .dayCards ul{
     text-align: left;
     min-width: 240px;
-
   }
+
+
   #cards .dayCards #spendText{
     width: 200px;
     text-align: left;

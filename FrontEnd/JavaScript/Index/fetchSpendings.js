@@ -1,5 +1,5 @@
 var spendings_list = []
-
+var totals
 function collectDate(day) {
     year = document.getElementById("timeframe").innerText
     month = document.querySelector('input[name="month"]:checked').id
@@ -23,7 +23,6 @@ function fetchSpendings(day) {
             complete_response.spendings.forEach(spending => {
                 spendings_list.push(spending)
             });
-            // console.log(spendings_list)
             generateSpendingCards(spendings_list)
         })
         .catch((err) => {
@@ -47,7 +46,6 @@ function totalSpendingMonth() {
             user: "andrei",
             start: date[0],
             end: date[1],
-            currency: selectedCurrency,
         })
         showLoadingTotalMonth()
         fetch(url)
@@ -55,10 +53,28 @@ function totalSpendingMonth() {
                 return response.json()
             })
             .then(function(complete_response) {
-                document.getElementById("totalMonth").innerHTML = Object.keys(months)[document.querySelector('input[name="month"]:checked').id - 1] + " " + complete_response.total + " " + selectedCurrency
+                totals = complete_response
+                setTotalMonth()
             })
             .catch((err) => {
                 console.log(err)
             })
     }
+}
+
+function setTotalMonth(){
+    switch (selectedCurrency){
+        case "EUR":
+            document.getElementById("totalMonth").innerHTML = Object.keys(months)[document.querySelector('input[name="month"]:checked').id - 1] + " " + totals.total_eur + " " + selectedCurrency
+            break
+        case "USD":
+            document.getElementById("totalMonth").innerHTML = Object.keys(months)[document.querySelector('input[name="month"]:checked').id - 1] + " " + totals.total_usd + " " + selectedCurrency
+            break
+        case "GBP":
+            document.getElementById("totalMonth").innerHTML = Object.keys(months)[document.querySelector('input[name="month"]:checked').id - 1] + " " + totals.total_gbp + " " + selectedCurrency
+            break
+        case "RON":
+            document.getElementById("totalMonth").innerHTML = Object.keys(months)[document.querySelector('input[name="month"]:checked').id - 1] + " " + totals.total_ron + " " + selectedCurrency
+            break
+        }
 }

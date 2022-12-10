@@ -8,6 +8,4 @@ function initializeIndexJS() {
     setCurrentYear()
     getCategories()
     ballsAnimation()
-    calendarPopup()
-    loadEventListeners()
 }

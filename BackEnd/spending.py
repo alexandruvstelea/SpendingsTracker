@@ -39,7 +39,11 @@ class Spending(db.Model):
     def read(user_to_srch,start,end):
         spendings = Spending.query.filter(Spending.date.between(start,end)).filter(Spending.user == user_to_srch)
         spendings_schema = SpendingSchema(many=True)
-        return spendings_schema.dump(spendings)
+        spendings_list = spendings_schema.dump(spendings)
+        for sp in spendings_list:
+            new_date = datetime.strptime(sp["date"],'%Y-%m-%d')
+            sp["date"] =  new_date.strftime("%d/%m/%Y") 
+        return spendings_list
 
     @staticmethod
     def update(id,name,category,value,given_currency,date):
@@ -74,7 +78,7 @@ class Spending(db.Model):
                 finally:
                         final_values.append(round(converted_value,2))
             else:
-                final_values.append(value)
+                final_values.append(round(value,2))
         return final_values
 
     @staticmethod
@@ -102,7 +106,7 @@ class Spending(db.Model):
             total_usd += sp['value_usd']
             total_gbp += sp['value_gbp']
             total_ron += sp['value_ron']
-        return {'total_eur':total_eur,'total_usd':total_usd,'total_gbp':total_gbp,'total_ron':total_ron}
+        return {'total_eur':round(total_eur,2),'total_usd':round(total_usd,2),'total_gbp':round(total_gbp,2),'total_ron':round(total_ron,2)}
 
     @staticmethod
     def totalFilter(user_to_srch,start,end,category):
@@ -134,8 +138,8 @@ class Spending(db.Model):
             list_gbp.append(sp['value_gbp'])
             list_ron.append(sp['value_ron'])
         return {'total_eur':round(total_eur,2),'total_usd':round(total_usd,2),'total_gbp':round(total_gbp,2),'total_ron':round(total_ron,2),
-                'average_eur':round(max(list_eur),2),'average_usd':round(max(list_usd),2),'average_gbp':round(max(list_gbp),2),
-                'average_ron':round(max(list_ron),2)}
+                'big_eur':round(max(list_eur),2),'big_usd':round(max(list_usd),2),'big_gbp':round(max(list_gbp),2),
+                'big_ron':round(max(list_ron),2)}
 
 class SpendingSchema(ma.SQLAlchemyAutoSchema):
     class Meta:

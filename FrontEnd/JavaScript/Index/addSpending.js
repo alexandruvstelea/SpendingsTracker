@@ -22,32 +22,42 @@ function addSpending() {
         })
 }
 
-function loadEventListeners() {
-    document.querySelector('.popupForm').addEventListener('submit', inputValidate);
-}
 
-function inputValidate(event) {
-    errorInput=true
-    if(document.getElementById("nameAddSpending").value === '') 
-        errorMessage("Name Empty")
-    else if(document.getElementById("nameAddSpending").value.length >=25)
-        errorMessage("Too many characters")
-    else
-        errorInput=false
+function inputValidate() {
+    error=''
+    errorInput=false
 
-    if(document.getElementById("valueAddSpending").value === '' || document.getElementById("valueAddSpending").value <=-1 || document.getElementById("valueAddSpending").value >=999999999)
-        errorMessage("Wrong Value") 
-    else if (errorInput==false){
+    if(document.getElementById("nameAddSpending").value === '') {
+        error+="Name Empty!<br>"
+        errorInput=true
+    }
+    if(document.getElementById("nameAddSpending").value.length >=20){
+        error+="Too many characters!<br>"
+        errorInput=true
+    }
+    if(document.getElementById("valueAddSpending").value === ''){
+        error+="Value Empty!"
+        errorInput=true
+    }
+    if (parseFloat(document.getElementById("valueAddSpending").value) === 0 || Math.sign(document.getElementById("valueAddSpending").value) === -1){
+        error+="Value must be greater than 0!"
+        errorInput=true
+    }
+    if (document.getElementById("valueAddSpending").value >=999999){
+        error+="Value too big!"
+        errorInput=true
+    }
+     if (errorInput==false){
         addSpending()
         closePopupAddSpending()
         clearInput()
         document.getElementById("errorMessage").setAttribute("style","display:none")
     }
-
-    event.preventDefault()
+        else
+        errorMessage(error)
 }
-
 function errorMessage(message){
     document.getElementById("errorMessage").setAttribute("style","display:block")
-    document.getElementById("insertError").innerText =message
+    document.getElementById("insertError").innerHTML =message
 }
+

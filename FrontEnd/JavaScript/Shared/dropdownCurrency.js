@@ -30,3 +30,8 @@ function getCurrentCurrency() {
     } else
         document.getElementById("dropbtn").innerText = selectedCurrency
 }
+
+function updateValues(){
+    setTotalMonth()
+    generateSpendingCards(spendings_list)
+}

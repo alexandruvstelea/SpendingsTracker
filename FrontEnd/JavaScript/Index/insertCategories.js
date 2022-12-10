@@ -14,12 +14,22 @@ function getCategories() {
 
 function insertCategories(categories) {
     select = document.getElementById('categoryAddSpending');
+    selectEdit = document.getElementById('categoryEditSpending');
     data = ``
     categories.forEach(element => {
         data += `<a onclick="getTextFilter('${element}')" href="#">${element}</a>`
         option = document.createElement('option');
-        option.value = option.text = element;
-        select.add(option);
+        if(element != "All"){
+            option.value = option.text = element;
+            select.add(option);
+        }
+    });
+    categories.forEach(element => {
+        optionEdit = document.createElement('option');
+        if(element != "All"){
+            optionEdit.value = optionEdit.text = element;
+            selectEdit.add(optionEdit);
+        }
     });
     document.getElementById("myDropdownCategoryFilter").innerHTML = data
 }

@@ -67,7 +67,6 @@ def retrieve_spendings():
     user = request.args.get('user')
     start = datetime.strptime(request.args.get('start'),'%d/%m/%Y')
     end = datetime.strptime(request.args.get('end'),'%d/%m/%Y')
-    currency = request.args.get("currency")
     spendings = Spending.read(user,start,end)
     return jsonify({'spendings':spendings})
 

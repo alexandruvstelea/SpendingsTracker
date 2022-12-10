@@ -1,4 +1,5 @@
 var current_category_filter = "All"
+var current_order_filter = "Default"
 
 function showCategoriesDropdown() {
     document.getElementById("myDropdownCategoryFilter").classList.toggle("showCategoryFilter");
@@ -11,7 +12,6 @@ function showOrderDropdown() {
 function getTextFilter(selectedText) {
     document.getElementById("dropbtnCategoryFilter").innerText = selectedText
     current_category_filter = selectedText
-    console.log(selectedText)
     generateSpendingCards(spendings_list)
 }
 
@@ -45,5 +45,7 @@ $(document).ready(function() {
     $("#myDropdownOrderFilter a").click(function() {
         filterSelected = $(this).text()
         document.getElementById("dropbtnOrderFilter").innerText = filterSelected
+        current_order_filter=filterSelected
+        generateSpendingCards(spendings_list)
     })
 })

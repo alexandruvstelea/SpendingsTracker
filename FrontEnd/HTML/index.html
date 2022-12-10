@@ -39,7 +39,8 @@
     <script src="../JavaScript/Shared/loadingAnimation.js"></script>
     <script src="../JavaScript/Index/deleteSpendings.js"></script>
     <script src="../JavaScript/Index/addSpending.js"></script>
-    <script src="../JavaScript/Index/popupAddSpending.js"></script>
+    <script src="../JavaScript/Index/editSpending.js"></script>
+    <script src="../JavaScript/Index/popupAddEditSpending.js"></script>
 
     <title>Spendings Tracker</title>
 </head>
@@ -58,18 +59,17 @@
             <div class="dropdown">
                 <button onclick="showCurrencyDropdown()" class="dropbtn" id="dropbtn">.</button>
                 <div id="myDropdown" class="dropdown-content">
-                    <a href="#" onclick='changeCurrency("RON"), totalSpendingMonth(),fetchSpendings(currentSelectedDay)'>RON</a>
-                    <a href="#" onclick='changeCurrency("EUR"), totalSpendingMonth(),fetchSpendings(currentSelectedDay)'>EUR</a>
-                    <a href="#" onclick='changeCurrency("USD"), totalSpendingMonth(),fetchSpendings(currentSelectedDay)'>USD</a>
-                    <a href="#" onclick='changeCurrency("GBP"), totalSpendingMonth(),fetchSpendings(currentSelectedDay)'>GBP</a>
+                    <a href="#" onclick='changeCurrency("RON"), updateValues()'>RON</a>
+                    <a href="#" onclick='changeCurrency("EUR"), updateValues()'>EUR</a>
+                    <a href="#" onclick='changeCurrency("USD"), updateValues()'>USD</a>
+                    <a href="#" onclick='changeCurrency("GBP"), updateValues()'>GBP</a>
                 </div>
             </div>
 
             <li><a class="current" href="index.html">Spendings</a></li>
             <li><a href="statistics.html">Statistics</a></li>
             <li><a href="account.html">Account</a></li>
-            <li><a href="login_register.html">Log in</a></li>
-            <li><a href="login_register.html">Log out</a></li>
+            <li><a href="login_register.html">Log Out</a></li>
         </ul>
     </div>
 
@@ -88,13 +88,12 @@
             </h1>
 
             <div class="cards-days-container" id="days-month">
-
                 <!-- Insert With Js -->
             </div>
         </div>
         <div class="flex-child-element right">
             <div id="filter">
-                <p class="filterText">Sort after category:</p>
+                <p class="filterText">Filter By Category:</p>
                 <div class="dropdownCategoryFilter">
                     <button onclick="showCategoriesDropdown()" class="dropbtnCategoryFilter" id="dropbtnCategoryFilter">All</button>
                     <div id="myDropdownCategoryFilter" class="dropdownCategoryFilter-content">
@@ -103,11 +102,11 @@
                 </div>
                 <p class="filterText">Sort by:</p>
                 <div class="dropdownOrderFilter">
-                    <button onclick="showOrderDropdown()" class="dropbtnOrderFilter" id="dropbtnOrderFilter">Chronological</button>
+                    <button onclick="showOrderDropdown()" class="dropbtnOrderFilter" id="dropbtnOrderFilter">Default</button>
                     <div id="myDropdownOrderFilter" class="dropdownOrderFilter-content">
-                        <a href="#">Chronological</a>
-                        <a href="#">Low to High</a>
-                        <a href="#">High to Low</a>
+                        <a href="#">Default</a>
+                        <a href="#">Low To High</a>
+                        <a href="#">High To Low</a>
                     </div>
                 </div>
             </div>
@@ -117,20 +116,49 @@
             <div id="cards">
                 <!-- Insert With Js -->
             </div>
+            <div id="modalEdit" class="modalEdit">
+                <div class="modalContent">
+                    <div class="contactForm">
+                        <a onclick="closePopupEditSpending()" class="close">&times;</a>
+                        <form class="popupForm" >
+                            <h2>Update Spending</h2>
+                            <div>
+                                <label for="name" class="spanText">Name:
+                                    <input id="nameEditSpending" type="text" name="name" placeholder="Product/Service Name.">
+                                </label>
+                                <label for="value" class="spanText">Value(<span id="popupCurencyEdit"></span>):
+                                        <input id="valueEditSpending" step="1" pattern="^\d*(\.\d{0,2})?$" type="number" name="value" placeholder="How much it costs?">
+                                </label>
+                                <label class="spanText" for="category">Category:
+                                    <select name="category" id="categoryEditSpending">
+                                        <!-- Insert With Js -->
+                                    </select>
+                                </label>
+                                <label for="date" class="spanText">Date: 
+                                    <input type="text" name="date" size="22" id="dateEditPopup" readonly>
+                                </label>
+                            </div>
+                            <input type="button" onclick="inputValidateEdit()" id="btnPopupEdit" value="Update"></input>
+                            <div id="errorMessageEdit"><div class="errorMessageContainer"><i class='fa-solid fa-triangle-exclamation fa-2x'></i> <span id="insertErrorEdit"></span> <i class='fa-solid fa-triangle-exclamation fa-2x'></i></div></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
             <div id="addButton">
-                <button onclick="openPopupAddSpending('add')" class="addButon" data-modal="modalOne" id="btnOpenForm"><i class='fas fa-plus fa-2x' ></i></button>
-                <div id="modalOne" class="modal">
+                <button onclick="openPopupAddSpending(),calendarPopup()" class="addButon" data-modal="modalAdd" id="btnOpenForm"><i class='fas fa-plus fa-2x' ></i></button>
+                <div id="modalAdd" class="modal">
                     <div class="modalContent">
                         <div class="contactForm">
                             <a onclick="closePopupAddSpending()" class="close">&times;</a>
                             <form class="popupForm" >
-                                <h2 id="popupTitle"></h2>
+                                <h2>Add Spending</h2>
                                 <div>
                                     <label for="name" class="spanText">Name:
                                         <input id="nameAddSpending" type="text" name="name" placeholder="Product/Service Name.">
                                     </label>
                                     <label for="value" class="spanText">Value(<span id="popupCurency"></span>):
-                                            <input id="valueAddSpending" type="number" name="value" placeholder="How much it cost?">
+                                            <input id="valueAddSpending" step="1" type="number" name="value" pattern="^\d*(\.\d{0,2})?$" placeholder="How much it costs?">
                                     </label>
                                     <label class="spanText" for="category">Category:
                                         <select name="category" id="categoryAddSpending">
@@ -141,8 +169,8 @@
                                         <input type="text" name="date" size="22" id="datePopup" readonly>
                                     </label>
                                 </div>
-                                <input type="submit" id="btnPopup" value=""></input>
-                                <div id="errorMessage"><i class='fa-solid fa-triangle-exclamation'></i> <span id="insertError"></span> <i class='fa-solid fa-triangle-exclamation'></i></div>
+                                <input type="button" onclick="inputValidate()" id="btnPopup" value="Add"></input>
+                                <div id="errorMessage"><div class="errorMessageContainer"><i class='fa-solid fa-triangle-exclamation fa-2x'></i> <span id="insertError"></span> <i class='fa-solid fa-triangle-exclamation fa-2x'></i></div></div>
                             </form>
                         </div>
                     </div>

@@ -11,10 +11,23 @@ function totalSpendingAccount() {
             return response.json()
         })
         .then(function(complete_response) {
-            document.getElementById("all_spendings").innerText = complete_response.total + " " + selectedCurrency
-            document.getElementById("biggest_spendings").innerText = complete_response.biggest + " " + selectedCurrency
+            values = chooseDataCurency(complete_response)
+            document.getElementById("all_spendings").innerText =values.total + " " + selectedCurrency
+            document.getElementById("biggest_spendings").innerText = values.biggest + " " + selectedCurrency
         })
         .catch((err) => {
             console.log(err)
         })
+}
+function chooseDataCurency(values){
+    switch (selectedCurrency){
+        case "EUR":
+            return {"total":values.total_eur,"biggest":values.big_eur}
+        case "USD":
+            return {"total":values.total_usd,"biggest":values.big_usd}
+        case "GBP":
+            return {"total":values.total_gbp,"biggest":values.big_gbp}
+        case "RON":
+            return {"total":values.total_ron,"biggest":values.big_ron}
+        }
 }

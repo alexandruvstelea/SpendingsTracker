@@ -22,7 +22,7 @@
 
 </head>
 
-<body onload='getCurrentCurrency(),getCurrentPicture(),totalSpendingAccount(),ballsAnimation(),biggestSpendingAccount()'>
+<body onload='getCurrentCurrency(),getCurrentPicture(),totalSpendingAccount(),ballsAnimation()'>
 
     <div id="main-nav">
         <ul>
@@ -34,7 +34,7 @@
 
         <ul>
             <div class="dropdown">
-                <button onclick="showCurrencyDropdown()" class="dropbtn" id="dropbtn">Currency</button>
+                <button onclick="showCurrencyDropdown()" class="dropbtn" id="dropbtn">.</button>
                 <div id="myDropdown" class="dropdown-content">
                     <a href="#" onclick='changeCurrency("RON"),totalSpendingAccount()'>RON</a>
                     <a href="#" onclick='changeCurrency("EUR"),totalSpendingAccount()'>EUR</a>
@@ -46,7 +46,6 @@
             <li><a href="index.html">Spendings</a></li>
             <li><a href="statistics.html">Statistics</a></li>
             <li><a class="current" href="account.html">Account</a></li>
-            <li><a href="login_register.html">Log in</a></li>
             <li><a href="login_register.html">Log out</a></li>
         </ul>
     </div>

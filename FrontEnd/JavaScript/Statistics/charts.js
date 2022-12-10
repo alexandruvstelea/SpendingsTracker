@@ -42,11 +42,24 @@ let line_chart = new Chart("lineChart", {
             borderColor: "black",
             pointBackgroundColor: "red",
             pointBorderColor: "red",
-            fill: false
+            fill: false,
+            pointRadius: 10,
+            pointHoverRadius: 15,
+            borderDash: [5, 25],
         }, ]
     },
     spanGaps: true,
     options: {
+        plugins: {
+            legend: {
+                labels: {
+                    // This more specific font property overrides the global property
+                    font: {
+                        size: 22
+                    }
+                }
+            }
+        },
         scales: {
             xAxes: {
                 ticks: [{
@@ -67,3 +80,4 @@ let line_chart = new Chart("lineChart", {
 
     }
 })
+Chart.defaults.font.size = 22
