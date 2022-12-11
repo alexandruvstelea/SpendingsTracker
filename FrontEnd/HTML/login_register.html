@@ -12,7 +12,13 @@
     <link rel="stylesheet" href="../CSS/Authentification/loginRegisterBackground.css" />
     <link rel="stylesheet" href="../CSS/Authentification/loginRegister.css" />
 
+    <script src="https://kit.fontawesome.com/54cbe89854.js" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <script src="../JavaScript/Authentification/fetchCredentials.js"></script>
+    <script src="../JavaScript/Authentification/sentAuthEmail.js"></script>
+    <script src="../JavaScript/Authentification/registerLoginValidation.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="../JavaScript/Authentification/login_register.js"></script>
 </head>
 
 <body class="bg-info" class="area">
@@ -49,8 +55,12 @@
                                 </div>
                                 <input type="password" id="password" name="password" class="form-control rounded-0" minlength="5" placeholder="Password" required autocomplete="off" />
                             </div>
+                            <input type="checkbox" id="togglePass" onclick="togglePasswordLogin()"> Show Password</input>
                             <div class="form-group">
-                                <input type="button" id="login-btn" onclick="loginCredentials()" value="Sign In" class="btn btn-primary btn-lg btn-block myBtn" />
+                                <input type="button" id="login-btn" onclick="loginCredentials(),loginValidate()" value="Sign In" class="btn btn-primary btn-lg btn-block mt-2 myBtn" />
+                            </div>
+                            <div id="errorLoginMessage">
+                                <div class="errorMessageContainer"><i class='fa-solid fa-triangle-exclamation fa-2x'></i> <span id="insertLoginError"></span> <i class='fa-solid fa-triangle-exclamation fa-2x'></i></div>
                             </div>
                         </form>
                     </div>
@@ -58,7 +68,7 @@
                         <h1 class="text-center font-weight-bold text-white">Hello Friends!</h1>
                         <hr class="my-3 bg-light myHr" />
                         <p class="text-center font-weight-bolder text-light lead">Enter your personal details and start your journey with us!</p>
-                        <button class="btn btn-outline-light btn-lg align-self-center font-weight-bolder mt-4 myLinkBtn" id="register-link">Sign Up</button>
+                        <button class="btn btn-outline-light btn-lg align-self-center font-weight-bolder mt-4 myLinkBtn" onclick="registerLinkBtn()" id="register-link">Sign Up</button>
                     </div>
                 </div>
             </div>
@@ -72,7 +82,7 @@
                         <h1 class="text-center font-weight-bold text-white">Welcome Back!</h1>
                         <hr class="my-4 bg-light myHr" />
                         <p class="text-center font-weight-bolder text-light lead">To keep connected with us please login with your personal info.</p>
-                        <button class="btn btn-outline-light btn-lg font-weight-bolder mt-4 align-self-center myLinkBtn" id="login-link">Sign In</button>
+                        <button class="btn btn-outline-light btn-lg font-weight-bolder mt-4 align-self-center myLinkBtn" onclick="loginLinkBtn()" id="login-link">Sign In</button>
                     </div>
                     <div class="col-lg-7 bg-white p-4">
                         <h1 class="text-center font-weight-bold text-primary">Create Account</h1>
@@ -106,7 +116,10 @@
                                 <div id="passError" class="text-danger font-weight-bolder"></div>
                             </div>
                             <div class="form-group">
-                                <input type="button" id="register-btn" value="Sign Up" onclick="registerUser()" class="btn btn-primary btn-lg btn-block myBtn" />
+                                <input type="button" id="register-btn" onclick=" registerValidate()" value="Sign Up" class="btn btn-primary btn-lg btn-block myBtn" />
+                            </div>
+                            <div id="errorRegisterMessage">
+                                <div class="errorMessageContainer"><i class='fa-solid fa-triangle-exclamation fa-2x'></i> <span id="insertRegisterError"></span> <i class='fa-solid fa-triangle-exclamation fa-2x'></i></div>
                             </div>
                         </form>
                     </div>
@@ -114,14 +127,24 @@
             </div>
         </div>
         <!-- Registration Form End -->
-        <!-- Forgot Password Form Start -->
+        <!-- Validation Email Form Start -->
         <div class="row justify-content-center wrapper" id="forgot-box" style="display: none;">
             <div class="col-lg-10 my-auto myShadow">
                 <div class="row">
                     <div class="col-lg-7 bg-white p-4">
                         <h1 class="text-center font-weight-bold text-primary">Validation Email</h1>
-                        <hr class="my-3" />
 
+                        <hr class="my-3" />
+                        <p>Please check your Email!</p>
+                        <div class="pinBox">
+                            <input class="pinEntry" id="insertVerificationCode" name="token" type=text maxlength=4 autocomplete=off>
+
+                        </div>
+
+                        <input type="button" id="doneVerificationCode" value="Done" onclick="verifyCode()" class="btn btn-primary btn-lg btn-block mb-3 myBtn" />
+                        <div id="errorValidationEmailMessage">
+                            <div class="errorMessageContainer"><i class='fa-solid fa-triangle-exclamation fa-2x'></i> <span id="insertValidationEmailError"></span> <i class='fa-solid fa-triangle-exclamation fa-2x'></i></div>
+                        </div>
                     </div>
                     <div class="col-lg-5 d-flex flex-column justify-content-center myColor p-4">
                         <h1 class="text-center font-weight-bold text-white">Enter Code!</h1>
@@ -130,11 +153,8 @@
                 </div>
             </div>
         </div>
-        <!-- Forgot Password Form End -->
     </div>
-    <!-- jQuery CDN -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="../JavaScript/Authentification/login_register.js"></script>
+
 </body>
 
 </html>

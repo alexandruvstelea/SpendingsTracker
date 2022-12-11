@@ -1,19 +1,25 @@
-$(function() {
-    $("#register-link").click(function() {
-        $("#login-box").hide();
-        $("#register-box").show();
-    });
-    $("#login-link").click(function() {
-        $("#login-box").show();
-        $("#register-box").hide();
-    });
-    $("#register-btn").click(function() {
-        $("#register-box").hide();
-        $("#forgot-box").show();
-        sendVerificationMail()
-    });
+function registerLinkBtn() {
+    $("#login-box").hide();
+    $("#register-box").show();
+    clearRegisterInput()
+    document.getElementById("errorRegisterMessage").setAttribute("style", "display:none")
+}
 
-});
+function registerBtn() {
+    $("#register-box").hide();
+    $("#forgot-box").show();
+    sendVerificationMail()
+}
+
+function loginLinkBtn() {
+    $("#register-box").hide();
+    $("#login-box").show();
+    clearLoginInput()
+    if (document.getElementById("togglePass").checked == true) {
+        document.getElementById("togglePass").checked = false
+        togglePasswordLogin()
+    }
+}
 
 function goToIndex() {
     location.href = '/FrontEnd/HTML/index.html';
@@ -21,4 +27,24 @@ function goToIndex() {
 
 function goToSignIn() {
     location.href = '/FrontEnd/HTML/login_register.html';
+}
+
+function togglePasswordLogin() {
+    if (document.getElementById("password").type === "password") {
+        document.getElementById("password").type = "text";
+    } else {
+        document.getElementById("password").type = "password";
+    }
+}
+
+function clearRegisterInput() {
+    document.getElementById("registerName").value = ""
+    document.getElementById("registerEmail").value = ""
+    document.getElementById("registerPassword").value = ""
+    document.getElementById("cpassword").value = ""
+}
+
+function clearLoginInput() {
+    document.getElementById("email").value = ""
+    document.getElementById("password").value = ""
 }
