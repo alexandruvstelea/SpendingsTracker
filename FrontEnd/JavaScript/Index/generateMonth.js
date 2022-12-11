@@ -2,7 +2,7 @@ const months = { "January": 31, "February": 28, "March": 31, "April": 30, "May":
 
 var currentSelectedMonth = 0
 
-function getMonth(){
+function getMonth() {
     d = new Date()
     return d.getMonth()
 }
@@ -11,10 +11,10 @@ function setCurrentMonth(month) {
     currentSelectedMonth = month
 }
 
-function selectCurrentMonth(month){
+function selectCurrentMonth(month) {
     var radios = document.getElementsByName('month');
     for (var b = 0; b < radios.length; b++) {
-        if (b == month){
+        if (b == month) {
             radios[b].checked = true;
         }
     }

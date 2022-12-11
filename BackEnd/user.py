@@ -1,4 +1,4 @@
-from __init__ import db
+from __init__ import db, ma
 from flask_login import UserMixin
 
 class User(UserMixin, db.Model):
@@ -18,4 +18,15 @@ class User(UserMixin, db.Model):
         new_user = User(username, email, password)
         db.session.add(new_user)
         db.session.commit()
-        
+    
+    @staticmethod
+    def user_details(id):
+        user_details = User.query.filter_by(id=id).first()
+        details_schema = UserSchema()
+        details = details_schema.dump(user_details)
+        print(details)
+        return {'name':details['username'],'email':details['email']}
+
+class UserSchema(ma.SQLAlchemyAutoSchema):
+    class Meta:
+        model = User

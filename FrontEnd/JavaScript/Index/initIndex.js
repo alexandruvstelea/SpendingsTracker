@@ -1,4 +1,4 @@
-function initializeIndexJS() {
+async function initializeIndexJS() {
     getCurrentCurrency()
     setCurrentMonth(getMonth())
     generateMonths()
@@ -8,4 +8,5 @@ function initializeIndexJS() {
     setCurrentYear()
     getCategories()
     ballsAnimation()
+
 }

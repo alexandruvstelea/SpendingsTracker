@@ -38,6 +38,18 @@ def verify_session():
         response.headers['Access-Control-Allow-Credentials'] = 'true'
         return response
 
+@user_bp.route('/userdetails')
+def get_user_details():
+    if current_user.is_authenticated:
+        id=current_user.id
+        user_details = User.user_details(id)
+        response = make_response(user_details)
+        response.headers['Access-Control-Allow-Credentials'] = 'true'
+        return response
+    else: 
+        return {"username":"none",'email':'none'}
+
+
 @user_bp.route('/logout')
 def logout():
     session.pop('id', None)

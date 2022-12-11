@@ -1,9 +1,10 @@
-function getPieBarChartData(chart) {
+async function getPieBarChartData(chart) {
     let start_date = document.getElementById('date_start').value
     let end_date = document.getElementById('date_end').value
     data_line_chart = []
+    user_details = await getUserDetails()
     const url = 'http://127.0.0.1:5000/piebarchart?' + new URLSearchParams({
-        user: "andrei",
+        user: user_details.name,
         start: start_date,
         end: end_date,
     })
@@ -29,12 +30,13 @@ function getPieBarChartData(chart) {
         })
 }
 
-function getLineChartData() {
+async function getLineChartData() {
     let start_date = document.getElementById('date_start').value
     let end_date = document.getElementById('date_end').value
     data_line_chart = []
+    user_details = await getUserDetails()
     const url = 'http://127.0.0.1:5000/linechart?' + new URLSearchParams({
-        user: "andrei",
+        user: user_details.name,
         start: start_date,
         end: end_date,
     })
@@ -57,8 +59,8 @@ function getLineChartData() {
         })
 }
 
-function chooseTotal(totals){
-    switch (selectedCurrency){
+function chooseTotal(totals) {
+    switch (selectedCurrency) {
         case "EUR":
             return totals.total_eur
         case "USD":
@@ -67,5 +69,5 @@ function chooseTotal(totals){
             return totals.total_gbp
         case "RON":
             return totals.total_ron
-        }
+    }
 }

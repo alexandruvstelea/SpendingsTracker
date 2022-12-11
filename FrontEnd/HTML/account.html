@@ -17,12 +17,14 @@
     <script src="../JavaScript/Account/dropdownPicture.js"></script>
     <script src="../JavaScript/Shared/loadingAnimation.js"></script>
     <script src="../JavaScript/Account/fetchSpendingsData.js"></script>
+    <script src="../JavaScript/Account/userData.js"></script>
     <script src="../JavaScript/Shared/ballsAnimation.js"></script>
+    <script src="../JavaScript/Authentification/fetchCredentials.js"></script>
     <title>Document</title>
 
 </head>
 
-<body onload='getCurrentCurrency(),getCurrentPicture(),totalSpendingAccount(),ballsAnimation()'>
+<body onload='getCurrentCurrency(),getCurrentPicture(),totalSpendingAccount(),ballsAnimation(),getUserDetails(),setUserDataText()'>
 
     <div id="main-nav">
         <ul>
@@ -46,7 +48,7 @@
             <li><a href="index.html">Spendings</a></li>
             <li><a href="statistics.html">Statistics</a></li>
             <li><a class="current" href="account.html">Account</a></li>
-            <li><a href="login_register.html">Log out</a></li>
+            <li><a href="login_register.html" onclick="logout()">Log out</a></li>
         </ul>
     </div>
 
@@ -73,7 +75,7 @@
 
                 <li><img id="changePicture" alt="user"></li>
                 <li>
-                    <h4>user@mail.com</h4>
+                    <h4 id="name-text-account">user@mail.com</h4>
                 </li>
         </div>
         <div class="right">
@@ -82,7 +84,7 @@
                 <div class="info_data">
                     <div class="data">
                         <h4>Email</h4>
-                        <p>user@mail.com</p>
+                        <p id="email-text-account">user@mail.com</p>
                     </div>
                 </div>
             </div>
@@ -102,4 +104,5 @@
         </div>
     </div>
 </body>
+
 </html>
