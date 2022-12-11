@@ -7,13 +7,18 @@ $(function() {
         $("#login-box").show();
         $("#register-box").hide();
     });
-    // $("#register-btn").click(function() {
-    //     $("#login-box").show();
-    //     $("#register-box").hide();
-    // });
+    $("#register-btn").click(function() {
+        $("#register-box").hide();
+        $("#forgot-box").show();
+        sendVerificationMail()
+    });
 
 });
-function goToIndex(){
+
+function goToIndex() {
     location.href = '/FrontEnd/HTML/index.html';
-    console.log("dsadsad")
+}
+
+function goToSignIn() {
+    location.href = '/FrontEnd/HTML/login_register.html';
 }

@@ -1,11 +1,9 @@
-from flask import Blueprint, request, make_response, jsonify, flash,redirect, url_for,render_template, session
-from flask_login import login_user, logout_user, login_required
-from flask_sqlalchemy import SQLAlchemy
+from flask import Blueprint, request, jsonify, session, make_response
+from flask_login import login_user, logout_user, current_user
 from spending import Spending
 from category import Category
 from datetime import datetime, timedelta
 from user import User
-from config import Config
 
 
 spending_bp = Blueprint('spendings', __name__)
@@ -17,24 +15,36 @@ def login():
     email = request.args.get('email')
     password = request.args.get('password')
     user = User.query.filter_by(email=email).first()
-    if user.password == password:
-        login_user(user)
-        return {'response':session['_user_id']},200
+    if password is not None:
+        if user.password == password:
+            login_user(user)
+            response = make_response({'response': 'ok'})
+            response.headers['Access-Control-Allow-Credentials'] = 'true'
+            return response
+        else:
+            return {'response':'wrong'},404
     else:
-        return {'response':'Wrong Credentials!'},404
+        return {'response':'wrong'},404
 
 @user_bp.route('/verifysession')  
 def verify_session():
-    if User.query.filter_by(id=session['_user_id']):
-        return True
+    if current_user.is_authenticated:
+        if User.query.filter_by(id=session['_user_id']):
+            response = make_response({'response': 'ok'})
+            response.headers['Access-Control-Allow-Credentials'] = 'true'
+            return response
     else:
-        return False
-    
+        response = make_response({'response': 'notok'})
+        response.headers['Access-Control-Allow-Credentials'] = 'true'
+        return response
+
 @user_bp.route('/logout')
 def logout():
     session.pop('id', None)
     logout_user()
-    return {'response':'User logged out!'},200
+    response = make_response({'response': 'logged out'})
+    response.headers['Access-Control-Allow-Credentials'] = 'true'
+    return response
 
 
 @user_bp.route('/register', methods=["POST","GET"]) 
@@ -44,12 +54,12 @@ def create_user():
     password = request.args.get('password')
     confirm_password = request.args.get('confirm_password')
     if User.query.filter_by(email=email).first():
-        return {'response':'Email adress already in use!'},404
+        return {'response':'used'},404
     if password == confirm_password:
         User.create(name, email, password)
-        return {'response':'user created!'},200
+        return {'response':'registered'},201
     else:
-        return {'response':'Password and Confirm Password are different!'},404
+        return {'response':'different'},404
 
 @spending_bp.route("/insertspending",methods=["POST"])
 def insert_spending():

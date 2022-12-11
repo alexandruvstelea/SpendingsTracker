@@ -1,7 +1,5 @@
 from __init__ import db, ma
 from datetime import datetime
-from sqlalchemy.orm import load_only
-from currency_converter import CurrencyConverter
 from forex_python.converter import CurrencyRates
 
 

@@ -2,28 +2,29 @@
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
-    justify-content:normal;
+    justify-content: normal;
     align-items: normal;
     align-content: center;
-  }
-  
-  #filter {
-    display:flex;
+}
+
+#filter {
+    display: flex;
     flex-direction: row;
     text-align: center;
     align-items: center;
     flex: 0 1 auto;
     align-self: auto;
     padding: 10px;
-    margin:10px 0;
+    margin: 10px 0;
     border-bottom: 1px solid #ccc;
-  }
-  
-  .filterText{
-    margin:0 10px;
-  }
+}
 
-  /* Dropdown Button */
+.filterText {
+    margin: 0 10px;
+}
+
+
+/* Dropdown Button */
 
 .dropbtnCategoryFilter {
     font-family: 'Poppins';
@@ -38,7 +39,7 @@
 
 .dropbtnCategoryFilter:hover,
 .dropbtnCategoryFilter:focus {
-    background-color:#F8F8F8;
+    background-color: #F8F8F8;
 }
 
 .dropdownCategoryFilter {
@@ -83,7 +84,7 @@
 
 .dropbtnOrderFilter:hover,
 .dropbtnOrderFilter:focus {
-    background:#F8F8F8;
+    background: #F8F8F8;
 }
 
 .dropdownOrderFilter {
@@ -114,90 +115,88 @@
 .showOrderFilter {
     display: block;
 }
-  
 
-
-  #dayTotal {
+#dayTotal {
     text-align: center;
     display: block;
     flex: 0 1 auto;
     align-self: auto;
-  }
+}
 
-  #dayTotal h1{
+#dayTotal h1 {
     display: inline-block;
-  }
-  
-  #cards {
+}
+
+#cards {
     text-align: center;
     /* border: 1px solid #ccc; */
     display: block;
     align-self: stretch;
     overflow-y: scroll;
-  }
+}
 
-  #cards::-webkit-scrollbar {
+#cards::-webkit-scrollbar {
     display: none;
-    }
+}
 
-  #cards{
+#cards {
     -ms-overflow-style: none;
     scrollbar-width: none;
-    }
+}
 
-  #cards .dayCards{
+#cards .dayCards {
     display: flex;
-    align-items:center;
+    align-items: center;
     justify-content: space-between;
     flex-direction: row;
     padding: 10px;
-    background:#E8E8E8;
-    margin:10px 0;  
+    background: #E8E8E8;
+    margin: 10px 0;
     font-size: 18px;
-  }
+}
 
-  #cards .dayCards ul{
+#cards .dayCards ul {
     text-align: left;
     min-width: 240px;
-  }
+}
 
-
-  #cards .dayCards #spendText{
+#cards .dayCards #spendText {
     width: 200px;
     text-align: left;
     font-size: 13px;
-  }
+    min-width: 240px;
+}
 
-  #cards .dayCards .deleteEditButton button{
-    background:none;
+#cards .dayCards .deleteEditButton button {
+    background: none;
     border: none;
-  }
-  #cards .dayCards .deleteEditButton button:hover{
-    cursor: pointer;
-    background:#DCDCDC;
-  }
+}
 
-  .edit{
+#cards .dayCards .deleteEditButton button:hover {
+    cursor: pointer;
+    background: #DCDCDC;
+}
+
+.edit {
     color: var(--primary-color);
     padding: 10px;
-    margin:0 5px;
-  }
-  
-  .delete{
+    margin: 0 5px;
+}
+
+.delete {
     color: red;
     padding: 10px;
-    margin:0 5px;
-  }
+    margin: 0 5px;
+}
 
-
-  
-  #addButton {
+#addButton {
     text-align: center;
     display: block;
     flex: 0 1 auto;
     align-self: auto;
     margin-top: auto;
-  }
+}
+
 .addButon {
     background-color: var(--primary-color);
     padding: 15px;
@@ -205,9 +204,9 @@
     width: 150px;
     align-self: center;
     border-radius: 5px;
-    
 }
-.addButon:hover{
+
+.addButon:hover {
     cursor: pointer;
-    background-color:hsl(198, 99%, 42%) ;
+    background-color: hsl(198, 99%, 42%);
 }
