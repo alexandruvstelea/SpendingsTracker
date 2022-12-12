@@ -1,5 +1,5 @@
 from flask import Blueprint, request, jsonify, session, make_response
-from flask_login import login_user, logout_user, current_user
+from flask_login import login_user, logout_user, current_user,login_required
 from spending import Spending
 from category import Category
 from datetime import datetime, timedelta
