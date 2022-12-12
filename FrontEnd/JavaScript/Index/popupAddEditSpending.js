@@ -52,6 +52,7 @@ window.onmousedown = function(event) {
     }
 }
 //////////////////////////////////////////////
+
 $(document).on('keydown', 'input[pattern]', function(e){
     var input = $(this);
     var oldVal = input.val();

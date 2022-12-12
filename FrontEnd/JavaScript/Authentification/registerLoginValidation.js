@@ -35,9 +35,7 @@ function errorMessageRegister(message) {
 }
 
 
-function loginValidate() {
-    if (document.getElementById("email").value === 'a' || document.getElementById("password").value === 'a') {
+function loginValidate(message) {
         document.getElementById("errorLoginMessage").setAttribute("style", "display:block")
-        document.getElementById("insertLoginError").innerHTML = "Invalid Credentials"
-    }
+        document.getElementById("insertLoginError").innerHTML = message
 }

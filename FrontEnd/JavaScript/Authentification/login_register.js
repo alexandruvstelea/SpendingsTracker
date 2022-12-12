@@ -15,6 +15,7 @@ function loginLinkBtn() {
     $("#register-box").hide();
     $("#login-box").show();
     clearLoginInput()
+    document.getElementById("errorLoginMessage").setAttribute("style", "display:none")
     if (document.getElementById("togglePass").checked == true) {
         document.getElementById("togglePass").checked = false
         togglePasswordLogin()

@@ -14,17 +14,26 @@ category_bp = Blueprint('categories',__name__)
 def login():
     email = request.args.get('email')
     password = request.args.get('password')
-    user = User.query.filter_by(email=email).first()
-    if password is not None:
-        if user.password == password:
-            login_user(user)
-            response = make_response({'response': 'ok'})
-            response.headers['Access-Control-Allow-Credentials'] = 'true'
-            return response
+    if password and email:
+        user = User.query.filter_by(email=email).first()
+        if user:
+            if user.password == password:
+                login_user(user)
+                response = make_response({'response': 'ok'})
+                response.headers['Access-Control-Allow-Credentials'] = 'true'
+                return response
+            else:
+                response = make_response({'response': 'wrongpass'})
+                response.headers['Access-Control-Allow-Credentials'] = 'true'
+                return response,404
         else:
-            return {'response':'wrong'},404
+            response = make_response({'response': 'nouser'})
+            response.headers['Access-Control-Allow-Credentials'] = 'true'
+            return response,404
     else:
-        return {'response':'wrong'},404
+        response = make_response({'response': 'empty'})
+        response.headers['Access-Control-Allow-Credentials'] = 'true'
+        return response,404
 
 @user_bp.route('/verifysession')  
 def verify_session():
@@ -160,6 +169,7 @@ def pie_bar_chart():
     start = datetime.strptime(request.args.get('start'),'%d/%m/%Y')
     end = datetime.strptime(request.args.get('end'),'%d/%m/%Y')
     categories = Category.read()
+    categories.remove("All")
     for ct in categories:
         chart_data.append({"total":Spending.totalFilter(email,start,end,ct),"category":ct})
     return {"data": chart_data}

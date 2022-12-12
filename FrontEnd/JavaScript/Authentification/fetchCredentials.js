@@ -32,9 +32,13 @@ function loginCredentials() {
         .then(function(complete_response) {
             if (complete_response.response == 'ok')
                 goToIndex()
-
-            else
-                console.log(complete_response)
+            else if(complete_response.response == 'nouser')
+                loginValidate("User does not exist!")
+            else if(complete_response.response == 'empty')
+                loginValidate("Please insert Email and Password")
+            else if(complete_response.response == 'wrongpass')
+                loginValidate("Wrong Password")
+                
         })
         .catch((err) => {
             console.log(err)

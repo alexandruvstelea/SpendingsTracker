@@ -1,4 +1,4 @@
-var chartColors = ["red", "green", "blue", "orange", "brown", "magenta", "lightgreen", "lightgrey"];
+var chartColors = ["red", "green", "blue", "orange", "brown", "magenta", "lightgreen", "lightgrey","yellow",];
 
 let pie_chart = new Chart("pieChart", {
     type: "pie",

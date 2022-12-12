@@ -19,6 +19,7 @@
     <script src="../JavaScript/Authentification/registerLoginValidation.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="../JavaScript/Authentification/login_register.js"></script>
+    <script src="../JavaScript/Shared/checkSession.js"></script>
 </head>
 
 <body class="bg-info" class="area">
@@ -57,7 +58,7 @@
                             </div>
                             <input type="checkbox" id="togglePass" onclick="togglePasswordLogin()"> Show Password</input>
                             <div class="form-group">
-                                <input type="button" id="login-btn" onclick="loginCredentials(),loginValidate()" value="Sign In" class="btn btn-primary btn-lg btn-block mt-2 myBtn" />
+                                <input type="button" id="login-btn" onclick="loginCredentials()" value="Sign In" class="btn btn-primary btn-lg btn-block mt-2 myBtn" />
                             </div>
                             <div id="errorLoginMessage">
                                 <div class="errorMessageContainer"><i class='fa-solid fa-triangle-exclamation fa-2x'></i> <span id="insertLoginError"></span> <i class='fa-solid fa-triangle-exclamation fa-2x'></i></div>

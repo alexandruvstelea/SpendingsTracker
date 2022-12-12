@@ -14,5 +14,6 @@ function checkSession() {
 }
 
 function goToSignIn() {
+    document.getElementById("errorLoginMessage").setAttribute("style", "display:none")
     location.href = '/FrontEnd/HTML/login_register.html';
 }
