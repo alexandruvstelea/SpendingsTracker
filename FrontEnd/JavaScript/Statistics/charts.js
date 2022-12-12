@@ -46,31 +46,39 @@ let line_chart = new Chart("lineChart", {
             pointRadius: 10,
             pointHoverRadius: 15,
             borderDash: [5, 25],
-        }, ]
+        },]
     },
     spanGaps: true,
     options: {
-        plugins: {
-            legend: {
-                labels: {
-                    // This more specific font property overrides the global property
-                    font: {
-                        size: 22
+        plugins:
+        {
+            tooltip: {
+                carretSize:29,
+                titleFont: {
+                    font: { 
+                        size: 30 
                     }
+                }
+            },
+            bodyFont: {
+                font: { 
+                    size: 30 
                 }
             }
         },
         scales: {
-            xAxes: {
-                ticks: [{
+            xAxes: [{
+
+                ticks: {
+                    fontSize: 20,
                     display: true,
                     autoskip: true,
-                    maxTicksLimit: 6,
-                    maxRotation: 0
-                }]
-            },
+                    maxRotation: 45
+                }
+            }],
             yAxes: [{
                 ticks: {
+                    fontSize: 20,
                     beginAtZero: true
                 }
             }]
@@ -80,4 +88,3 @@ let line_chart = new Chart("lineChart", {
 
     }
 })
-Chart.defaults.font.size = 22

@@ -12,3 +12,7 @@ function checkSession() {
             console.log(err)
         })
 }
+
+function goToSignIn() {
+    location.href = '/FrontEnd/HTML/login_register.html';
+}

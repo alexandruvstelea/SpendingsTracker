@@ -25,9 +25,6 @@ function goToIndex() {
     location.href = '/FrontEnd/HTML/index.html';
 }
 
-function goToSignIn() {
-    location.href = '/FrontEnd/HTML/login_register.html';
-}
 
 function togglePasswordLogin() {
     if (document.getElementById("password").type === "password") {

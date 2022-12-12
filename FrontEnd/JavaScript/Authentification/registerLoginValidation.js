@@ -15,10 +15,10 @@ function registerValidate() {
     }
 
     if (document.getElementById("registerPassword").value.length <= 6) {
-        errorRegister += "Password to small!"
+        errorRegister += "Password is too short!"
         errorInputRegister = true
     } else if (document.getElementById("registerPassword").value != document.getElementById("cpassword").value) {
-        errorRegister += "Passwords dosen't mach!"
+        errorRegister += "Passwords do not match!"
         errorInputRegister = true
     }
 
@@ -38,6 +38,6 @@ function errorMessageRegister(message) {
 function loginValidate() {
     if (document.getElementById("email").value === 'a' || document.getElementById("password").value === 'a') {
         document.getElementById("errorLoginMessage").setAttribute("style", "display:block")
-        document.getElementById("insertLoginError").innerHTML = "Invalid Passowrd or E-mail"
+        document.getElementById("insertLoginError").innerHTML = "Invalid Credentials"
     }
 }
