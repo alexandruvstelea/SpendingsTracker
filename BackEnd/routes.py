@@ -48,7 +48,14 @@ def get_user_details():
         return response
     else: 
         return {"username":"none",'email':'none'}
-
+    
+@user_bp.route('/verifyemail')
+def verify_email():
+    email=request.args.get('email')
+    if(User.query.filter_by(email=email).first()):
+        return {"response":"True"}
+    else:
+        return {"response":"False"}
 
 @user_bp.route('/logout')
 def logout():
@@ -80,16 +87,16 @@ def insert_spending():
     value = float(request.args.get('value'))
     currency = request.args.get("currency")
     date = datetime.strptime(request.args.get('date'),'%d/%m/%Y')
-    user = request.args.get('user')
-    Spending.create(name,category,value,currency,date,user)
+    email = request.args.get('email')
+    Spending.create(name,category,value,currency,date,email)
     return {'response':'Spending inserted'},200
 
 @spending_bp.route("/retrievespendings",methods=["GET"])
 def retrieve_spendings():
-    user = request.args.get('user')
+    email = request.args.get('email')
     start = datetime.strptime(request.args.get('start'),'%d/%m/%Y')
     end = datetime.strptime(request.args.get('end'),'%d/%m/%Y')
-    spendings = Spending.read(user,start,end)
+    spendings = Spending.read(email,start,end)
     return jsonify({'spendings':spendings})
 
 @spending_bp.route("/updatespending",methods=["PUT"])
@@ -112,49 +119,49 @@ def delete_spending():
 
 @spending_bp.route("/average",methods=["GET"])
 def calculate_average():
-    user = request.args.get('user')
+    email = request.args.get('email')
     start = datetime.strptime(request.args.get('start'),'%d/%m/%Y')
     end = datetime.strptime(request.args.get('end'),'%d/%m/%Y')
-    average = Spending.average(user,start,end)
+    average = Spending.average(email,start,end)
     return average
 
 @spending_bp.route("/total",methods=["GET"])
 def calculate_total():
-    user = request.args.get('user')
+    email = request.args.get('email')
     start = datetime.strptime(request.args.get('start'),'%d/%m/%Y')
     end = datetime.strptime(request.args.get('end'),'%d/%m/%Y')
-    total = Spending.total(user,start,end)
+    total = Spending.total(email,start,end)
     return total
 
 @spending_bp.route("/accountdata",methods=["GET"])
 def get_biggest_spending():
-    user = request.args.get('user')
+    email = request.args.get('email')
     start = datetime.strptime(request.args.get('start'),'%d/%m/%Y')
     end = datetime.strptime(request.args.get('end'),'%d/%m/%Y')
-    response = Spending.accountData(user,start,end)
+    response = Spending.accountData(email,start,end)
     return response
 
 @spending_bp.route("/linechart",methods=["GET"])
 def line_chart_data():
     delta = timedelta(days=1)
     chart_data = []
-    user = request.args.get('user')
+    email = request.args.get('email')
     start = datetime.strptime(request.args.get('start'),'%d/%m/%Y')
     end = datetime.strptime(request.args.get('end'),'%d/%m/%Y')
     while start <= end:
-        chart_data.append({"value":Spending.total(user,start,start),"date":start})
+        chart_data.append({"value":Spending.total(email,start,start),"date":start})
         start += delta
     return {"data": chart_data}
 
 @spending_bp.route("/piebarchart",methods=["GET"])
 def pie_bar_chart():
     chart_data = []
-    user = request.args.get('user')
+    email = request.args.get('email')
     start = datetime.strptime(request.args.get('start'),'%d/%m/%Y')
     end = datetime.strptime(request.args.get('end'),'%d/%m/%Y')
     categories = Category.read()
     for ct in categories:
-        chart_data.append({"total":Spending.totalFilter(user,start,end,ct),"category":ct})
+        chart_data.append({"total":Spending.totalFilter(email,start,end,ct),"category":ct})
     return {"data": chart_data}
 
 

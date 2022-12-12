@@ -12,7 +12,7 @@ async function fetchSpendings(day) {
     date_day = collectDate(day)
     user_details = await getUserDetails()
     const url = 'http://127.0.0.1:5000/retrievespendings?' + new URLSearchParams({
-        user: user_details.name,
+        email: user_details.email,
         start: date_day,
         end: date_day,
         currency: selectedCurrency
@@ -48,7 +48,7 @@ async function totalSpendingMonth() {
     if (document.querySelector('input[name="month"]:checked') != null) {
         date = startEndMonth()
         const url = 'http://127.0.0.1:5000/total?' + new URLSearchParams({
-            user: user_details.name,
+            email: user_details.email,
             start: date_interval[0],
             end: date_interval[1],
         })

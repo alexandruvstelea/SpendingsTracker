@@ -8,7 +8,7 @@ async function addSpending() {
         name: name,
         category: category,
         value: value,
-        user: user_details.name,
+        email: user_details.email,
         date: document.getElementById("datePopup").value,
         currency: selectedCurrency,
     })

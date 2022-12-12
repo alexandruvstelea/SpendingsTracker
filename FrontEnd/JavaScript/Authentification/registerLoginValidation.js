@@ -23,7 +23,7 @@ function registerValidate() {
     }
 
     if (errorInputRegister == false) {
-        registerBtn()
+        verifyEmail()
         document.getElementById("errorRegisterMessage").setAttribute("style", "display:none")
     } else
         errorMessageRegister(errorRegister)

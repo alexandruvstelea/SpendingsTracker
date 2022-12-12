@@ -1,7 +1,7 @@
 async function totalSpendingAccount() {
     user_details = await getUserDetails()
     const url = 'http://127.0.0.1:5000/accountdata?' + new URLSearchParams({
-        user: user_details.name,
+        email: user_details.email,
         start: "01/01/2000",
         end: "31/12/2040",
         currency: selectedCurrency,

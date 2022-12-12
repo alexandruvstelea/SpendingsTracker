@@ -14,9 +14,9 @@ class Spending(db.Model):
     value_gbp = db.Column(db.Float)
     value_ron = db.Column(db.Float)
     date = db.Column(db.Date)
-    user = db.Column(db.String)
+    email = db.Column(db.String)
 
-    def __init__(self, name:str, category:str, value_eur:float, value_usd:float, value_gbp:float, value_ron:float, date:datetime, user:str):
+    def __init__(self, name:str, category:str, value_eur:float, value_usd:float, value_gbp:float, value_ron:float, date:datetime, email:str):
         self.name = name
         self.category = category
         self.value_eur = value_eur
@@ -24,18 +24,18 @@ class Spending(db.Model):
         self.value_gbp = value_gbp
         self.value_ron = value_ron
         self.date = date
-        self.user = user
+        self.email = email
 
     @staticmethod
-    def create(name,category,value,currency,date,user):
+    def create(name,category,value,currency,date,email):
         converted_values = Spending.convert_currencies(value,currency,date)
-        new_spending = Spending(name,category,converted_values[0],converted_values[1],converted_values[2],converted_values[3],date,user)
+        new_spending = Spending(name,category,converted_values[0],converted_values[1],converted_values[2],converted_values[3],date,email)
         db.session.add(new_spending)
         db.session.commit()
 
     @staticmethod
-    def read(user_to_srch,start,end):
-        spendings = Spending.query.filter(Spending.date.between(start,end)).filter(Spending.user == user_to_srch)
+    def read(email_to_srch,start,end):
+        spendings = Spending.query.filter(Spending.date.between(start,end)).filter(Spending.email == email_to_srch)
         spendings_schema = SpendingSchema(many=True)
         spendings_list = spendings_schema.dump(spendings)
         for sp in spendings_list:
@@ -80,8 +80,8 @@ class Spending(db.Model):
         return final_values
 
     @staticmethod
-    def average(user_to_srch,start,end):
-        spendings = Spending.query.filter(Spending.date.between(start,end)).filter(Spending.user == user_to_srch)
+    def average(email_to_srch,start,end):
+        spendings = Spending.query.filter(Spending.date.between(start,end)).filter(Spending.email == email_to_srch)
         spendings_schema = SpendingSchema(many=True)
         spendings_list = spendings_schema.dump(spendings)
         total_eur,total_usd,total_gbp,total_ron = 0,0,0,0
@@ -94,8 +94,8 @@ class Spending(db.Model):
                 'average_gbp':round(total_gbp/len(spendings_list),2),'average_ron':round(total_ron/len(spendings_list),2)}
 
     @staticmethod
-    def total(user_to_srch,start,end):
-        spendings = Spending.query.filter(Spending.date.between(start,end)).filter(Spending.user == user_to_srch)
+    def total(email_to_srch,start,end):
+        spendings = Spending.query.filter(Spending.date.between(start,end)).filter(Spending.email == email_to_srch)
         spendings_schema = SpendingSchema(many=True)
         spendings_list = spendings_schema.dump(spendings)
         total_eur,total_usd,total_gbp,total_ron = 0,0,0,0
@@ -107,8 +107,8 @@ class Spending(db.Model):
         return {'total_eur':round(total_eur,2),'total_usd':round(total_usd,2),'total_gbp':round(total_gbp,2),'total_ron':round(total_ron,2)}
 
     @staticmethod
-    def totalFilter(user_to_srch,start,end,category):
-        spendings = Spending.query.filter(Spending.date.between(start,end)).filter(Spending.user == user_to_srch).filter(Spending.category == category)
+    def totalFilter(email_to_srch,start,end,category):
+        spendings = Spending.query.filter(Spending.date.between(start,end)).filter(Spending.email == email_to_srch).filter(Spending.category == category)
         spendings_schema = SpendingSchema(many=True)
         spendings_list = spendings_schema.dump(spendings)
         total_eur,total_usd,total_gbp,total_ron = 0,0,0,0
@@ -120,8 +120,8 @@ class Spending(db.Model):
         return {'total_eur':total_eur,'total_usd':total_usd,'total_gbp':total_gbp,'total_ron':total_ron}
 
     @staticmethod
-    def accountData(user_to_srch,start,end):
-        spendings = Spending.query.filter(Spending.date.between(start,end)).filter(Spending.user == user_to_srch)
+    def accountData(email_to_srch,start,end):
+        spendings = Spending.query.filter(Spending.date.between(start,end)).filter(Spending.email == email_to_srch)
         spendings_schema = SpendingSchema(many=True)
         spendings_list = spendings_schema.dump(spendings)
         total_eur,total_usd,total_gbp,total_ron = 0,0,0,0

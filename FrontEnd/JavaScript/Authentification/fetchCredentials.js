@@ -54,3 +54,22 @@ function logout() {
             console.log(err)
         })
 }
+
+function verifyEmail(){
+    const url = 'http://127.0.0.1:5000/verifyemail?' + new URLSearchParams({
+        email: document.getElementById("registerEmail").value
+    })
+    fetch(url)
+        .then(function(response) {
+            return response.json()
+        })
+        .then(function(complete_response) {
+            if(complete_response.response == "False")
+                registerBtn()
+            else
+                errorMessageRegister("E-mail already exists")
+        })
+        .catch((err) => {
+            console.log(err)
+        })
+}
