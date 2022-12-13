@@ -56,7 +56,9 @@ def get_user_details():
         response.headers['Access-Control-Allow-Credentials'] = 'true'
         return response
     else: 
-        return {"username":"none",'email':'none'}
+        response = make_response({"username":"none",'email':'none'})
+        response.headers['Access-Control-Allow-Credentials'] = 'true'
+        return response
     
 @user_bp.route('/verifyemail')
 def verify_email():

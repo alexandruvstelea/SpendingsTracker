@@ -6,7 +6,8 @@ function checkSession() {
         })
         .then(function(complete_response) {
             if (complete_response.response == 'notok')
-                goToSignIn()
+                console.log(complete_response)
+                location.href = '/FrontEnd/HTML/login_register.html';
         })
         .catch((err) => {
             console.log(err)
