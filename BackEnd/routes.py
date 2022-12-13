@@ -193,7 +193,9 @@ def insert_categories():
     categories_file = open('jsonFiles/categories.json')
     categories = json.load(categories_file)
     for category in categories['categories']:
-        Category.create(category['name'])
+        exists = Category.query.filter_by(name=category['name']).first()
+        if not exists:
+            Category.create(category['name'])
     categories_file.close()
 
 insert_categories()
