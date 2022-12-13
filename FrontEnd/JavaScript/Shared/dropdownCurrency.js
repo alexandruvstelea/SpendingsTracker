@@ -35,3 +35,7 @@ function updateValues(){
     setTotalMonth()
     generateSpendingCards(spendings_list)
 }
+
+function goToHome(){
+    location.href = '/FrontEnd/HTML/index.html';
+}

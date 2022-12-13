@@ -1,9 +1,9 @@
 
 function calendarPopup() {
   date = new Date()
-  let day = date.getDate();
-  let month = date.getMonth() + 1;
-  let year = date.getFullYear();
+  let day = currentSelectedDay;
+  let month = document.querySelector('input[name="month"]:checked').id;
+  let year = document.getElementById("timeframe").innerText;
   let currentDate = `${day}/${month}/${year}`;
 
   $('input[id="datePopup"]').daterangepicker({

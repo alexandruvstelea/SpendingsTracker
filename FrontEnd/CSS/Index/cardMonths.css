@@ -26,11 +26,11 @@
 
 .cards-month-container .card-month:hover {
     background: var(--background-color) !important;
-    border: var(--primary-color) 2px solid;
+    border: var(--secondary-color) 2px solid;
 }
 
 .cards-month-container .card-month:nth-child(odd):hover {
-    border: var(--secondary-color) 2px solid;
+    border: var(--primary-color) 2px solid;
 }
 
 .cards-month-container .card-month input {

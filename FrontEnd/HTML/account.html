@@ -31,7 +31,7 @@
 <body onload='checkSession(),getCurrentCurrency(),getCurrentPicture(),totalSpendingAccount(),ballsAnimation(),getUserDetails(),setUserDataText()'>
 
     <div id="main-nav">
-        <ul>
+        <ul id="navTitle" onclick="goToHome()">
             <li><i class="fa-solid fa-dollar-sign fa-2x"></i></li>
             <li>
                 <h1>Spendings <span class="word">Tracker</span></h1>
@@ -89,9 +89,6 @@
                     <div class="data">
                         <h4>Email</h4>
                         <p id="email-text-account">user@mail.com</p>
-                        <!-- <h4>Password</h4>
-                        <p id="pass-text-account">********</p> -->
-                        <!-- <i class="fa-solid fa-pen-to-square"></i> -->
                     </div>
                 </div>
             </div>
