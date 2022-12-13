@@ -4,6 +4,7 @@ from spending import Spending
 from category import Category
 from datetime import datetime, timedelta
 from user import User
+import json
 
 
 spending_bp = Blueprint('spendings', __name__)
@@ -188,3 +189,11 @@ def get_categories():
     categories = Category.read()
     return {'categories':categories},200
 
+def insert_categories():
+    categories_file = open('jsonFiles/categories.json')
+    categories = json.load(categories_file)
+    for category in categories['categories']:
+        Category.create(category['name'])
+    categories_file.close()
+
+insert_categories()
