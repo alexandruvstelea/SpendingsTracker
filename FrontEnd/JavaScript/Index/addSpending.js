@@ -44,8 +44,8 @@ function inputValidate() {
         error += "Value Empty!"
         errorInput = true
     }
-    if (parseFloat(document.getElementById("valueAddSpending").value) === 0 || Math.sign(document.getElementById("valueAddSpending").value) === -1) {
-        error += "Value must be greater than 0!"
+    if (parseFloat(document.getElementById("valueAddSpending").value) < 1 || Math.sign(document.getElementById("valueAddSpending").value) === -1) {
+        error += "Value must be greater than 1!"
         errorInput = true
     }
     if (document.getElementById("valueAddSpending").value >= 999999) {
