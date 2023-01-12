@@ -1,7 +1,7 @@
 from user import User
 from spending import Spending
 from datetime import datetime
-
+from category import Category
 def test_new_user():
     print("Begin testing user creation")
     user = User("Test11", "testEmail1@yahoo.com", "testPassword1")
@@ -24,7 +24,13 @@ def test_spendings():
     assert spending.email == "testEmail1@yahoo.com", "should be testEmail1@yahoo.com"
     print("Everything passed")
     
+def test_new_category():
+    print("Begin testing category creation")
+    category = Category("Test11")
+    assert category.name=="Test11", "shoulde be Test11"
+    print("Everything passed")
     
+test_new_category()
 test_new_user()
 test_spendings()
 
