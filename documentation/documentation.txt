@@ -373,19 +373,4 @@ O soluția la problemele care au fost întâmpinate de-a lungul dezvoltării pro
 
 
 
-Bibliografie
-
-
-References
-(n.d.). Chart.js | Open source HTML5 Charts for your website. Retrieved January 13, 2023, from https://www.chartjs.org/
-(n.d.). EmailJS. Retrieved January 13, 2023, from https://www.emailjs.com/
-(n.d.). Send email from JavaScript or static HTML without backend code. Retrieved January 13, 2023, from https://postmail.invotes.com/
-(n.d.). jQuery. Retrieved January 13, 2023, from https://jquery.com/
-(n.d.). Date Range Picker — JavaScript Date & Time Picker Library. Retrieved January 13, 2023, from https://www.daterangepicker.com/
-Franklin, B. (1737). A penny saved is a penny earned. forbes.com. Retrieved Ianuarie 10, 2023, from https://examples.yourdictionary.com/articles/who-said-a-penny-saved-is-a-penny-earned.html
-Gandy, D. (2016, October 24). font-awesome. npm. Retrieved January 13, 2023, from https://www.npmjs.com/package/font-awesome
-GitHub. (2023, January 6). GitHub. Retrieved January 13, 2023, from https://github.com/alexandruvstelea/SpendingsTracker
-Google Fonts. (n.d.). Google Developers. Retrieved January 13, 2023, from https://developers.google.com/fonts
-Meister Task. (n.d.). Meister Task. Retrieved January 13, 2023, from https://www.meistertask.com/app/
-Profile Avatar Images - Free Download on Freepik. (n.d.). Freepik. Retrieved January 13, 2023, from https://www.freepik.com/free-photos-vectors/profile-avatar
 
