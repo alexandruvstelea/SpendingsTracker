@@ -38,7 +38,29 @@ Tăbăcaru Ștefan
  
  
  
- 
+ Cuprins
+Abrevieri
+Scurtă descriere a proiectului
+Cerințe funcționale. Utilitatea proiectului
+Etapele de realizare a proiectului
+Modalități de organizare a activității (management)
+Distribuția lucrului din cadrul echipei
+Date referitoare la efortul de cercetare și documentare
+Estimări inițiale pentru complexitatea proiectului și termenul de livrare
+Arhitectura generală a proiectului
+Instrumente de dezvoltare utilizate
+Aplicații pentru facilitarea scrierii de cod
+Tehnologii utilizate
+Versionarea codului și arhivarea produsului
+Ghid minimal de utilizare a produsului software dezvoltat
+Cerințe pentru utilizarea produsului software
+Modalități de testare a produsului dezvoltat
+Observații generale și direcții de viitor
+Concluzii referitoare la atingerea obiectivului propus
+Termen de livrare
+Know-how câștigat
+Idei de îmbunătățire a procesului de dezvoltare pe viitor
+Bibliografie
 
 
 
