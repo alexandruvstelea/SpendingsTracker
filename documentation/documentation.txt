@@ -188,14 +188,7 @@ Utilizarea platformei Meister Task a ajutat la buna desfășurare a procesului d
 De asemenea, în cadrul echipei a fost creat și un grup pe aplicația WhatsApp cu scopul eficientizării comunicării dintre membrii echipei. 
 
 
-Distribuția lucrului din cadrul echipei
 
-În cadrul echipei, fiecare membru s-a ocupat de partea de developing a produsului, dar în același timp, au existat și roluri separate pentru fiecare. Distribuția rolurilor este:
-
-Stelea Alexandru-Vasile - Developer și Project Manager
-Tănase Radu - Developer și Unit Tester
-Sava Andrei-Cristian - Developer și Unit Tester
-Tăbăcaru Ștefan - Developer și Documentație
 
 Date referitoare la efortul de cercetare și documentare
 
