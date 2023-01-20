@@ -41,7 +41,7 @@ function inputValidate() {
         errorInput = true
     }
     if (document.getElementById("valueAddSpending").value === '') {
-        error += "Value Empty!"
+        error += "Wrong Value!"
         errorInput = true
     }
     if (parseFloat(document.getElementById("valueAddSpending").value) < 1 || Math.sign(document.getElementById("valueAddSpending").value) === -1) {

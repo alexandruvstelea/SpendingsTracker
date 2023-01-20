@@ -83,7 +83,7 @@
         <div class="flex-child-element left">
             <div id="timeframe-container">
                 <button onclick="decreaseYearNr()" type="button" class="btn-timeframe"><i class="fa-sharp fa-solid fa-arrow-left fa-3x"></i></button>
-                <h2 id="timeframe">2022</h2>
+                <h2 id="timeframe">2023</h2>
                 <button onclick="increaseYearNr()" type="button" class="btn-timeframe"><i class="fa-sharp fa-solid fa-arrow-right fa-3x" ></i></button>
             </div>
             <div class="cards-month-container" id="cards-month">
@@ -133,7 +133,7 @@
                                     <input id="nameEditSpending" type="text" name="name" placeholder="Product/Service Name.">
                                 </label>
                                 <label for="value" class="spanText">Value(<span id="popupCurencyEdit"></span>):
-                                        <input id="valueEditSpending" step="1" pattern="^\d*(\.\d{0,2})?$" type="number" name="value" placeholder="How much it costs?">
+                                        <input id="valueEditSpending" onkeypress="validateValue1(event)" step="1" pattern="^\d*(\.\d{0,2})?$" type="number" name="value" placeholder="How much it costs?">
                                 </label>
                                 <label class="spanText" for="category">Category:
                                     <select name="category" id="categoryEditSpending">
@@ -166,7 +166,7 @@
                                         <input id="nameAddSpending" type="text" name="name" placeholder="Product/Service Name.">
                                     </label>
                                     <label for="value" class="spanText">Value(<span id="popupCurency"></span>):
-                                            <input id="valueAddSpending" step="1" type="number" name="value" pattern="^\d*(\.\d{0,2})?$" placeholder="How much it costs?">
+                                        <input type="number" onkeypress="validateValue(event)" id="valueAddSpending" name="value" placeholder="How much it costs?">                                    
                                     </label>
                                     <label class="spanText" for="category">Category:
                                         <select name="category" id="categoryAddSpending">

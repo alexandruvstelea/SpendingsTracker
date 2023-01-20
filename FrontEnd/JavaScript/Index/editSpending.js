@@ -39,7 +39,7 @@ function inputValidateEdit() {
   }
 
   if(document.getElementById("valueEditSpending").value === ''){
-      error+="Value Empty!"
+      error+="Wrong Value!"
       errorInput=true
   }
 

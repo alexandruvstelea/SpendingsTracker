@@ -1,5 +1,6 @@
 async function initializeIndexJS() {
     getCurrentCurrency()
+    setCurrentYear()
     setCurrentMonth(getMonth())
     generateMonths()
     setCurrentdDay(getToday())

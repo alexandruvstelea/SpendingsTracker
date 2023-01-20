@@ -65,3 +65,41 @@ $(document).on('keydown', 'input[pattern]', function(e){
       }
     }, 1);
   });
+
+
+  function validateValue(e) {
+    var key = e.keyCode ? e.keyCode : e.which;
+
+    if (!(key >= 48 && key <= 57) && key !== 46) {
+      e.preventDefault();
+    }
+
+    var value1 = document.getElementById("valueAddSpending").value;
+    
+    var parts1 = value1.split(".");
+    if (parts1.length > 1 && parts1[1].length > 1){
+      e.preventDefault();
+    }
+
+    if(value1.indexOf("-") === 0 && key === 45){
+      e.preventDefault();
+    }
+  }
+
+  function validateValue1(e) {
+    var key = e.keyCode ? e.keyCode : e.which;
+
+    if (!(key >= 48 && key <= 57) && key !== 46) {
+      e.preventDefault();
+    }
+    var value = document.getElementById("valueEditSpending").value;
+    
+    var parts = value.split(".");
+    if (parts.length > 1 && parts1[1].length > 1){
+      e.preventDefault();
+    }
+
+    if(value.indexOf("-") === 0 && key === 45){
+      e.preventDefault();
+    }
+  }
