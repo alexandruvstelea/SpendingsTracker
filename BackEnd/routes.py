@@ -1,5 +1,6 @@
 from flask import Blueprint, request, jsonify, session, make_response
 from flask_login import login_user, logout_user, current_user,login_required
+from werkzeug.security import check_password_hash
 from spending import Spending
 from category import Category
 from datetime import datetime, timedelta
@@ -18,7 +19,7 @@ def login():
     if password and email:
         user = User.query.filter_by(email=email).first()
         if user:
-            if user.password == password:
+            if check_password_hash(user.password,password):
                 login_user(user)
                 response = make_response({'response': 'ok'})
                 response.headers['Access-Control-Allow-Credentials'] = 'true'
