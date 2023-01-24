@@ -50,12 +50,12 @@ function highlight() {
 
 function getBackground(status, number) {
     if (number == currentSelectedMonth)
-        return "background: purple;"
+        return "background: #7CB9E8;"
     if (status == 0) {
         if (number % 2 == 1)
             return "background: var(--secondary-color);"
         else
             return "background:var(--primary-color);"
     } else if (status == 1)
-        return "background:purple;"
+        return "background:#7CB9E8;"
 }

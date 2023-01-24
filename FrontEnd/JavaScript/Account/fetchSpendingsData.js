@@ -13,8 +13,16 @@ async function totalSpendingAccount() {
         })
         .then(function(complete_response) {
             values = chooseDataCurency(complete_response)
-            document.getElementById("all_spendings").innerText = values.total + " " + selectedCurrency
-            document.getElementById("biggest_spendings").innerText = values.biggest + " " + selectedCurrency
+              
+
+            if(values.total==0)
+            document.getElementById("all_spendings").innerText = values.total.toLocaleString('en-US') + " " + selectedCurrency
+            else
+            document.getElementById("all_spendings").innerText = "-" + values.total.toLocaleString('en-US') + " " + selectedCurrency
+            if(values.biggest==0)
+            document.getElementById("biggest_spendings").innerText = values.biggest.toLocaleString('en-US') + " " + selectedCurrency
+            else
+            document.getElementById("biggest_spendings").innerText = "-" + values.biggest.toLocaleString('en-US') + " " + selectedCurrency
         })
         .catch((err) => {
             console.log(err)

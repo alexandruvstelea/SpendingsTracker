@@ -32,7 +32,7 @@ function generateDays() {
 
 function getBackgroundDays() {
     if (i == currentSelectedDay)
-        return "purple"
+        return "#7CB9E8"
     if (i % 2 == 0)
         return "var(--primary-color)"
     else

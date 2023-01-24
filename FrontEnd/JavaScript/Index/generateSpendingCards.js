@@ -44,7 +44,11 @@ function generateSpendingCards(spendings) {
     </div>`
     });
     document.getElementById("cards").innerHTML = data
-    document.getElementById("dayTotal").innerHTML = "<h1>Total " + parseFloat(total).toFixed(2) + " " + selectedCurrency
+    if(total==0)
+        document.getElementById("dayTotal").innerHTML = "<h1>Total " + parseFloat(total).toLocaleString('en-US') + " " + selectedCurrency
+    else
+        document.getElementById("dayTotal").innerHTML = "<h1>Total -" + parseFloat(total).toLocaleString('en-US') + " " + selectedCurrency
+
 }
 
 function sortSpendings(spendings){

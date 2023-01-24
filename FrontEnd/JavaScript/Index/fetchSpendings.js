@@ -70,16 +70,29 @@ async function totalSpendingMonth() {
 function setTotalMonth() {
     switch (selectedCurrency) {
         case "EUR":
-            document.getElementById("totalMonth").innerHTML = Object.keys(months)[document.querySelector('input[name="month"]:checked').id - 1] + " " + totals.total_eur + " " + selectedCurrency
+            if(totals.total_eur==0)
+            document.getElementById("totalMonth").innerHTML = Object.keys(months)[document.querySelector('input[name="month"]:checked').id - 1] + " " + totals.total_eur.toLocaleString('en-US') + " " + selectedCurrency
+            else
+            document.getElementById("totalMonth").innerHTML = Object.keys(months)[document.querySelector('input[name="month"]:checked').id - 1] + " -" + totals.total_eur.toLocaleString('en-US') + " " + selectedCurrency
             break
         case "USD":
-            document.getElementById("totalMonth").innerHTML = Object.keys(months)[document.querySelector('input[name="month"]:checked').id - 1] + " " + totals.total_usd + " " + selectedCurrency
+            if(totals.total_eur==0)
+            document.getElementById("totalMonth").innerHTML = Object.keys(months)[document.querySelector('input[name="month"]:checked').id - 1] + " " + totals.total_usd.toLocaleString('en-US') + " " + selectedCurrency
+            else
+            document.getElementById("totalMonth").innerHTML = Object.keys(months)[document.querySelector('input[name="month"]:checked').id - 1] + " -" + totals.total_usd.toLocaleString('en-US') + " " + selectedCurrency
             break
         case "GBP":
-            document.getElementById("totalMonth").innerHTML = Object.keys(months)[document.querySelector('input[name="month"]:checked').id - 1] + " " + totals.total_gbp + " " + selectedCurrency
+            if(totals.total_eur==0)
+            document.getElementById("totalMonth").innerHTML = Object.keys(months)[document.querySelector('input[name="month"]:checked').id - 1] + " " + totals.total_gbp.toLocaleString('en-US') + " " + selectedCurrency
+            else
+            document.getElementById("totalMonth").innerHTML = Object.keys(months)[document.querySelector('input[name="month"]:checked').id - 1] + " -" + totals.total_gbp.toLocaleString('en-US') + " " + selectedCurrency
             break
         case "RON":
-            document.getElementById("totalMonth").innerHTML = Object.keys(months)[document.querySelector('input[name="month"]:checked').id - 1] + " " + totals.total_ron + " " + selectedCurrency
+            if(totals.total_eur==0)
+            document.getElementById("totalMonth").innerHTML = Object.keys(months)[document.querySelector('input[name="month"]:checked').id - 1] + " " + totals.total_ron.toLocaleString('en-US') + " " + selectedCurrency
+            else
+            document.getElementById("totalMonth").innerHTML = Object.keys(months)[document.querySelector('input[name="month"]:checked').id - 1] + " -" + totals.total_ron.toLocaleString('en-US') + " " + selectedCurrency
+
             break
     }
 }

@@ -50,25 +50,8 @@ let line_chart = new Chart("lineChart", {
     },
     spanGaps: true,
     options: {
-        plugins:
-        {
-            tooltip: {
-                carretSize:29,
-                titleFont: {
-                    font: { 
-                        size: 30 
-                    }
-                }
-            },
-            bodyFont: {
-                font: { 
-                    size: 30 
-                }
-            }
-        },
         scales: {
             xAxes: [{
-
                 ticks: {
                     fontSize: 20,
                     display: true,
@@ -83,8 +66,5 @@ let line_chart = new Chart("lineChart", {
                 }
             }]
         },
-        responsive: true,
-        spanGaps: true,
-
     }
 })

@@ -30,7 +30,7 @@ function inputValidateEdit() {
   errorInput=false
 
   if(document.getElementById("nameEditSpending").value === '') {
-      error+="Name Empty!<br>"
+      error+="Empty name!<br>"
       errorInput=true
   }
   if(document.getElementById("nameEditSpending").value.length >=20){
@@ -39,7 +39,7 @@ function inputValidateEdit() {
   }
 
   if(document.getElementById("valueEditSpending").value === ''){
-      error+="Wrong Value!"
+      error+="Empty value!"
       errorInput=true
   }
 

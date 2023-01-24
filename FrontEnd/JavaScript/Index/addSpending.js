@@ -33,7 +33,7 @@ function inputValidate() {
     errorInput = false
 
     if (document.getElementById("nameAddSpending").value === '') {
-        error += "Name Empty!<br>"
+        error += "Empty name!<br>"
         errorInput = true
     }
     if (document.getElementById("nameAddSpending").value.length >= 20) {
@@ -41,9 +41,10 @@ function inputValidate() {
         errorInput = true
     }
     if (document.getElementById("valueAddSpending").value === '') {
-        error += "Wrong Value!"
+        error += "Empty Value!"
         errorInput = true
     }
+
     if (parseFloat(document.getElementById("valueAddSpending").value) < 1 || Math.sign(document.getElementById("valueAddSpending").value) === -1) {
         error += "Value must be greater than 1!"
         errorInput = true
