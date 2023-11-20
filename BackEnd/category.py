@@ -1,11 +1,12 @@
 from __init__ import db
 
+
 class Category(db.Model):
     __tablename__ = "categories"
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String)
 
-    def __init__(self, name:str):
+    def __init__(self, name: str):
         self.name = name
 
     @staticmethod
