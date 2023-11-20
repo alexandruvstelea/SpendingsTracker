@@ -52,18 +52,28 @@ To get started with Spendings Tracker, follow these steps:
 
 1. **Clone the repository** to your local machine.
 2. **Install PostgreSQL** and create a database named "SpendingsTracker."
-3. **Set up your environment variables** by creating a `.env` file in the project root directory. Add the following:
-   `HOSTNAME = <your_host_name>`
-   `DB_NAME = "SpendingsTracker"`
-   `PG_USER = "<your_postgre_user>"`
-   `PG_PASSWORD = <your_postgre_password>`
-   `PG_PORT = <your_postgre_port>`
-   `FLASK_SECRET = <secret_for_flask_app>`
+3. **Set up your environment variables** by creating a `.env` file in the project backend directory. Add the following:
+
+- `HOSTNAME = <your_host_name>`
+- `DB_NAME = "SpendingsTracker"`
+- `PG_USER = "<your_postgre_user>"`
+- `PG_PASSWORD = <your_postgre_password>`
+- `PG_PORT = <your_postgre_port>`
+- `FLASK_SECRET = <secret_for_flask_app>`
+
 4. Install Python and the required Python packages using `pip install -r requirements.txt`.
-5. Run the application with `python main.py`.
+5. Run the Flask application with `python main.py`.
 
 ## Technologies Used
 
 - **Python** with **Flask framework** for the backend.
 - **HTML**, **CSS**, and **JavaScript** for the frontend.
 - **PostgreSQL** for the database.
+
+## Authors
+
+The project was conceptualized and developed by:
+
+- [Alexandru-Vasile Stelea](https://www.linkedin.com/in/alexandrustelea)
+- [Andrei-Cristian Sava](https://www.linkedin.com/in/cristianandreisava)
+- [Radu Tanase](https://www.linkedin.com/in/tanase-radu-9a7296209/)
